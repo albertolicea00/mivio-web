@@ -51,7 +51,7 @@ document.addEventListener('alpine:init', () => {
       en: {
         /* nav */
         nav_features : 'Features',
-        nav_design   : 'Design',
+        nav_design   : 'Platforms',
         nav_download : 'Download',
         nav_cta      : 'Download free',
         /* hero */
@@ -104,6 +104,22 @@ document.addEventListener('alpine:init', () => {
         cta_desc     : "Join the users who already organize their movies and series the best way. It's fast, beautiful, and easy to use.",
         cta_btn      : 'Download Mivio for Android',
         cta_sub      : 'Free · No account · No limits',
+        /* compatibility */
+        compat_label : 'Compatibility',
+        compat_h2_a  : 'Works on every',
+        compat_h2_b  : 'screen you own.',
+        compat_sub   : 'One app, the entire Android ecosystem. Whether you\'re on the couch, at the desk, or on the road — Mivio adapts to your screen.',
+        compat_note  : 'One APK. Every form factor. Zero compromises.',
+        dev_mobile_name  : 'Android Mobile',
+        dev_mobile_desc  : 'The full experience in your pocket.',
+        dev_tablet_name  : 'Android Tablet',
+        dev_tablet_desc  : 'Optimized layouts for large screens.',
+        dev_tv_name      : 'Android TV',
+        dev_tv_desc      : 'Lean-back browsing from your sofa.',
+        dev_chrome_name  : 'Chromebook',
+        dev_chrome_desc  : 'Full app via Chrome OS / Play Store.',
+        dev_auto_name    : 'Android Auto',
+        dev_auto_desc    : 'Audio and media controls on the road.',
         /* footer */
         ft_support   : 'Support',
         ft_contact   : 'Contact',
@@ -115,7 +131,7 @@ document.addEventListener('alpine:init', () => {
       es: {
         /* nav */
         nav_features : 'Funciones',
-        nav_design   : 'Diseño',
+        nav_design   : 'Plataformas',
         nav_download : 'Descargar',
         nav_cta      : 'Descargar gratis',
         /* hero */
@@ -168,6 +184,22 @@ document.addEventListener('alpine:init', () => {
         cta_desc     : 'Únete a los usuarios que ya organizan sus películas y series de la mejor manera. Es rápida, hermosa y fácil de usar.',
         cta_btn      : 'Descargar Mivio para Android',
         cta_sub      : 'Gratis · Sin cuenta · Sin límites',
+        /* compatibility */
+        compat_label : 'Compatibilidad',
+        compat_h2_a  : 'Funciona en cada',
+        compat_h2_b  : 'pantalla que tienes.',
+        compat_sub   : 'Una sola app, todo el ecosistema Android. En el sofá, en el escritorio o en el coche — Mivio se adapta a tu pantalla.',
+        compat_note  : 'Un APK. Cada factor de forma. Sin compromisos.',
+        dev_mobile_name  : 'Android Mobile',
+        dev_mobile_desc  : 'La experiencia completa en tu bolsillo.',
+        dev_tablet_name  : 'Android Tablet',
+        dev_tablet_desc  : 'Layouts optimizados para pantallas grandes.',
+        dev_tv_name      : 'Android TV',
+        dev_tv_desc      : 'Navega desde el sofá con tu control remoto.',
+        dev_chrome_name  : 'Chromebook',
+        dev_chrome_desc  : 'App completa vía Chrome OS / Play Store.',
+        dev_auto_name    : 'Android Auto',
+        dev_auto_desc    : 'Controles de audio y multimedia al volante.',
         /* footer */
         ft_support   : 'Soporte',
         ft_contact   : 'Contacto',

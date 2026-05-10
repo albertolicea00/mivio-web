@@ -303,71 +303,123 @@
   </section>
 
   <!-- ==============================================================
-       SHOWCASE
+       COMPATIBILITY
   ============================================================== -->
   <section id="showcase" class="py-28 px-6 bg-surface">
     <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-        <!-- Text + slide selector -->
-        <div x-data="showcase()">
-          <span class="text-primary text-sm font-semibold uppercase tracking-widest"
-                x-text="$store.i18n.t('show_label')"></span>
-          <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 mb-6 leading-tight text-fg">
-            <span x-text="$store.i18n.t('show_h2_a')"></span><br/>
-            <span class="gradient-text" x-text="$store.i18n.t('show_h2_b')"></span>
-          </h2>
-          <p class="text-fg-subtle text-base leading-relaxed mb-8"
-             x-html="$store.i18n.t('show_desc')"></p>
-
-          <!-- Slide option buttons (selector) -->
-          <div class="flex flex-col gap-3">
-            <template x-for="(slide, i) in slides" :key="i">
-              <button @click="current = i"
-                      :class="current === i ? 'slide-option active' : 'slide-option'"
-                      class="text-left px-5 py-4 rounded-2xl">
-                <div class="font-semibold text-sm" x-text="slide.title"></div>
-                <div class="text-xs mt-0.5 opacity-70" x-text="slide.desc"></div>
-              </button>
-            </template>
-          </div>
-        </div>
-
-        <!-- Phone frame with carousel -->
-        <div x-data="showcase()" class="flex items-center justify-center">
-          <div class="relative w-72 h-[580px]">
-
-            <div class="showcase-phone absolute inset-0 rounded-[3rem] overflow-hidden shadow-2xl mockup-glow">
-              <template x-for="(slide, i) in slides" :key="i">
-                <div class="absolute inset-0 transition-all duration-500 flex items-center justify-center"
-                     :class="current === i ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'">
-                  <img :src="slide.img"
-                       :alt="slide.title"
-                       class="w-full h-full object-cover"
-                       @error="$el.parentElement.innerHTML = `<div class='w-full h-full flex flex-col items-center justify-center gap-3'><div class='text-5xl'>${slide.emoji}</div><p class='text-fg-faint text-xs px-6 text-center'>${slide.title}</p></div>`" />
-                </div>
-              </template>
-            </div>
-
-            <!-- Arrow buttons -->
-            <button @click="prev()"
-                    class="showcase-btn absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
-                    aria-label="Previous">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            <button @click="next()"
-                    class="showcase-btn absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
-                    aria-label="Next">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
-
-          </div>
-        </div>
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest"
+              x-text="$store.i18n.t('compat_label')"></span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 leading-tight text-fg">
+          <span x-text="$store.i18n.t('compat_h2_a')"></span><br/>
+          <span class="gradient-text" x-text="$store.i18n.t('compat_h2_b')"></span>
+        </h2>
+        <p class="text-fg-subtle mt-5 max-w-xl mx-auto text-base leading-relaxed"
+           x-text="$store.i18n.t('compat_sub')"></p>
       </div>
+
+      <!-- Device cards — big row on desktop, 2-col grid on mobile -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+        <!-- Mobile -->
+        <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+          <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <!-- Smartphone -->
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-width="1.5"/>
+              <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_mobile_name')"></div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_mobile_desc')"></div>
+          </div>
+          <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+            Android 7+
+          </span>
+        </div>
+
+        <!-- Tablet -->
+        <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+          <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <!-- Tablet -->
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2" stroke-width="1.5"/>
+              <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_tablet_name')"></div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_tablet_desc')"></div>
+          </div>
+          <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+            Android 7+
+          </span>
+        </div>
+
+        <!-- Android TV — featured, accent colour -->
+        <div class="compat-card group card accent rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-accent/30 transition-all duration-300 cursor-default col-span-2 sm:col-span-1">
+          <div class="compat-icon w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+            <!-- TV -->
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="14" rx="2" stroke-width="1.5"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 20h8M12 18v2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_tv_name')"></div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_tv_desc')"></div>
+          </div>
+          <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+            Android TV / Google TV
+          </span>
+        </div>
+
+        <!-- Chromebook -->
+        <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+          <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <!-- Laptop -->
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_chrome_name')"></div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_chrome_desc')"></div>
+          </div>
+          <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+            Chrome OS
+          </span>
+        </div>
+
+        <!-- Android Auto -->
+        <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-accent/30 transition-all duration-300 cursor-default">
+          <div class="compat-icon w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+            <!-- Car -->
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M5 17H3v-5l2-5h14l2 5v5h-2M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+              <path stroke-linecap="round" stroke-width="1.5" d="M3 12h18"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_auto_name')"></div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_auto_desc')"></div>
+          </div>
+          <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+            Android Auto
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Bottom note -->
+      <p class="text-center text-fg-faint text-xs mt-10"
+         x-text="$store.i18n.t('compat_note')"></p>
+
     </div>
   </section>
 
