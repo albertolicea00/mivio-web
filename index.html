@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mivio — The ultimate Android media player. Connect SMB, WebDAV, get automatic artwork and subtitles." />
+
+  <title>Mivio — The ultimate Android media player</title>
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6B00',
+            accent:  '#00C4FF',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Outfit', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="static/css/style.css" />
+
+  <!-- Alpine.js — must load BEFORE app.js so stores register on alpine:init -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="static/js/app.js"></script>
+</head>
+
+<!-- Root: initialise theme & i18n from localStorage on first paint -->
+<body class="font-sans antialiased bg-page text-fg"
+      x-data
+      x-init="$store.theme.init(); $store.i18n.init()">
+
+  <!-- ==============================================================
+       NAVBAR
+  ============================================================== -->
+  <nav x-data="{ scrolled: false, open: false }"
+       @scroll.window="scrolled = window.scrollY > 40"
+       :class="scrolled ? 'nav-scrolled nav-blur' : ''"
+       class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg btn-primary flex items-center justify-center font-black text-white text-sm select-none">M</div>
+        <span class="font-bold text-lg tracking-tight text-fg">Mivio</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8 text-sm text-fg-subtle">
+        <a href="#features" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_features')"></a>
+        <a href="#showcase" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_design')"></a>
+        <a href="#download" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_download')"></a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="hidden md:flex items-center gap-3">
+
+        <!-- Language toggle -->
+        <button @click="$store.i18n.toggle()"
+                class="toggle-pill rounded-full px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+          </svg>
+          <span x-text="$store.i18n.lang === 'en' ? 'ES' : 'EN'"></span>
+        </button>
+
+        <!-- Dark/light toggle -->
+        <button @click="$store.theme.toggle()"
+                class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
+          <!-- Sun (shown in dark mode to switch to light) -->
+          <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+          </svg>
+          <!-- Moon (shown in light mode to switch to dark) -->
+          <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- CTA -->
+        <a href="#download"
+           class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full"
+           x-text="$store.i18n.t('nav_cta')"></a>
+      </div>
+
+      <!-- Mobile: lang + theme + hamburger -->
+      <div class="flex md:hidden items-center gap-2">
+        <button @click="$store.i18n.toggle()"
+                class="toggle-pill rounded-full px-2.5 py-1 text-xs font-semibold"
+                x-text="$store.i18n.lang === 'en' ? 'ES' : 'EN'"></button>
+
+        <button @click="$store.theme.toggle()"
+                class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
+          <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+          </svg>
+          <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button @click="open = !open" class="text-fg-subtle hover:text-fg">
+          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open" x-cloak x-transition
+         class="md:hidden nav-blur border-subtle border-t bg-surface px-6 py-4 flex flex-col gap-4 text-sm text-fg-subtle">
+      <a href="#features" @click="open=false" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_features')"></a>
+      <a href="#showcase" @click="open=false" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_design')"></a>
+      <a href="#download" @click="open=false"
+         class="btn-primary text-white font-semibold px-5 py-2.5 rounded-full text-center"
+         x-text="$store.i18n.t('nav_cta')"></a>
+    </div>
+  </nav>
+
+  <!-- ==============================================================
+       HERO
+  ============================================================== -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 overflow-hidden hero-glow">
+
+    <!-- Decorative ping dots -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-10 left-10 w-2 h-2 rounded-full ping-orange animate-ping"></div>
+      <div class="absolute top-32 right-20 w-1.5 h-1.5 rounded-full ping-cyan animate-ping" style="animation-delay:.9s"></div>
+      <div class="absolute bottom-40 left-16 w-1 h-1 rounded-full ping-orange animate-ping" style="animation-delay:1.8s"></div>
+    </div>
+
+    <!-- Badge -->
+    <div class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-6">
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+      <span x-text="$store.i18n.t('hero_badge')"></span>
+    </div>
+
+    <!-- H1 -->
+    <h1 class="font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight tracking-tight max-w-4xl mb-6 text-fg">
+      <span x-text="$store.i18n.t('hero_h1_a')"></span><br/>
+      <span class="gradient-text" x-text="$store.i18n.t('hero_h1_b')"></span><br/>
+      <span x-text="$store.i18n.t('hero_h1_c')"></span>
+    </h1>
+
+    <!-- Subtitle — uses innerHTML for the bold SMB/WebDAV spans -->
+    <p class="text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed"
+       x-html="$store.i18n.t('hero_sub')"></p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+      <a href="#download"
+         class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
+        <!-- Android icon -->
+        <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.523 15.342a1 1 0 0 1-1 1H7.476a1 1 0 0 1-1-1V9.38a1 1 0 0 1 1-1h9.047a1 1 0 0 1 1 1v5.962zm-9.047-8.96h8.047l1.296-2.245a.5.5 0 1 0-.866-.5l-1.342 2.323A5.97 5.97 0 0 0 12 5.5a5.97 5.97 0 0 0-3.61 1.46L7.048 4.637a.5.5 0 1 0-.866.5L7.476 6.38zM9 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+        <span x-text="$store.i18n.t('hero_cta1')"></span>
+      </a>
+
+      <a href="#features"
+         class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
+        <span x-text="$store.i18n.t('hero_cta2')"></span>
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="relative w-full max-w-sm mx-auto">
+      <div class="mockup-glow">
+        <img src="static/images/mockup.png"
+             alt="Mivio app on an Android phone"
+             class="w-full h-auto object-contain"
+             onerror="this.closest('.mockup-glow').innerHTML='<div class=\'w-64 h-[520px] mx-auto rounded-[3rem] bg-surface-alt border border-medium flex flex-col items-center justify-center gap-3\'><div class=\'text-4xl font-black gradient-text\'>M</div><p class=\'text-fg-faint text-xs\'>mockup.png</p></div>'" />
+      </div>
+      <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-48 h-8 rounded-full blur-xl bg-primary/25" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       STATS BAR
+  ============================================================== -->
+  <div class="stats-bar py-8">
+    <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="text-3xl font-extrabold gradient-text">SMB</div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_smb')"></div>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold gradient-text">WebDAV</div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_webdav')"></div>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-accent">TMDB</div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_tmdb')"></div>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-accent">OpenSubs</div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_opensubs')"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       FEATURES
+  ============================================================== -->
+  <section id="features" class="py-28 px-6 bg-page">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section header -->
+      <div class="text-center mb-20">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest"
+              x-text="$store.i18n.t('feat_label')"></span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 leading-tight text-fg">
+          <span x-text="$store.i18n.t('feat_h2_a')"></span><br/>
+          <span class="gradient-text" x-text="$store.i18n.t('feat_h2_b')"></span>
+        </h2>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <!-- Feature 1 — network -->
+        <div class="card group rounded-3xl p-8 hover:border-primary/25 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M5 12H3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2h-2
+                   M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M5 12h14"/>
+              <circle cx="18" cy="17" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="text-xs text-primary font-semibold uppercase tracking-widest"
+                x-text="$store.i18n.t('f1_tag')"></span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f1_title')"></h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f1_body')"></p>
+        </div>
+
+        <!-- Feature 2 — metadata -->
+        <div class="card group rounded-3xl p-8 hover:border-primary/25 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M7 4v4m0 0H3m4 0h4M7 8v4M17 4l-1 1m0 0-1 1m1-1 1 1m-1-1-1-1M3 20l9-9
+                   M12.5 7.5l4 4-7 7H6v-3.5l6.5-6.5z"/>
+            </svg>
+          </div>
+          <span class="text-xs text-primary font-semibold uppercase tracking-widest"
+                x-text="$store.i18n.t('f2_tag')"></span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f2_title')"></h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f2_body')"></p>
+        </div>
+
+        <!-- Feature 3 — subtitles -->
+        <div class="card accent group rounded-3xl p-8 hover:border-accent/25 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M7 8h10M7 12h6m-6 4h10M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/>
+            </svg>
+          </div>
+          <span class="text-xs text-accent font-semibold uppercase tracking-widest"
+                x-text="$store.i18n.t('f3_tag')"></span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f3_title')"></h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f3_body')"></p>
+        </div>
+
+        <!-- Feature 4 — player -->
+        <div class="card accent group rounded-3xl p-8 hover:border-accent/25 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
+              <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="text-xs text-accent font-semibold uppercase tracking-widest"
+                x-text="$store.i18n.t('f4_tag')"></span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f4_title')"></h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f4_body')"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       SHOWCASE
+  ============================================================== -->
+  <section id="showcase" class="py-28 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Text + slide selector -->
+        <div x-data="showcase()">
+          <span class="text-primary text-sm font-semibold uppercase tracking-widest"
+                x-text="$store.i18n.t('show_label')"></span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 mb-6 leading-tight text-fg">
+            <span x-text="$store.i18n.t('show_h2_a')"></span><br/>
+            <span class="gradient-text" x-text="$store.i18n.t('show_h2_b')"></span>
+          </h2>
+          <p class="text-fg-subtle text-base leading-relaxed mb-8"
+             x-html="$store.i18n.t('show_desc')"></p>
+
+          <!-- Slide option buttons (selector) -->
+          <div class="flex flex-col gap-3">
+            <template x-for="(slide, i) in slides" :key="i">
+              <button @click="current = i"
+                      :class="current === i ? 'slide-option active' : 'slide-option'"
+                      class="text-left px-5 py-4 rounded-2xl">
+                <div class="font-semibold text-sm" x-text="slide.title"></div>
+                <div class="text-xs mt-0.5 opacity-70" x-text="slide.desc"></div>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- Phone frame with carousel -->
+        <div x-data="showcase()" class="flex items-center justify-center">
+          <div class="relative w-72 h-[580px]">
+
+            <div class="showcase-phone absolute inset-0 rounded-[3rem] overflow-hidden shadow-2xl mockup-glow">
+              <template x-for="(slide, i) in slides" :key="i">
+                <div class="absolute inset-0 transition-all duration-500 flex items-center justify-center"
+                     :class="current === i ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'">
+                  <img :src="slide.img"
+                       :alt="slide.title"
+                       class="w-full h-full object-cover"
+                       @error="$el.parentElement.innerHTML = `<div class='w-full h-full flex flex-col items-center justify-center gap-3'><div class='text-5xl'>${slide.emoji}</div><p class='text-fg-faint text-xs px-6 text-center'>${slide.title}</p></div>`" />
+                </div>
+              </template>
+            </div>
+
+            <!-- Arrow buttons -->
+            <button @click="prev()"
+                    class="showcase-btn absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
+                    aria-label="Previous">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button @click="next()"
+                    class="showcase-btn absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
+                    aria-label="Next">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       CTA / DOWNLOAD
+  ============================================================== -->
+  <section id="download" class="py-28 px-6 bg-page">
+    <div class="max-w-3xl mx-auto text-center">
+
+      <!-- Animated logo mark -->
+      <div class="relative inline-flex mb-10" aria-hidden="true">
+        <div class="w-24 h-24 rounded-3xl btn-primary flex items-center justify-center text-white font-black text-4xl shadow-2xl"
+             style="box-shadow: 0 20px 60px rgba(255,107,0,0.35)">M</div>
+        <div class="absolute inset-0 rounded-3xl border-2 border-primary/30 scale-125 animate-ping opacity-25"></div>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight text-fg">
+        <span x-text="$store.i18n.t('cta_h2_a')"></span><br/>
+        <span class="gradient-text" x-text="$store.i18n.t('cta_h2_b')"></span>
+      </h2>
+
+      <p class="text-fg-subtle text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+         x-text="$store.i18n.t('cta_desc')"></p>
+
+      <a href="#"
+         class="btn-primary inline-flex items-center gap-3 text-white font-bold px-10 py-5 rounded-2xl text-lg shadow-2xl">
+        <!-- Play Store arrow icon -->
+        <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3.18 23.76a2 2 0 0 0 2.06-.08l11.46-6.47-2.52-2.52-11 8.62zm17.4-9.78L17.3 12l3.28-1.98a1.8 1.8 0 0 0 0-3.12L5.24.38A2 2 0 0 0 2.16.5L13.62 12 2.16 23.5a2 2 0 0 0 3.08.12l15.34-8.52a1.8 1.8 0 0 0 0-3.12z"/>
+        </svg>
+        <span x-text="$store.i18n.t('cta_btn')"></span>
+      </a>
+
+      <p class="text-fg-xfaint text-sm mt-5" x-text="$store.i18n.t('cta_sub')"></p>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       FOOTER
+  ============================================================== -->
+  <footer class="footer-bar py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between gap-6 text-sm text-fg-faint">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md btn-primary flex items-center justify-center font-black text-white text-xs select-none">M</div>
+        <span class="text-fg-subtle font-medium">Mivio</span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_support')"></a>
+        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_contact')"></a>
+        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_privacy')"></a>
+      </div>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-fg transition-colors" aria-label="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3z"/>
+          </svg>
+        </a>
+        <a href="#" class="hover:text-fg transition-colors" aria-label="X / Twitter">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Credit -->
+      <p>
+        <span x-text="$store.i18n.t('ft_made')"></span>
+        <strong class="text-fg-muted ml-1">Alberto Licea</strong>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

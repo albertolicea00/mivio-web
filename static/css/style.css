@@ -1,0 +1,235 @@
+/* ================================================================
+   MIVIO — Custom styles
+   Tailwind handles layout/spacing; this file handles theming.
+================================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;600;700;800&display=swap');
+
+/* ── CSS custom properties: DARK (default) ───────────────────── */
+:root {
+  --bg-page:        #121212;
+  --bg-surface:     #1A1A1A;
+  --bg-surface-alt: #252525;
+  --bg-nav:         rgba(30, 30, 30, 0.92);
+
+  --fg:             #ffffff;
+  --fg-muted:       rgba(255, 255, 255, 0.70);
+  --fg-subtle:      rgba(255, 255, 255, 0.52);
+  --fg-faint:       rgba(255, 255, 255, 0.35);
+  --fg-xfaint:      rgba(255, 255, 255, 0.22);
+
+  --border-subtle:  rgba(255, 255, 255, 0.05);
+  --border-medium:  rgba(255, 255, 255, 0.10);
+  --border-strong:  rgba(255, 255, 255, 0.18);
+
+  --hero-glow:      radial-gradient(ellipse 80% 60% at 50% 0%,
+                      rgba(255, 107, 0, 0.12) 0%, transparent 70%);
+  --card-hover-glow: 0 0 30px rgba(255, 107, 0, 0.16);
+  --card-hover-glow-accent: 0 0 30px rgba(0, 196, 255, 0.14);
+  --mockup-glow:    drop-shadow(0 20px 60px rgba(255,107,0,0.25))
+                    drop-shadow(0 0 80px rgba(0,196,255,0.10));
+}
+
+/* ── CSS custom properties: LIGHT ────────────────────────────── */
+html.light {
+  --bg-page:        #F6F6F6;
+  --bg-surface:     #FFFFFF;
+  --bg-surface-alt: #EDEDEC;
+  --bg-nav:         rgba(255, 255, 255, 0.92);
+
+  --fg:             #111111;
+  --fg-muted:       rgba(0, 0, 0, 0.68);
+  --fg-subtle:      rgba(0, 0, 0, 0.50);
+  --fg-faint:       rgba(0, 0, 0, 0.35);
+  --fg-xfaint:      rgba(0, 0, 0, 0.22);
+
+  --border-subtle:  rgba(0, 0, 0, 0.06);
+  --border-medium:  rgba(0, 0, 0, 0.10);
+  --border-strong:  rgba(0, 0, 0, 0.18);
+
+  --hero-glow:      radial-gradient(ellipse 80% 60% at 50% 0%,
+                      rgba(255, 107, 0, 0.07) 0%, transparent 70%);
+  --card-hover-glow: 0 0 30px rgba(255, 107, 0, 0.12);
+  --card-hover-glow-accent: 0 0 30px rgba(0, 196, 255, 0.10);
+  --mockup-glow:    drop-shadow(0 20px 50px rgba(255,107,0,0.18))
+                    drop-shadow(0 0 60px rgba(0,196,255,0.08));
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Outfit', system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[x-cloak] { display: none !important; }
+
+/* ── Semantic color utilities ─────────────────────────────────── */
+.bg-page        { background-color: var(--bg-page); }
+.bg-surface     { background-color: var(--bg-surface); }
+.bg-surface-alt { background-color: var(--bg-surface-alt); }
+
+.text-fg        { color: var(--fg); }
+.text-fg-muted  { color: var(--fg-muted); }
+.text-fg-subtle { color: var(--fg-subtle); }
+.text-fg-faint  { color: var(--fg-faint); }
+
+.border-subtle  { border-color: var(--border-subtle); }
+.border-medium  { border-color: var(--border-medium); }
+.border-strong  { border-color: var(--border-strong); }
+
+/* ── Gradient text ────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B00, #FF9A3C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #00C4FF, #0088CC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Hero glow ────────────────────────────────────────────────── */
+.hero-glow { background: var(--hero-glow); }
+
+/* ── Buttons ──────────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B00, #FF8C2A);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FF8C2A, #FF6B00);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 107, 0, 0.40);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 107, 0, 0.40);
+  color: var(--fg-muted);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: #FF6B00;
+  background: rgba(255, 107, 0, 0.08);
+  transform: translateY(-2px);
+  color: var(--fg);
+}
+
+/* ── Navbar ───────────────────────────────────────────────────── */
+.nav-scrolled {
+  background-color: var(--bg-nav);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+.nav-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Cards ────────────────────────────────────────────────────── */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover  { box-shadow: var(--card-hover-glow); }
+.card.accent:hover { box-shadow: var(--card-hover-glow-accent); }
+
+/* ── Mockup phone glow ────────────────────────────────────────── */
+.mockup-glow { filter: var(--mockup-glow); }
+
+/* ── Stats bar ────────────────────────────────────────────────── */
+.stats-bar {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+}
+
+/* ── Showcase slide ───────────────────────────────────────────── */
+.showcase-phone {
+  background-color: var(--bg-surface-alt);
+  border: 2px solid var(--border-medium);
+}
+
+.showcase-btn {
+  background-color: var(--bg-surface-alt);
+  border: 1px solid var(--border-medium);
+  color: var(--fg-subtle);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.showcase-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--fg);
+}
+
+.slide-option {
+  border: 1px solid var(--border-subtle);
+  color: var(--fg-faint);
+  transition: all 0.3s ease;
+}
+.slide-option:hover {
+  border-color: var(--border-medium);
+  color: var(--fg-subtle);
+}
+.slide-option.active {
+  background-color: rgba(255, 107, 0, 0.08);
+  border-color: rgba(255, 107, 0, 0.40);
+  color: var(--fg);
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer-bar {
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+}
+
+/* ── Theme & lang toggle buttons ─────────────────────────────── */
+.toggle-pill {
+  background-color: var(--bg-surface-alt);
+  border: 1px solid var(--border-medium);
+  color: var(--fg-subtle);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.toggle-pill:hover {
+  border-color: rgba(255, 107, 0, 0.40);
+  color: var(--fg);
+}
+
+/* ── Ping dots ────────────────────────────────────────────────── */
+.ping-orange { background-color: rgba(255, 107, 0, 0.40); }
+.ping-cyan   { background-color: rgba(0, 196, 255, 0.40); }
+
+/* ── Badge hero ───────────────────────────────────────────────── */
+.hero-badge {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--fg-subtle);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.28); }
+  50%       { box-shadow: 0 0 44px rgba(255, 107, 0, 0.55); }
+}
+
+.animate-fade-up   { animation: fadeUp 0.6s ease forwards; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
