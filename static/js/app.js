@@ -51,7 +51,7 @@ document.addEventListener('alpine:init', () => {
       en: {
         /* nav */
         nav_features : 'Features',
-        nav_design   : 'Platforms',
+        nav_platforms   : 'Platforms',
         nav_download : 'Download',
         nav_cta      : 'Download free',
         /* hero */
@@ -131,7 +131,7 @@ document.addEventListener('alpine:init', () => {
       es: {
         /* nav */
         nav_features : 'Funciones',
-        nav_design   : 'Plataformas',
+        nav_platforms   : 'Plataformas',
         nav_download : 'Descargar',
         nav_cta      : 'Descargar gratis',
         /* hero */
