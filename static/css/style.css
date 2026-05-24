@@ -73,6 +73,29 @@ body {
 
 [x-cloak] { display: none !important; }
 
+/* ── Skip to content (accessibility) ─────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ── Focus visible styles ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #FF6B00;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ── Semantic color utilities ─────────────────────────────────── */
 .bg-page        { background-color: var(--bg-page); }
 .bg-surface     { background-color: var(--bg-surface); }

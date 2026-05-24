@@ -41,7 +41,7 @@
 
   <div x-data="{ html: '' }" x-init="fetch('navbar.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
-  <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto">
+  <main id="main-content" class="pt-32 pb-24 px-6 max-w-5xl mx-auto">
 
     <!-- Hero -->
     <header class="text-center mb-20">
@@ -63,17 +63,17 @@
       <!-- Enterprise deployment -->
       <div class="card rounded-3xl p-8 flex flex-col gap-5">
         <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
         </div>
         <div>
           <h2 class="font-bold text-xl text-fg mb-2">Enterprise Deployment</h2>
           <p class="text-fg-subtle text-sm leading-relaxed">Roll out Mivio across your entire organization. Manage users, control access, and provide a unified media experience — all under your IT infrastructure.</p>
         </div>
         <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Centralized user management</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> On-premise or cloud-hosted</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> All platforms included</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Dedicated support channel</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Centralized user management</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> On-premise or cloud-hosted</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> All platforms included</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Dedicated support channel</li>
         </ul>
         <p class="text-fg-faint text-xs">Ideal for: hotels, hospitals, universities, academies, corporate campuses.</p>
       </div>
@@ -81,17 +81,17 @@
       <!-- White-label -->
       <div class="card rounded-3xl p-8 flex flex-col gap-5 border-primary/30">
         <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+          <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
         </div>
         <div>
           <h2 class="font-bold text-xl text-fg mb-2">White-Label Licensing</h2>
           <p class="text-fg-subtle text-sm leading-relaxed">Ship Mivio under your own brand, with your logo, your colors, and your app store presence. Full commercial rights with a custom licensing agreement.</p>
         </div>
         <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom branding &amp; identity</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Commercial redistribution rights</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Source access (negotiated)</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Co-development available</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom branding &amp; identity</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Commercial redistribution rights</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Source access (negotiated)</li>
+          <li class="flex items-start gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Co-development available</li>
         </ul>
         <p class="text-fg-faint text-xs">Ideal for: media companies, telecom operators, set-top box manufacturers, streaming platforms.</p>
       </div>
