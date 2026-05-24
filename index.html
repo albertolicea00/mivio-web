@@ -52,7 +52,7 @@
        HERO
   ============================================================== -->
   <section
-    class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 overflow-hidden hero-glow">
+    class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10 sm:pb-16 overflow-hidden hero-glow">
 
     <!-- Decorative ping dots -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -66,7 +66,7 @@
     <!-- Badge -->
     <div class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-6">
       <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-      <span>Available now · Free for all platforms</span>
+      <span>Open Source · All platforms · 100% free</span>
     </div>
 
     <!-- H1 -->
@@ -83,7 +83,7 @@
       enjoy your movies and series with automatic artwork and built-in subtitles.</p>
 
     <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
       <a href="download.html" id="hero-download-btn"
         class="dynamic-download-btn btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
         <span id="hero-download-icon" class="dynamic-download-icon flex items-center justify-center">
@@ -101,6 +101,14 @@
         <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
+      </a>
+
+      <a href="cloud.html"
+        class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+        </svg>
+        <span>Explore Cloud</span>
       </a>
     </div>
 
@@ -274,8 +282,8 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Apple -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -288,11 +296,11 @@
             <div class="font-bold text-lg text-fg">Apple Ecosystem</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">iOS, macOS, tvOS, visionOS.</div>
           </div>
-        </div>
+        </a>
 
         <!-- Android -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -305,11 +313,11 @@
             <div class="font-bold text-lg text-fg">Android & TV</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">Mobile, Tablet, Android TV.</div>
           </div>
-        </div>
+        </a>
 
         <!-- Smart TVs -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -321,11 +329,11 @@
             <div class="font-bold text-lg text-fg">Smart TVs</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">RokuOS, Samsung Tizen & LG webOS.</div>
           </div>
-        </div>
+        </a>
 
         <!-- Windows -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" viewBox="0 0 448 512">
@@ -337,11 +345,11 @@
             <div class="font-bold text-lg text-fg">Windows</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">Native performance for Windows.</div>
           </div>
-        </div>
+        </a>
 
         <!-- Linux -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -354,11 +362,11 @@
             <div class="font-bold text-lg text-fg">Linux</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">All major distros supported.</div>
           </div>
-        </div>
+        </a>
 
         <!-- VR -->
-        <div
-          class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
+        <a
+          href="download.html" class="compat-card group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-pointer">
           <div
             class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
             <svg class="w-8 h-8 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -371,7 +379,7 @@
             <div class="font-bold text-lg text-fg">Virtual Reality</div>
             <div class="text-sm text-fg-faint mt-1 leading-snug">Meta Quest, Pico & HTC Vive XR.</div>
           </div>
-        </div>
+        </a>
 
       </div>
 
@@ -385,6 +393,12 @@
             </svg>
           </span>
           <span class="dynamic-download-text-long">Download Mivio for free</span>
+        </a>
+        <a href="cloud.html" class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+          </svg>
+          <span>Explore Cloud</span>
         </a>
       </div>
 
@@ -418,8 +432,9 @@
           </button>
           <div x-show="open" x-collapse>
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
-              Yes, Mivio is a client-side player. You need to connect it to an existing local server like an SMB share
-              or WebDAV to stream your media files.
+              No. Mivio can play local files directly on iOS, Android, macOS, Windows, and Linux.  
+              <br/>
+              A server is only required if you want to stream from a shared library (SMB, WebDAV, Jellyfin, Plex, etc.) or if you're using platforms that don't allow local file access, such as Apple TV, Samsung TV, LG TV, Roku, or visionOS.
             </div>
           </div>
         </div>
@@ -437,7 +452,7 @@
           </button>
           <div x-show="open" x-collapse>
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
-              No, Mivio plays your media directly without transcoding. It relies on the powerful native players of your
+              Nope, Mivio plays your media directly without transcoding. It relies on the powerful native players of your
               device (like ExoPlayer or AVPlayer) to decode files locally, saving server resources.
             </div>
           </div>
@@ -457,18 +472,139 @@
           <div x-show="open" x-collapse>
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Yes! Mivio is a free, non-commercial project developed by the community. You can download it for any of
-              the supported platforms at no cost.
+              the supported platforms at no cost — your device already cost enough.
             </div>
           </div>
         </div>
+
+        <!-- FAQ Item 4 — Open Source -->
+        <div x-data="{ open: false }"
+          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button @click="open = !open"
+            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+            <span class="font-semibold text-fg text-lg">Is Mivio open source?</span>
+            <svg class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-collapse>
+            <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
+              Yes! The Mivio client apps (Apple, Android, Smart TV, VR) are publicly available on GitHub. They are released under a <strong>non-commercial license</strong> — you can freely use, fork, and contribute to them for personal or educational purposes. Commercial redistribution or rebranding without a commercial agreement is not permitted.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 — Business / B2B -->
+        <div x-data="{ open: false }"
+          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button @click="open = !open"
+            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+            <span class="font-semibold text-fg text-lg">Can I use Mivio for my business or organization?</span>
+            <svg class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-collapse>
+            <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
+              Absolutely. We offer <strong>B2B licensing</strong> for hotels, universities, academies, and organizations that want to deploy Mivio at scale. We also offer <strong>white-label</strong> agreements for businesses that want to ship Mivio under their own branding. <a href="b2b.html" class="text-primary hover:underline font-semibold">Find your plan or get support →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 — Mivio Cloud -->
+        <div x-data="{ open: false }"
+          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button @click="open = !open"
+            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+            <span class="font-semibold text-fg text-lg">What is Mivio Cloud?</span>
+            <svg class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-collapse>
+            <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
+              Mivio Cloud is a premium managed hosting service. Instead of setting up your own server at home, we host your personal media environment in the cloud — so you can stream your content from anywhere with zero technical setup. Available in subscription tiers based on your storage needs. <a href="cloud.html" class="text-primary hover:underline font-semibold">See Mivio Cloud plans →</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ==============================================================
-       CTA / DOWNLOAD
+       PROMO — CLOUD + B2B
   ============================================================== -->
+  <section class="py-20 px-6 bg-page">
+    <div class="max-w-4xl mx-auto">
 
+      <!-- Section title -->
+      <div class="text-center mb-12">
+        <h2 class="font-extrabold text-3xl sm:text-4xl text-fg mb-3">More from Mivio</h2>
+        <p class="text-fg-subtle">Whether you need a personal cloud or a business solution, we have you covered.</p>
+      </div>
+
+      <div class="flex flex-col gap-6">
+
+        <!-- Cloud promo -->
+        <div class="card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border-primary/20 hover:border-primary/40 transition-colors">
+          <div class="flex-1 text-center md:text-left">
+            <div class="flex items-center gap-2 justify-center md:justify-start mb-1">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+              </div>
+              <span class="text-xs font-semibold uppercase tracking-widest text-primary">Mivio Cloud</span>
+            </div>
+            <h3 class="font-extrabold text-xl sm:text-2xl text-fg mt-1 mb-2">Don't have a server? We've got you covered.</h3>
+            <p class="text-fg-subtle text-sm leading-relaxed">Host your personal media library in the cloud and stream it from any device, anywhere. Zero technical setup. Your data stays private.</p>
+            <div class="flex flex-col items-center md:items-start gap-2 mt-5">
+              <a href="cloud.html" class="btn-primary text-white font-bold px-6 py-2.5 rounded-xl text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                See Cloud plans
+              </a>
+              <span class="text-fg-faint text-xs">From $2.36/month · First month $0.99</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 text-sm text-fg-subtle shrink-0">
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 100 GB → 2 TB plans</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> HD &amp; 4K streaming</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Referral discounts</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Annual &amp; biennial savings</div>
+          </div>
+        </div>
+
+        <!-- B2B promo -->
+        <div class="card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 hover:border-primary/30 transition-colors">
+          <div class="flex-1 text-center md:text-left">
+            <div class="flex items-center gap-2 justify-center md:justify-start mb-1">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <span class="text-xs font-semibold uppercase tracking-widest text-primary">For Business</span>
+            </div>
+            <h3 class="font-extrabold text-xl sm:text-2xl text-fg mt-1 mb-2">Want to ship Mivio under your brand?</h3>
+            <p class="text-fg-subtle text-sm leading-relaxed">Enterprise licensing for organizations deploying Mivio at scale, and white-label agreements for businesses shipping it as their own product.</p>
+            <div class="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
+              <a href="b2b.html" class="btn-primary text-white font-bold px-6 py-2.5 rounded-xl text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Learn about B2B
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 text-sm text-fg-subtle shrink-0">
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Enterprise deployments</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> White-label &amp; custom branding</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Per-seat or revenue-share</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom agreements</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER INJECTED VIA ALPINE -->
   <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>

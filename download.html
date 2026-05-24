@@ -48,7 +48,13 @@
   <main class="pt-32 pb-24 px-6 max-w-6xl mx-auto">
     
     <header class="mb-16 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-fg">Download Mivio</h1>
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-6 hero-badge">
+        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        <span>Available now · Free for all platforms</span>
+      </div>
+      <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl mb-6 text-fg leading-tight">
+        Download <span class="gradient-text">Mivio</span>
+      </h1>
       <p class="text-fg-subtle text-lg max-w-2xl mx-auto">Get the native client for your platform. No subscriptions, no ads, 100% free.</p>
     </header>
 
@@ -233,7 +239,19 @@
 </div>
   </main>
 
-        <!-- FOOTER INJECTED VIA ALPINE -->
+  <!-- Explore more -->
+  <div class="text-center mt-4 mb-16 flex flex-col sm:flex-row justify-center gap-4">
+    <a href="cloud.html" class="btn-outline font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2 text-fg-muted hover:border-primary/50 transition-colors">
+      <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+      Explore Mivio Cloud
+    </a>
+    <a href="marketplace.html" class="btn-outline font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2 text-fg-muted hover:border-primary/50 transition-colors">
+      <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.5h4.5M3 8.5h18M3 8.5a2 2 0 00-2 2v3a2 2 0 002 2h3.5l1.25 1.75a1.5 1.5 0 002.5 0L11.5 15.5h1l.25.75a1.5 1.5 0 002.5 0L16.5 15.5H20a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+      VR Marketplace
+    </a>
+  </div>
+
+  <!-- FOOTER INJECTED VIA ALPINE -->
   <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
 

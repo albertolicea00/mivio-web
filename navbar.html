@@ -1,7 +1,5 @@
-<nav x-data="{ scrolled: false, open: false }"
-     @scroll.window="scrolled = window.scrollY > 40"
-     :class="scrolled ? 'nav-scrolled nav-blur' : ''"
-     class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+<nav x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 40"
+  :class="scrolled ? 'nav-scrolled nav-blur' : ''" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
 
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
@@ -13,54 +11,52 @@
 
     <!-- Desktop links -->
     <div class="hidden md:flex items-center gap-8 text-sm text-fg-subtle">
-      <a href="index.html#showcase" class="hover:text-fg transition-colors" >Platforms</a>
-      <a href="manual.html" class="hover:text-fg transition-colors" >User Manual</a>
-      <a href="download.html" class="hover:text-fg transition-colors" >Download</a>
+      <a href="download.html" class="hover:text-fg transition-colors">Mivio Apps</a>
+      <a href="cloud.html" class="hover:text-fg transition-colors">Cloud Space</a>
+      <a href="b2b.html" class="hover:text-fg transition-colors">B2B</a>
+      <a href="marketplace.html" class="hover:text-fg transition-colors">VR Marketplace</a>
     </div>
 
     <!-- Right controls -->
     <div class="hidden md:flex items-center gap-3">
       <!-- Dark/light toggle -->
-      <button @click="$store.theme.toggle()"
-              class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
+      <button @click="$store.theme.toggle()" class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
         <!-- Sun (shown in dark mode to switch to light) -->
         <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z" />
         </svg>
         <!-- Moon (shown in light mode to switch to dark) -->
         <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
 
       <!-- CTA -->
-      <a href="download.html"
-         class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full"
-         >Download free</a>
+      <a href="download.html" class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full">Download
+        free</a>
     </div>
 
     <!-- Mobile: lang + theme + hamburger -->
     <div class="flex md:hidden items-center gap-2">
-      <button @click="$store.theme.toggle()"
-              class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
+      <button @click="$store.theme.toggle()" class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
         <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z" />
         </svg>
         <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
 
       <button @click="open = !open" class="text-fg-subtle hover:text-fg">
         <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
         <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
@@ -68,11 +64,12 @@
 
   <!-- Mobile menu -->
   <div x-show="open" x-cloak x-transition
-       class="md:hidden nav-blur border-subtle border-t bg-surface px-6 py-4 flex flex-col gap-4 text-sm text-fg-subtle">
-    <a href="index.html#showcase" @click="open=false" class="hover:text-fg transition-colors" >Platforms</a>
-    <a href="manual.html" @click="open=false" class="hover:text-fg transition-colors" >User Manual</a>
+    class="md:hidden nav-blur border-subtle border-t bg-surface px-6 py-4 flex flex-col gap-4 text-sm text-fg-subtle">
+    <a href="download.html" @click="open=false" class="hover:text-fg transition-colors">Mivio Apps</a>
+    <a href="cloud.html" @click="open=false" class="hover:text-fg transition-colors">Cloud Space</a>
+    <a href="b2b.html" @click="open=false" class="hover:text-fg transition-colors">B2B</a>
+    <a href="marketplace.html" @click="open=false" class="hover:text-fg transition-colors">VR Marketplace</a>
     <a href="download.html" @click="open=false"
-       class="btn-primary text-white font-semibold px-5 py-2.5 rounded-full text-center"
-       >Download free</a>
+      class="btn-primary text-white font-semibold px-5 py-2.5 rounded-full text-center">Download free</a>
   </div>
 </nav>
