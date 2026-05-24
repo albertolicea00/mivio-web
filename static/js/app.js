@@ -1,10 +1,10 @@
 /* ================================================================
    MIVIO — Alpine.js application
-   Stores: theme, i18n
+   Stores: theme
    Components: showcase()
 ================================================================ */
 
-document.addEventListener('alpine:init', () => {
+function initAlpineStores() {
 
   /* ── Theme store ─────────────────────────────────────────────── */
   Alpine.store('theme', {
@@ -24,8 +24,15 @@ document.addEventListener('alpine:init', () => {
     },
   });
 
-  
-});
+}
+
+/* Register stores whenever alpine:init fires — or immediately if Alpine
+   is already loaded (e.g. script order changed). */
+if (window.Alpine) {
+  initAlpineStores();
+} else {
+  document.addEventListener('alpine:init', initAlpineStores);
+}
 
 /* ── Showcase carousel component ─────────────────────────────── */
 function showcase() {
