@@ -19,46 +19,41 @@
       <a href="marketplace.html" class="hover:text-fg transition-colors">VR Marketplace</a>
     </div>
 
-    <!-- Right controls -->
+    <!-- Right controls (desktop) -->
     <div class="hidden md:flex items-center gap-3">
-      <!-- Dark/light toggle -->
-      <button type="button" @click="$store.theme.toggle()" :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'" class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
-        <!-- Sun (shown in dark mode to switch to light) -->
-        <svg x-show="$store.theme.dark" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button type="button" @click="$store.theme.toggle()"
+        :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+        class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
+        <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z" />
-        </svg>
-        <!-- Moon (shown in light mode to switch to dark) -->
-        <svg x-show="!$store.theme.dark" x-cloak aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"
+            :d="$store.theme.dark
+              ? 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z'
+              : 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'" />
         </svg>
       </button>
-
-      <!-- CTA -->
-      <a href="download.html" class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full">Download
-        free</a>
+      <a href="download.html" class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full">Download free</a>
     </div>
 
-    <!-- Mobile: lang + theme + hamburger -->
+    <!-- Mobile controls -->
     <div class="flex md:hidden items-center gap-2">
-      <button type="button" @click="$store.theme.toggle()" :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'" class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
-        <svg x-show="$store.theme.dark" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button type="button" @click="$store.theme.toggle()"
+        :aria-label="$store.theme.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+        class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
+        <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z" />
-        </svg>
-        <svg x-show="!$store.theme.dark" x-cloak aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"
+            :d="$store.theme.dark
+              ? 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z'
+              : 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'" />
         </svg>
       </button>
 
-      <button type="button" @click="open = !open" :aria-expanded="open" aria-label="Toggle navigation menu" class="text-fg-subtle hover:text-fg">
-        <svg x-show="!open" aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg x-show="open" x-cloak aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <button type="button" @click="open = !open" :aria-expanded="open" aria-label="Toggle navigation menu"
+        class="text-fg-subtle hover:text-fg w-8 h-8 flex items-center justify-center">
+        <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            :d="open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
         </svg>
       </button>
     </div>
