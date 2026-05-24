@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mivio User Manual — Learn how to connect servers, manage metadata, and get the most out of Mivio." />
+
+  <title>Mivio — User Manual</title>
+
+  <link rel="icon" type="image/png" href="static/images/favicon.png" />
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6B00',
+            accent:  '#00C4FF',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Outfit', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="static/css/style.css" />
+
+  <!-- Alpine.js — must load BEFORE app.js so stores register on alpine:init -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="static/js/app.js"></script>
+</head>
+
+<!-- Root: initialise theme & i18n from localStorage on first paint -->
+<body class="font-sans antialiased bg-page text-fg"
+      x-data
+      x-init="$store.theme.init()">
+
+  <!-- ==============================================================
+       NAVBAR
+  ============================================================== -->
+  <nav x-data="{ scrolled: false, open: false }"
+       @scroll.window="scrolled = window.scrollY > 40"
+       :class="scrolled ? 'nav-scrolled nav-blur' : ''"
+       class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="static/images/mivio-icon.webp" alt="Mivio" class="w-8 h-8 rounded-lg" />
+        <span class="font-bold text-lg tracking-tight text-fg">Mivio</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8 text-sm text-fg-subtle">
+        <a href="index.html#features" class="hover:text-fg transition-colors" >Features</a>
+        <a href="index.html#showcase" class="hover:text-fg transition-colors" >Platforms</a>
+        <a href="manual.html" class="text-fg font-semibold transition-colors" >User Manual</a>
+        <a href="index.html#download" class="hover:text-fg transition-colors" >Download</a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="hidden md:flex items-center gap-3">
+
+
+
+        <!-- Dark/light toggle -->
+        <button @click="$store.theme.toggle()"
+                class="toggle-pill rounded-full w-9 h-9 flex items-center justify-center">
+          <!-- Sun (shown in dark mode to switch to light) -->
+          <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+          </svg>
+          <!-- Moon (shown in light mode to switch to dark) -->
+          <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- CTA -->
+        <a href="index.html#download"
+           class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full"
+           >Download free</a>
+      </div>
+
+      <!-- Mobile: lang + theme + hamburger -->
+      <div class="flex md:hidden items-center gap-2">
+
+
+        <button @click="$store.theme.toggle()"
+                class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
+          <svg x-show="$store.theme.dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z"/>
+          </svg>
+          <svg x-show="!$store.theme.dark" x-cloak class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button @click="open = !open" class="text-fg-subtle hover:text-fg">
+          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open" x-cloak x-transition
+         class="md:hidden nav-blur border-subtle border-t bg-surface px-6 py-4 flex flex-col gap-4 text-sm text-fg-subtle">
+      <a href="index.html#features" @click="open=false" class="hover:text-fg transition-colors" >Features</a>
+      <a href="index.html#showcase" @click="open=false" class="hover:text-fg transition-colors" >Platforms</a>
+      <a href="manual.html" @click="open=false" class="text-fg transition-colors" >User Manual</a>
+      <a href="index.html#download" @click="open=false"
+         class="btn-primary text-white font-semibold px-5 py-2.5 rounded-full text-center"
+         >Download free</a>
+    </div>
+  </nav>
+
+  <!-- ==============================================================
+       MANUAL CONTENT
+  ============================================================== -->
+  <main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+    
+    <header class="mb-16 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-fg" >User Manual</h1>
+      <p class="text-fg-subtle text-lg max-w-2xl mx-auto" >Everything you need to know to get the most out of Mivio.</p>
+    </header>
+
+    <div class="space-y-12">
+      <!-- Section 1 -->
+      <section class="card rounded-3xl p-8 hover:border-primary/25 transition-all duration-300">
+        <h2 class="text-2xl font-bold text-fg mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+          </div>
+          <span >1. Connect your Server (SMB/WebDAV)</span>
+        </h2>
+        <p class="text-fg-subtle leading-relaxed" >Go to the "Servers" tab and tap the "+" button. Choose your protocol (SMB for Windows/Mac/NAS, WebDAV for remote servers). Enter your IP address, port, username, and password. Mivio will automatically scan the folders you select.</p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="card rounded-3xl p-8 hover:border-accent/25 transition-all duration-300">
+        <h2 class="text-2xl font-bold text-fg mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
+          </div>
+          <span >2. Automatic Metadata</span>
+        </h2>
+        <p class="text-fg-subtle leading-relaxed" >When you add a server, Mivio will try to match your video files with TMDB. For best results, name your files clearly (e.g., "Movie Name (2023).mp4" or "Show S01E01.mkv"). If a match is wrong, you can long-press the item and select "Fix Match".</p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="card rounded-3xl p-8 hover:border-primary/25 transition-all duration-300">
+        <h2 class="text-2xl font-bold text-fg mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          </div>
+          <span >3. Subtitles</span>
+        </h2>
+        <p class="text-fg-subtle leading-relaxed" >During playback, tap the subtitle icon. You can select an embedded subtitle track, a local file, or tap "Search Online" to download subtitles from OpenSubtitles automatically based on the video hash.</p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="card rounded-3xl p-8 hover:border-accent/25 transition-all duration-300">
+        <h2 class="text-2xl font-bold text-fg mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span >4. Player Controls</span>
+        </h2>
+        <p class="text-fg-subtle leading-relaxed" >Swipe left/right to seek. Swipe up/down on the left side to adjust brightness, and on the right side for volume. Double tap the edges to skip 10 seconds.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==============================================================
+       FOOTER
+  ============================================================== -->
+  <footer class="footer-bar py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between gap-6 text-sm text-fg-faint">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-2">
+        <img src="static/images/mivio-icon.webp" alt="Mivio" class="w-6 h-6 rounded-md" />
+        <span class="text-fg-subtle font-medium">Mivio</span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-fg transition-colors" >Support</a>
+        <a href="#" class="hover:text-fg transition-colors" >Contact</a>
+        <a href="#" class="hover:text-fg transition-colors" >Privacy</a>
+      </div>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-fg transition-colors" aria-label="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3z"/>
+          </svg>
+        </a>
+        <a href="#" class="hover:text-fg transition-colors" aria-label="X / Twitter">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Credit -->
+      <p>
+        <span >Made with ❤️ by</span>
+        <strong class="text-fg-muted ml-1">Alberto Licea</strong>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

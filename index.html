@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mivio — The ultimate Android media player. Connect SMB, WebDAV, get automatic artwork and subtitles." />
+  <meta name="description" content="Mivio — The ultimate multi-platform media player. Connect SMB, WebDAV, get automatic artwork and subtitles." />
 
-  <title>Mivio — The ultimate Android media player</title>
+  <title>Mivio — The ultimate multi-platform media player</title>
+
+  <link rel="icon" type="image/png" href="static/images/favicon.png" />
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png" />
 
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +39,7 @@
 <!-- Root: initialise theme & i18n from localStorage on first paint -->
 <body class="font-sans antialiased bg-page text-fg"
       x-data
-      x-init="$store.theme.init(); $store.i18n.init()">
+      x-init="$store.theme.init()">
 
   <!-- ==============================================================
        NAVBAR
@@ -50,29 +53,22 @@
 
       <!-- Logo -->
       <a href="#" class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg btn-primary flex items-center justify-center font-black text-white text-sm select-none">M</div>
+        <img src="static/images/mivio-icon.webp" alt="Mivio" class="w-8 h-8 rounded-lg" />
         <span class="font-bold text-lg tracking-tight text-fg">Mivio</span>
       </a>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8 text-sm text-fg-subtle">
-        <a href="#features" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_features')"></a>
-        <a href="#showcase" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_platforms')"></a>
-        <a href="#download" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_download')"></a>
+        <a href="#features" class="hover:text-fg transition-colors" >Features</a>
+        <a href="#showcase" class="hover:text-fg transition-colors" >Platforms</a>
+        <a href="manual.html" class="hover:text-fg transition-colors" >User Manual</a>
+        <a href="#download" class="hover:text-fg transition-colors" >Download</a>
       </div>
 
       <!-- Right controls -->
       <div class="hidden md:flex items-center gap-3">
 
-        <!-- Language toggle -->
-        <button @click="$store.i18n.toggle()"
-                class="toggle-pill rounded-full px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
-          </svg>
-          <span x-text="$store.i18n.lang === 'en' ? 'ES' : 'EN'"></span>
-        </button>
+
 
         <!-- Dark/light toggle -->
         <button @click="$store.theme.toggle()"
@@ -92,14 +88,12 @@
         <!-- CTA -->
         <a href="#download"
            class="btn-primary text-white text-sm font-semibold px-5 py-2 rounded-full"
-           x-text="$store.i18n.t('nav_cta')"></a>
+           >Download free</a>
       </div>
 
       <!-- Mobile: lang + theme + hamburger -->
       <div class="flex md:hidden items-center gap-2">
-        <button @click="$store.i18n.toggle()"
-                class="toggle-pill rounded-full px-2.5 py-1 text-xs font-semibold"
-                x-text="$store.i18n.lang === 'en' ? 'ES' : 'EN'"></button>
+
 
         <button @click="$store.theme.toggle()"
                 class="toggle-pill rounded-full w-8 h-8 flex items-center justify-center">
@@ -127,11 +121,12 @@
     <!-- Mobile menu -->
     <div x-show="open" x-cloak x-transition
          class="md:hidden nav-blur border-subtle border-t bg-surface px-6 py-4 flex flex-col gap-4 text-sm text-fg-subtle">
-      <a href="#features" @click="open=false" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_features')"></a>
-      <a href="#showcase" @click="open=false" class="hover:text-fg transition-colors" x-text="$store.i18n.t('nav_platforms')"></a>
+      <a href="#features" @click="open=false" class="hover:text-fg transition-colors" >Features</a>
+      <a href="#showcase" @click="open=false" class="hover:text-fg transition-colors" >Platforms</a>
+      <a href="manual.html" @click="open=false" class="hover:text-fg transition-colors" >User Manual</a>
       <a href="#download" @click="open=false"
          class="btn-primary text-white font-semibold px-5 py-2.5 rounded-full text-center"
-         x-text="$store.i18n.t('nav_cta')"></a>
+         >Download free</a>
     </div>
   </nav>
 
@@ -150,34 +145,34 @@
     <!-- Badge -->
     <div class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-6">
       <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-      <span x-text="$store.i18n.t('hero_badge')"></span>
+      <span >Available now · Free for all platforms</span>
     </div>
 
     <!-- H1 -->
     <h1 class="font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight tracking-tight max-w-4xl mb-6 text-fg">
-      <span x-text="$store.i18n.t('hero_h1_a')"></span><br/>
-      <span class="gradient-text" x-text="$store.i18n.t('hero_h1_b')"></span><br/>
-      <span x-text="$store.i18n.t('hero_h1_c')"></span>
+      <span >All your multimedia</span><br/>
+      <span class="gradient-text" >content,</span><br/>
+      <span >in one place.</span>
     </h1>
 
     <!-- Subtitle — uses innerHTML for the bold SMB/WebDAV spans -->
     <p class="text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed"
-       x-html="$store.i18n.t('hero_sub')"></p>
+       >Discover Mivio, the ultimate multi-platform media player. Connect your local servers, <strong>SMB</strong> or <strong>WebDAV</strong>, and enjoy your movies and series with automatic artwork and built-in subtitles.</p>
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 mb-16">
       <a href="#download"
          class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
-        <!-- Android icon -->
-        <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.523 15.342a1 1 0 0 1-1 1H7.476a1 1 0 0 1-1-1V9.38a1 1 0 0 1 1-1h9.047a1 1 0 0 1 1 1v5.962zm-9.047-8.96h8.047l1.296-2.245a.5.5 0 1 0-.866-.5l-1.342 2.323A5.97 5.97 0 0 0 12 5.5a5.97 5.97 0 0 0-3.61 1.46L7.048 4.637a.5.5 0 1 0-.866.5L7.476 6.38zM9 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        <!-- Download icon -->
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
         </svg>
-        <span x-text="$store.i18n.t('hero_cta1')"></span>
+        <span >Download Now (Free)</span>
       </a>
 
       <a href="#features"
          class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
-        <span x-text="$store.i18n.t('hero_cta2')"></span>
+        <span >See features</span>
         <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
@@ -203,19 +198,19 @@
     <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
       <div>
         <div class="text-3xl font-extrabold gradient-text">SMB</div>
-        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_smb')"></div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" >Samba / NAS</div>
       </div>
       <div>
         <div class="text-3xl font-extrabold gradient-text">WebDAV</div>
-        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_webdav')"></div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" >Local network</div>
       </div>
       <div>
         <div class="text-3xl font-extrabold text-accent">TMDB</div>
-        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_tmdb')"></div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" >Metadata</div>
       </div>
       <div>
         <div class="text-3xl font-extrabold text-accent">OpenSubs</div>
-        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" x-text="$store.i18n.t('stat_opensubs')"></div>
+        <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest" >Subtitles</div>
       </div>
     </div>
   </div>
@@ -229,10 +224,10 @@
       <!-- Section header -->
       <div class="text-center mb-20">
         <span class="text-primary text-sm font-semibold uppercase tracking-widest"
-              x-text="$store.i18n.t('feat_label')"></span>
+              >Features</span>
         <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 leading-tight text-fg">
-          <span x-text="$store.i18n.t('feat_h2_a')"></span><br/>
-          <span class="gradient-text" x-text="$store.i18n.t('feat_h2_b')"></span>
+          <span >Everything you need,</span><br/>
+          <span class="gradient-text" >nothing you don't.</span>
         </h2>
       </div>
 
@@ -250,9 +245,9 @@
             </svg>
           </div>
           <span class="text-xs text-primary font-semibold uppercase tracking-widest"
-                x-text="$store.i18n.t('f1_tag')"></span>
-          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f1_title')"></h3>
-          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f1_body')"></p>
+                >Network support</span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" >Your files, your rules</h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" >No matter where you store your videos. Mivio supports local storage and network connections via <strong>SMB</strong> and <strong>WebDAV</strong>. Connect your NAS or server in seconds.</p>
         </div>
 
         <!-- Feature 2 — metadata -->
@@ -265,9 +260,9 @@
             </svg>
           </div>
           <span class="text-xs text-primary font-semibold uppercase tracking-widest"
-                x-text="$store.i18n.t('f2_tag')"></span>
-          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f2_title')"></h3>
-          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f2_body')"></p>
+                >Magic metadata</span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" >Automatic organization</h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" >Forget searching for names. Mivio scans your files and automatically downloads artwork, synopses, cast, and ratings from <strong>TMDB</strong> so your library looks spectacular.</p>
         </div>
 
         <!-- Feature 3 — subtitles -->
@@ -279,9 +274,9 @@
             </svg>
           </div>
           <span class="text-xs text-accent font-semibold uppercase tracking-widest"
-                x-text="$store.i18n.t('f3_tag')"></span>
-          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f3_title')"></h3>
-          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f3_body')"></p>
+                >OpenSubtitles</span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" >Subtitles instantly</h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" >Missing subtitles? Search and download them directly from the app thanks to our <strong>OpenSubtitles</strong> integration.</p>
         </div>
 
         <!-- Feature 4 — player -->
@@ -293,9 +288,9 @@
             </svg>
           </div>
           <span class="text-xs text-accent font-semibold uppercase tracking-widest"
-                x-text="$store.i18n.t('f4_tag')"></span>
-          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" x-text="$store.i18n.t('f4_title')"></h3>
-          <p class="text-fg-subtle leading-relaxed text-sm" x-html="$store.i18n.t('f4_body')"></p>
+                >ExoPlayer</span>
+          <h3 class="text-xl font-bold mt-2 mb-3 text-fg" >High-performance playback</h3>
+          <p class="text-fg-subtle leading-relaxed text-sm" >Enjoy maximum performance and support for almost all video formats thanks to the <strong>ExoPlayer</strong>-based engine. Your progress is saved automatically.</p>
         </div>
 
       </div>
@@ -311,55 +306,56 @@
       <!-- Header -->
       <div class="text-center mb-16">
         <span class="text-primary text-sm font-semibold uppercase tracking-widest"
-              x-text="$store.i18n.t('compat_label')"></span>
+              >Compatibility</span>
         <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 leading-tight text-fg">
-          <span x-text="$store.i18n.t('compat_h2_a')"></span><br/>
-          <span class="gradient-text" x-text="$store.i18n.t('compat_h2_b')"></span>
+          <span >Works on every</span><br/>
+          <span class="gradient-text" >screen you own.</span>
         </h2>
         <p class="text-fg-subtle mt-5 max-w-xl mx-auto text-base leading-relaxed"
-           x-text="$store.i18n.t('compat_sub')"></p>
+           >One app, the entire ecosystem. Whether you're on the couch, at the desk, or on the road — Mivio adapts to your screen.</p>
       </div>
 
       <!-- Device cards — big row on desktop, 2-col grid on mobile -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
 
-        <!-- Mobile -->
+        <!-- Mobile & Tablet -->
         <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
           <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <!-- Smartphone -->
+            <!-- Smartphone & Tablet -->
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-width="1.5"/>
               <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_mobile_name')"></div>
-            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_mobile_desc')"></div>
+            <div class="font-bold text-sm text-fg" >Mobile & Tablet</div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" >The full experience in your pocket for iOS, iPadOS & Android.</div>
           </div>
           <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-            Android 7+
+            iOS / Android
           </span>
         </div>
 
-        <!-- Tablet -->
+        <!-- Desktop -->
         <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
           <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <!-- Tablet -->
+            <!-- Desktop -->
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="2" width="16" height="20" rx="2" ry="2" stroke-width="1.5"/>
-              <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke-width="1.5"/>
+              <line x1="8" y1="21" x2="16" y2="21" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="12" y1="17" x2="12" y2="21" stroke-width="1.5"/>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_tablet_name')"></div>
-            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_tablet_desc')"></div>
+            <div class="font-bold text-sm text-fg" >Desktop</div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" >Fully native app for macOS and ChromeOS.</div>
           </div>
           <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-            Android 7+
+            macOS / ChromeOS
           </span>
         </div>
 
-        <!-- Android TV — featured, accent colour -->
+        <!-- TV — featured, accent colour -->
         <div class="compat-card group card accent rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-accent/30 transition-all duration-300 cursor-default col-span-2 sm:col-span-1">
           <div class="compat-icon w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
             <!-- TV -->
@@ -369,29 +365,29 @@
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_tv_name')"></div>
-            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_tv_desc')"></div>
+            <div class="font-bold text-sm text-fg" >Smart TV</div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" >Lean-back browsing on Android TV and tvOS.</div>
           </div>
           <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
-            Android TV / Google TV
+            tvOS / Android TV
           </span>
         </div>
 
-        <!-- Chromebook -->
+        <!-- Vision -->
         <div class="compat-card group card rounded-3xl p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300 cursor-default">
           <div class="compat-icon w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <!-- Laptop -->
+            <!-- Vision OS icon -->
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4v4c0 2.21-1.79 4-4 4H8c-2.21 0-4-1.79-4-4v-4z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v4"/>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_chrome_name')"></div>
-            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_chrome_desc')"></div>
+            <div class="font-bold text-sm text-fg" >Spatial Computing</div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" >Immersive experience on Apple Vision Pro.</div>
           </div>
           <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-            Chrome OS
+            visionOS
           </span>
         </div>
 
@@ -406,8 +402,8 @@
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-fg" x-text="$store.i18n.t('dev_auto_name')"></div>
-            <div class="text-xs text-fg-faint mt-1 leading-snug" x-text="$store.i18n.t('dev_auto_desc')"></div>
+            <div class="font-bold text-sm text-fg" >On the Road</div>
+            <div class="text-xs text-fg-faint mt-1 leading-snug" >Audio and media controls with Android Auto.</div>
           </div>
           <span class="compat-badge text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
             Android Auto
@@ -418,7 +414,7 @@
 
       <!-- Bottom note -->
       <p class="text-center text-fg-faint text-xs mt-10"
-         x-text="$store.i18n.t('compat_note')"></p>
+         >Every form factor. Zero compromises.</p>
 
     </div>
   </section>
@@ -431,18 +427,17 @@
 
       <!-- Animated logo mark -->
       <div class="relative inline-flex mb-10" aria-hidden="true">
-        <div class="w-24 h-24 rounded-3xl btn-primary flex items-center justify-center text-white font-black text-4xl shadow-2xl"
-             style="box-shadow: 0 20px 60px rgba(255,107,0,0.35)">M</div>
+        <img src="static/images/mivio-icon.webp" class="w-24 h-24 rounded-3xl shadow-2xl z-10" alt="Mivio" style="box-shadow: 0 20px 60px rgba(255,107,0,0.35)" />
         <div class="absolute inset-0 rounded-3xl border-2 border-primary/30 scale-125 animate-ping opacity-25"></div>
       </div>
 
       <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight text-fg">
-        <span x-text="$store.i18n.t('cta_h2_a')"></span><br/>
-        <span class="gradient-text" x-text="$store.i18n.t('cta_h2_b')"></span>
+        <span >Ready to transform your</span><br/>
+        <span class="gradient-text" >home cinema experience?</span>
       </h2>
 
       <p class="text-fg-subtle text-lg mb-10 max-w-xl mx-auto leading-relaxed"
-         x-text="$store.i18n.t('cta_desc')"></p>
+         >Join the users who already organize their movies and series the best way. It's fast, beautiful, and easy to use.</p>
 
       <a href="#"
          class="btn-primary inline-flex items-center gap-3 text-white font-bold px-10 py-5 rounded-2xl text-lg shadow-2xl">
@@ -450,10 +445,10 @@
         <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M3.18 23.76a2 2 0 0 0 2.06-.08l11.46-6.47-2.52-2.52-11 8.62zm17.4-9.78L17.3 12l3.28-1.98a1.8 1.8 0 0 0 0-3.12L5.24.38A2 2 0 0 0 2.16.5L13.62 12 2.16 23.5a2 2 0 0 0 3.08.12l15.34-8.52a1.8 1.8 0 0 0 0-3.12z"/>
         </svg>
-        <span x-text="$store.i18n.t('cta_btn')"></span>
+        <span >Download Mivio</span>
       </a>
 
-      <p class="text-fg-xfaint text-sm mt-5" x-text="$store.i18n.t('cta_sub')"></p>
+      <p class="text-fg-xfaint text-sm mt-5" >Free · No account · No limits</p>
     </div>
   </section>
 
@@ -465,15 +460,15 @@
 
       <!-- Brand -->
       <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-md btn-primary flex items-center justify-center font-black text-white text-xs select-none">M</div>
+        <img src="static/images/mivio-icon.webp" alt="Mivio" class="w-6 h-6 rounded-md" />
         <span class="text-fg-subtle font-medium">Mivio</span>
       </div>
 
       <!-- Links -->
       <div class="flex items-center gap-6">
-        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_support')"></a>
-        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_contact')"></a>
-        <a href="#" class="hover:text-fg transition-colors" x-text="$store.i18n.t('ft_privacy')"></a>
+        <a href="#" class="hover:text-fg transition-colors" >Support</a>
+        <a href="#" class="hover:text-fg transition-colors" >Contact</a>
+        <a href="#" class="hover:text-fg transition-colors" >Privacy</a>
       </div>
 
       <!-- Social icons -->
@@ -492,7 +487,7 @@
 
       <!-- Credit -->
       <p>
-        <span x-text="$store.i18n.t('ft_made')"></span>
+        <span >Made with ❤️ by</span>
         <strong class="text-fg-muted ml-1">Alberto Licea</strong>
       </p>
     </div>
