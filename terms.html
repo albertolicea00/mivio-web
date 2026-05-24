@@ -160,24 +160,8 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer-bar py-10 px-6 mt-12">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between gap-6 text-sm text-fg-faint">
-      <div class="flex items-center gap-2">
-        <img src="static/images/mivio-icon.webp" alt="Mivio" class="w-6 h-6 rounded-md" />
-        <span class="text-fg-subtle font-medium">Mivio</span>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://github.com/albertolicea00" class="hover:text-fg transition-colors">Support</a>
-        <a href="terms.html" class="text-fg font-semibold transition-colors">Terms</a>
-        <a href="privacy.html" class="hover:text-fg transition-colors">Privacy</a>
-      </div>
-      <p>
-        <span>Made with ❤️ by</span>
-        <strong class="text-fg-muted ml-1">Alberto Licea</strong>
-      </p>
-    </div>
-  </footer>
+        <!-- FOOTER INJECTED VIA ALPINE -->
+  <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
 </body>
 </html>
