@@ -22,3 +22,31 @@ Mivio is built natively for every major platform to ensure the best possible per
 | **🟣 Roku** | [**mivio-roku**](https://github.com/albertolicea00/mivio-roku) | BrightScript, Roku SceneGraph |
 | **💻 Desktop (PC/Linux)** | [**mivio-desktop**](https://github.com/albertolicea00/mivio-desktop) | Electron, Rust Bridges, mpv/VLC |
 | **🥽 Virtual Reality** | [**mivio-vr**](https://github.com/albertolicea00/mivio-vr) | Unity 3D / OpenXR |
+
+---
+
+## 🎯 Repository Purpose & Features
+
+This repository acts as the central hub for the entire Mivio ecosystem, serving multiple roles:
+
+- ✅ **Official Landing Page**: The main entry point to download the various clients.
+- ✅ **Help Center**: Centralized documentation, user manuals, FAQs, and setup guides.
+<!-- - ✅ **Web Marketplace**: A dedicated web interface to browse and download immersive environments for VR and visionOS. -->
+<!-- - ✅ **Community Space**: A platform where the community can upload, share, and rate custom 3D models and environments. -->
+
+---
+
+## 📊 Feature Comparison Matrix
+
+Because Mivio adapts natively to the constraints and paradigms of each ecosystem, the feature set varies by platform. 
+
+| Feature | iOS & macOS | Android Mobile | Android/Google TV | Desktop (PC/Linux) | tvOS | Smart TV (Tizen) | Roku | visionOS | VR (Quest/Pico) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Local File Reading** | ✅ Yes | ✅ Yes | ✅ Yes (USB) | ✅ Yes | ❌ No | ✅ Yes (USB) | ❌ No | ❌ No | ❌ No |
+| **Local File Writing** | ✅ Yes | ✅ Yes | ✅ Yes (.nfo) | ✅ Yes | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No |
+| **Local Multi-Account** | ✅ Yes | ✅ Yes | ✅ Optional | ✅ Yes | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No |
+| **Home Server Client** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Metadata Parsing** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ❌ Server | ❌ Server | ❌ Server | ❌ Server | ❌ Server |
+| **Native Player** | AVPlayer | ExoPlayer | ExoPlayer / VLC | mpv / VLC | AVPlayer | Native Tizen | BrightScript | AVPlayer | ExoPlayer |
+| **Immersive Spaces**| ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ RealityKit | ✅ AssetBundle |
+| **Marketplace** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ Yes | ✅ Yes |
