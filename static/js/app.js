@@ -27,6 +27,7 @@ function initAlpineStores() {
     open: false,
     segment: '',
     email: '',
+    newsletter: false,
     _hp: '', // honeypot — must stay empty
     status: 'idle', // idle | loading | success | error
     errorMsg: '',
@@ -34,6 +35,7 @@ function initAlpineStores() {
     show(segment) {
       this.segment = segment;
       this.email = '';
+      this.newsletter = false;
       this.status = 'idle';
       this.errorMsg = '';
       this.open = true;
@@ -53,7 +55,7 @@ function initAlpineStores() {
         const res = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: this.email, segment: this.segment, _hp: this._hp }),
+          body: JSON.stringify({ email: this.email, segment: this.segment, newsletter: this.newsletter, _hp: this._hp }),
         });
         if (!res.ok) throw new Error(await res.text());
         this.status = 'success';
