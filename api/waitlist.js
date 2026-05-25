@@ -102,11 +102,15 @@ export default async function handler(req, res) {
   /* 5. Segment → list ID */
   const listId = getListId(segment);
   if (!listId) {
-    return res.status(400).json({ error: `Unknown segment: ${segment}` });
+    const inMap = ['mivio apps','mivio cloud','mivio b2b','mivio marketplace','newsletter']
+      .includes((segment ?? '').toLowerCase().trim());
+    return res.status(inMap ? 500 : 400).json({
+      error: inMap ? 'Server configuration error: list ID not set.' : `Unknown segment: ${segment}`,
+    });
   }
 
   if (!process.env.BREVO_API_KEY) {
-    return res.status(500).json({ error: 'Server configuration error.' });
+    return res.status(500).json({ error: 'Server configuration error: API key not set.' });
   }
 
   /* 6. Subscribe via Brevo */
