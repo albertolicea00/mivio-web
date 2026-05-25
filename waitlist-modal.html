@@ -1,0 +1,83 @@
+<!-- ============================================================
+     WAITLIST MODAL — injected once per page via x-html fetch
+     Controlled by $store.waitlist
+============================================================ -->
+<div x-data
+  x-show="$store.waitlist.open"
+  x-cloak
+  x-transition.opacity
+  @keydown.escape.window="$store.waitlist.hide()"
+  class="fixed inset-0 z-[100] flex items-center justify-center px-4"
+  role="dialog" aria-modal="true" :aria-label="'Join waitlist for ' + $store.waitlist.segment">
+
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="$store.waitlist.hide()"></div>
+
+  <!-- Panel -->
+  <div class="relative w-full max-w-md card rounded-3xl p-8 flex flex-col gap-6 shadow-2xl">
+
+    <!-- Close -->
+    <button type="button" @click="$store.waitlist.hide()"
+      aria-label="Close"
+      class="absolute top-4 right-4 text-fg-faint hover:text-fg transition-colors w-8 h-8 flex items-center justify-center rounded-full">
+      <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="flex flex-col gap-2">
+      <div class="inline-flex items-center gap-2 hero-badge rounded-full px-3 py-1 text-xs w-fit">
+        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        <span>Coming Soon</span>
+      </div>
+      <h2 class="text-xl font-extrabold text-fg">Join the waitlist</h2>
+      <p class="text-fg-subtle text-sm">Be the first to know when <span class="text-fg font-semibold capitalize" x-text="$store.waitlist.segment"></span> launches. No spam, ever.</p>
+    </div>
+
+    <!-- Success state -->
+    <div x-show="$store.waitlist.status === 'success'" class="flex flex-col items-center gap-3 py-4 text-center">
+      <div class="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <p class="font-bold text-fg">You're on the list!</p>
+      <p class="text-fg-subtle text-sm">We'll email you as soon as we launch.</p>
+      <button type="button" @click="$store.waitlist.hide()" class="btn-primary text-white font-semibold px-6 py-2.5 rounded-full text-sm mt-2">Got it</button>
+    </div>
+
+    <!-- Form state -->
+    <form x-show="$store.waitlist.status !== 'success'" @submit.prevent="$store.waitlist.submit()" class="flex flex-col gap-4">
+      <!-- Honeypot — hidden from humans, filled by bots -->
+      <input type="text" name="_hp" x-model="$store.waitlist._hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+      <div class="flex flex-col gap-1.5">
+        <label for="waitlist-email" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Email address</label>
+        <input
+          id="waitlist-email"
+          type="email"
+          x-model="$store.waitlist.email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+          class="w-full rounded-xl border border-subtle bg-surface px-4 py-3 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors"
+        />
+        <p x-show="$store.waitlist.errorMsg" x-text="$store.waitlist.errorMsg" class="text-xs text-red-400 mt-0.5"></p>
+      </div>
+
+      <button
+        type="submit"
+        :disabled="$store.waitlist.status === 'loading'"
+        class="btn-primary text-white font-bold px-6 py-3 rounded-2xl text-sm flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+        <svg x-show="$store.waitlist.status === 'loading'" aria-hidden="true" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+        </svg>
+        <span x-text="$store.waitlist.status === 'loading' ? 'Joining…' : 'Notify me at launch'"></span>
+      </button>
+
+      <p class="text-center text-xs text-fg-faint">Your email is used only to notify you. Unsubscribe anytime.</p>
+    </form>
+
+  </div>
+</div>

@@ -1,26 +1,85 @@
 /* ================================================================
    MIVIO — Alpine.js application
-   Stores: theme
+   Stores: theme, launch, waitlist
    Components: showcase()
 ================================================================ */
+
+/* ── Launch config ───────────────────────────────────────────── */
+/* To go live per platform/product: set the flag to false and redeploy. */
+const COMING_SOON = {
+  // Apps — one flag per platform
+  apple:       true,
+  android:     true,
+  smarttv:     true,
+  windows:     true,
+  linux:       true,
+  vr:          true,
+  // Products
+  cloud:       true,
+  b2b:         true,
+  marketplace: true,
+};
 
 function initAlpineStores() {
 
   /* ── Theme store ─────────────────────────────────────────────── */
   Alpine.store('theme', {
     dark: true,
-
     toggle() {
       this.dark = !this.dark;
       document.documentElement.classList.toggle('light', !this.dark);
       localStorage.setItem('mivio-theme', this.dark ? 'dark' : 'light');
     },
-
     init() {
       const saved = localStorage.getItem('mivio-theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       this.dark = saved ? saved === 'dark' : prefersDark;
       document.documentElement.classList.toggle('light', !this.dark);
+    },
+  });
+
+  /* ── Launch store ────────────────────────────────────────────── */
+  Alpine.store('launch', { ...COMING_SOON });
+
+  /* ── Waitlist store ──────────────────────────────────────────── */
+  Alpine.store('waitlist', {
+    open: false,
+    segment: '',
+    email: '',
+    _hp: '', // honeypot — must stay empty
+    status: 'idle', // idle | loading | success | error
+    errorMsg: '',
+
+    show(segment) {
+      this.segment = segment;
+      this.email = '';
+      this.status = 'idle';
+      this.errorMsg = '';
+      this.open = true;
+    },
+
+    hide() {
+      this.open = false;
+    },
+
+    async submit() {
+      if (!this.email || !this.email.includes('@')) {
+        this.errorMsg = 'Please enter a valid email.';
+        return;
+      }
+      this.status = 'loading';
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: this.email, segment: this.segment, _hp: this._hp }),
+        });
+        if (!res.ok) throw new Error(await res.text());
+        this.status = 'success';
+      } catch (e) {
+        this.status = 'error';
+        this.errorMsg = 'Something went wrong. Try again later.';
+      }
     },
   });
 

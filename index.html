@@ -99,10 +99,19 @@
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
-      <a href="download.html" id="hero-download-btn"
+      <!-- Waitlist button — shown when coming soon -->
+      <button x-show="$store.launch.apple || $store.launch.android || $store.launch.smarttv || $store.launch.windows || $store.launch.linux || $store.launch.vr" x-cloak type="button"
+        @click="$store.waitlist.show('Mivio Apps')"
+        class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
+        <svg aria-hidden="true" class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+        Join the waitlist
+      </button>
+      <!-- Download button — shown when live -->
+      <a x-show="!($store.launch.apple || $store.launch.android || $store.launch.smarttv || $store.launch.windows || $store.launch.linux || $store.launch.vr)" x-cloak href="download.html" id="hero-download-btn"
         class="dynamic-download-btn btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
         <span id="hero-download-icon" class="dynamic-download-icon flex items-center justify-center">
-          <!-- Default Download icon -->
           <svg class="w-5 h-5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9-2v6H3v-6H1v8h22v-8h-2z" />
           </svg>
@@ -400,15 +409,13 @@
 
       <!-- Bottom CTAs -->
       <div class="flex flex-col sm:flex-row justify-center gap-4 mt-16 mb-4">
-        <a href="download.html"
-          class="dynamic-download-btn btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
-          <span class="dynamic-download-icon flex items-center justify-center">
-            <svg class="w-5 h-5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9-2v6H3v-6H1v8h22v-8h-2z" />
-            </svg>
-          </span>
-          <span class="dynamic-download-text-long">Download Mivio for free</span>
-        </a>
+        <button type="button" @click="$store.waitlist.show('Mivio Apps')"
+          class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span>Join the waitlist</span>
+        </button>
         <a href="cloud.html" class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
@@ -622,6 +629,9 @@
   </section>
 
   <!-- FOOTER INJECTED VIA ALPINE -->
+  <!-- Waitlist modal -->
+  <div x-data="{ html: '' }" x-init="fetch('waitlist-modal.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
+
   <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
 

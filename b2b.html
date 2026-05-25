@@ -122,10 +122,22 @@
     <section class="text-center">
       <h2 class="font-bold text-2xl text-fg mb-3">Ready to talk?</h2>
       <p class="text-fg-subtle mb-6 max-w-xl mx-auto">Tell us about your project and we'll get back to you with a proposal tailored to your needs.</p>
-      <a href="mailto:b2b@mivio.app?subject=Mivio B2B Inquiry" class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base inline-block">Contact us →</a>
+      <!-- Contact button — shown when live -->
+      <a x-show="!$store.launch.b2b" x-cloak
+        href="mailto:b2b@mivio.app?subject=Mivio B2B Inquiry"
+        class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base inline-block">Contact us →</a>
+      <!-- Waitlist button — shown when coming soon -->
+      <button x-show="$store.launch.b2b" x-cloak
+        type="button" @click="$store.waitlist.show('Mivio B2B')"
+        class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base">
+        Get early access
+      </button>
     </section>
 
   </main>
+
+  <!-- Waitlist modal -->
+  <div x-data="{ html: '' }" x-init="fetch('waitlist-modal.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
   <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 

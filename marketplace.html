@@ -77,9 +77,15 @@
     </div>
 
     <p class="text-fg-faint text-sm mb-6">Want to be notified when we launch?</p>
-    <a href="mailto:marketplace@mivio.app?subject=Mivio Marketplace - Notify me" class="btn-primary text-white font-bold px-8 py-3 rounded-2xl text-sm inline-block">Notify me at launch</a>
+    <button type="button" @click="$store.waitlist.show('Mivio Marketplace')"
+      class="btn-primary text-white font-bold px-8 py-3 rounded-2xl text-sm">
+      Join the waitlist
+    </button>
 
   </main>
+
+  <!-- Waitlist modal -->
+  <div x-data="{ html: '' }" x-init="fetch('waitlist-modal.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
   <div x-data="{ html: '' }" x-init="fetch('footer.html').then(r => r.text()).then(t => html = t)" x-html="html"></div>
 
