@@ -31,6 +31,7 @@ function getListId(segment) {
     'mivio cloud':            process.env.BREVO_LIST_CLOUD,
     'mivio b2b':              process.env.BREVO_LIST_B2B,
     'mivio marketplace':      process.env.BREVO_LIST_MARKETPLACE,
+    'newsletter':             process.env.BREVO_LIST_NEWSLETTER,
   };
   return map[key] ?? null;
 }
