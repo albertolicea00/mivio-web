@@ -175,17 +175,19 @@
 
       <!-- Pricing -->
       <section id="pricing" x-data="{ billing: 'monthly' }" class="mb-16">
+        <!-- Coming Soon notice — remove when live -->
+        <div class="flex justify-center mb-4">
+          <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold px-4 py-2 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Pricing plans coming soon
+          </div>
+        </div>
+
         <div class="text-center mb-10">
           <h2 class="font-extrabold text-3xl sm:text-4xl mb-3 text-fg">
             Simple, transparent pricing
           </h2>
           <p class="text-fg-subtle mb-6">Start almost free. Cancel anytime.</p>
-          <!-- Coming Soon notice — remove x-show when live -->
-          <div
-            class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold px-4 py-2 rounded-full mb-2">
-            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            Pricing plans coming soon
-          </div>
 
           <!-- Billing toggle -->
           <div
@@ -990,7 +992,7 @@
 
               <a
                 :href="mailto"
-                class="btn-primary text-white font-bold px-5 py-3 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2"
+                class="btn-primary text-white font-bold px-5 py-3 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2 self-start"
               >
                 <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 Send
