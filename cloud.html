@@ -181,7 +181,7 @@
           </h2>
           <p class="text-fg-subtle mb-6">Start almost free. Cancel anytime.</p>
           <!-- Coming Soon notice — remove x-show when live -->
-          <div x-show="$store.launch.cloud" x-cloak
+          <div
             class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold px-4 py-2 rounded-full mb-2">
             <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             Pricing plans coming soon
@@ -374,13 +374,13 @@
                 Automatic backups
               </li>
             </ul>
+            <!-- get-started btn — uncomment when live
             <a
               href="mailto:cloud@mivio.app?subject=Mivio Cloud Lite"
-              x-show="!$store.launch.cloud"
-              class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
+                            class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
               >Get started</a
-            >
-            <button x-show="$store.launch.cloud" x-cloak type="button"
+            >-->
+            <button type="button"
               @click="$store.waitlist.show('Mivio Cloud')"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
@@ -534,13 +534,13 @@
                 Custom domain mapping
               </li>
             </ul>
+            <!-- get-started btn — uncomment when live
             <a
               href="mailto:cloud@mivio.app?subject=Mivio Cloud Standard"
-              x-show="!$store.launch.cloud"
-              class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto"
+                            class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto"
               >Get started</a
-            >
-            <button x-show="$store.launch.cloud" x-cloak type="button"
+            >-->
+            <button type="button"
               @click="$store.waitlist.show('Mivio Cloud')"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
@@ -689,13 +689,13 @@
                 Email support
               </li>
             </ul>
+            <!-- get-started btn — uncomment when live
             <a
               href="mailto:cloud@mivio.app?subject=Mivio Cloud Premium"
-              x-show="!$store.launch.cloud"
-              class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
+                            class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
               >Get started</a
-            >
-            <button x-show="$store.launch.cloud" x-cloak type="button"
+            >-->
+            <button type="button"
               @click="$store.waitlist.show('Mivio Cloud')"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
@@ -844,13 +844,13 @@
                 Own domain support
               </li>
             </ul>
+            <!-- get-started btn — uncomment when live
             <a
               href="mailto:cloud@mivio.app?subject=Mivio Cloud Ultra"
-              x-show="!$store.launch.cloud"
-              class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
+                            class="btn-outline text-center font-semibold py-2.5 rounded-xl text-sm hover:border-primary/50 transition-colors mt-auto"
               >Get started</a
-            >
-            <button x-show="$store.launch.cloud" x-cloak type="button"
+            >-->
+            <button type="button"
               @click="$store.waitlist.show('Mivio Cloud')"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access

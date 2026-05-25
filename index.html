@@ -100,7 +100,7 @@
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
       <!-- Waitlist button — shown when coming soon -->
-      <button x-show="$store.launch.apple || $store.launch.android || $store.launch.smarttv || $store.launch.windows || $store.launch.linux || $store.launch.vr" x-cloak type="button"
+      <button type="button"
         @click="$store.waitlist.show('Mivio Apps')"
         class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
         <svg aria-hidden="true" class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,8 +108,8 @@
         </svg>
         Join the waitlist
       </button>
-      <!-- Download button — shown when live -->
-      <a x-show="!($store.launch.apple || $store.launch.android || $store.launch.smarttv || $store.launch.windows || $store.launch.linux || $store.launch.vr)" x-cloak href="download.html" id="hero-download-btn"
+      <!-- Download buttons — uncomment when live
+      <a href="download.html" id="hero-download-btn"
         class="dynamic-download-btn btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
         <span id="hero-download-icon" class="dynamic-download-icon flex items-center justify-center">
           <svg class="w-5 h-5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -118,7 +118,6 @@
         </span>
         <span id="hero-download-text" class="dynamic-download-text">Download Now</span>
       </a>
-
       <a href="download.html"
         class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
         <span>More downloads</span>
@@ -126,6 +125,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </a>
+      -->
 
       <a href="cloud.html"
         class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">

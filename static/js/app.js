@@ -1,24 +1,8 @@
 /* ================================================================
    MIVIO — Alpine.js application
-   Stores: theme, launch, waitlist
+   Stores: theme, waitlist
    Components: showcase()
 ================================================================ */
-
-/* ── Launch config ───────────────────────────────────────────── */
-/* To go live per platform/product: set the flag to false and redeploy. */
-const COMING_SOON = {
-  // Apps — one flag per platform
-  apple:       true,
-  android:     true,
-  smarttv:     true,
-  windows:     true,
-  linux:       true,
-  vr:          true,
-  // Products
-  cloud:       true,
-  b2b:         true,
-  marketplace: true,
-};
 
 function initAlpineStores() {
 
@@ -37,9 +21,6 @@ function initAlpineStores() {
       document.documentElement.classList.toggle('light', !this.dark);
     },
   });
-
-  /* ── Launch store ────────────────────────────────────────────── */
-  Alpine.store('launch', { ...COMING_SOON });
 
   /* ── Waitlist store ──────────────────────────────────────────── */
   Alpine.store('waitlist', {
