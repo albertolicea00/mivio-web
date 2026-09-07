@@ -13,10 +13,16 @@
 # Logs
 *.log
 
-# Node (if a build step is added later)
+# Node
 node_modules/
 npm-debug.log*
 
-# Build output (if added later)
+# Astro / Vercel build output
 dist/
+.astro/
+.vercel/
+
+# Env
 .env
+.env.local
+.env.*.local
