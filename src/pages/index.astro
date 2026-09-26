@@ -47,7 +47,7 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
       <!-- Waitlist button — shown when coming soon -->
       <button type="button"
-        @click="$store.waitlist.show('Mivio Apps')"
+        data-waitlist="Mivio Apps"
         class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
         <svg aria-hidden="true" class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -101,13 +101,13 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
           </div>
 
           <!-- Video Wrapper -->
-          <div class="relative w-full aspect-video" x-data="{ videoId: '5PSMwDA76mw' }">
+          <div class="relative w-full aspect-video">
             <!-- 
               Note: YouTube no longer allows hiding the title or 'more videos' completely. 
               We use modestbranding=1, rel=0, and iv_load_policy=3 to minimize clutter.
             -->
             <iframe class="absolute inset-0 w-full h-full"
-              :src="`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1&controls=1&iv_load_policy=3&fs=0`"
+              src="https://www.youtube.com/embed/5PSMwDA76mw?autoplay=0&rel=0&modestbranding=1&controls=1&iv_load_policy=3&fs=0"
               title="Mivio Promo Video" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
@@ -250,28 +250,12 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
       </div>
 
       <!-- Device cards — carousel (transform-based, smooth CSS transition) -->
-      <div x-data="{
-        cur: 0,
-        total: 6,
-        next() { this.cur = (this.cur + 1) % this.total },
-        prev() { this.cur = (this.cur - 1 + this.total) % this.total },
-        go(i) { this.cur = i },
-        get offset() {
-          const card = this.$refs.track?.firstElementChild;
-          if (!card) return 'translateX(0)';
-          return 'translateX(-' + (this.cur * (card.offsetWidth + 24)) + 'px)';
-        },
-        init() {
-          this._timer = setInterval(() => this.next(), 3500);
-        },
-        destroy() { clearInterval(this._timer); }
-      }">
+      <div id="device-carousel">
         <!-- Overflow mask -->
         <div class="overflow-hidden">
         <!-- Track -->
         <div
-          x-ref="track"
-          :style="{ transform: offset }"
+          id="device-carousel-track"
           class="flex gap-6 pb-4 px-1 transition-transform duration-700"
           style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);">
 
@@ -346,20 +330,18 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
 
         <!-- Dot indicators + arrows -->
         <div class="flex items-center justify-center gap-4 mt-6">
-          <button @click="prev()" aria-label="Previous" class="w-8 h-8 rounded-full border border-subtle flex items-center justify-center text-fg-faint hover:text-fg hover:border-fg/40 transition-colors">
+          <button id="device-carousel-prev" type="button" aria-label="Previous" class="w-8 h-8 rounded-full border border-subtle flex items-center justify-center text-fg-faint hover:text-fg hover:border-fg/40 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
           </button>
-          <div class="flex gap-2">
-            <template x-for="i in total" :key="i">
-              <button
-                @click="go(i-1)"
-                :aria-label="'Go to slide ' + i"
-                :class="cur === i-1 ? 'bg-primary w-5' : 'bg-fg/20 w-2'"
-                class="h-2 rounded-full transition-all duration-300">
-              </button>
-            </template>
+          <div id="device-carousel-dots" class="flex gap-2">
+            <button type="button" aria-label="Go to slide 1" class="device-dot h-2 rounded-full transition-all duration-300 bg-primary w-5" data-index="0"></button>
+            <button type="button" aria-label="Go to slide 2" class="device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2" data-index="1"></button>
+            <button type="button" aria-label="Go to slide 3" class="device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2" data-index="2"></button>
+            <button type="button" aria-label="Go to slide 4" class="device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2" data-index="3"></button>
+            <button type="button" aria-label="Go to slide 5" class="device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2" data-index="4"></button>
+            <button type="button" aria-label="Go to slide 6" class="device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2" data-index="5"></button>
           </div>
-          <button @click="next()" aria-label="Next" class="w-8 h-8 rounded-full border border-subtle flex items-center justify-center text-fg-faint hover:text-fg hover:border-fg/40 transition-colors">
+          <button id="device-carousel-next" type="button" aria-label="Next" class="w-8 h-8 rounded-full border border-subtle flex items-center justify-center text-fg-faint hover:text-fg hover:border-fg/40 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
@@ -371,7 +353,7 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         <h2 class="text-2xl font-bold text-fg">More coming soon</h2>
       </div>
       <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-        <button type="button" @click="$store.waitlist.show('Mivio Apps')"
+        <button type="button" data-waitlist="Mivio Apps"
           class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -402,17 +384,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
 
       <div class="flex flex-col gap-4">
         <!-- FAQ Item 1 -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">Do I need a server to use Mivio?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               No. Mivio can play local files directly on iOS, Android, macOS, Windows, and Linux.  
               <br/>
@@ -422,17 +403,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         </div>
 
         <!-- FAQ Item 2 -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">Does Mivio transcode my media?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Nope, Mivio plays your media directly without transcoding. It relies on the powerful native players of your
               device (like ExoPlayer or AVPlayer) to decode files locally, saving server resources.
@@ -441,17 +421,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         </div>
 
         <!-- FAQ Item 3 -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">Is Mivio really free?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Yes! Mivio is a free, non-commercial project developed by the community. You can download it for any of
               the supported platforms at no cost — your device already cost enough.
@@ -460,17 +439,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         </div>
 
         <!-- FAQ Item 4 — Open Source -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">Is Mivio open source?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Yes! The Mivio client apps (Apple, Android, Smart TV, VR) are publicly available on GitHub. They are released under a <strong>non-commercial license</strong> — you can freely use, fork, and contribute to them for personal or educational purposes. Commercial redistribution or rebranding without a commercial agreement is not permitted.
             </div>
@@ -478,17 +456,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         </div>
 
         <!-- FAQ Item 5 — Business / B2B -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">Can I use Mivio for my business or organization?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Absolutely. We offer <strong>B2B licensing</strong> for hotels, universities, academies, and organizations that want to deploy Mivio at scale. We also offer <strong>white-label</strong> agreements for businesses that want to ship Mivio under their own branding. <a href="b2b.html" class="text-primary hover:underline font-semibold">Find your plan or get support →</a>
             </div>
@@ -496,17 +473,16 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
         </div>
 
         <!-- FAQ Item 6 — Mivio Cloud -->
-        <div x-data="{ open: false }"
-          class="border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
-          <button type="button" @click="open = !open" :aria-expanded="open"
-            class="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+        <div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+          <button type="button" aria-expanded="false"
+            class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
             <span class="font-semibold text-fg text-lg">What is Mivio Cloud?</span>
-            <svg aria-hidden="true" class="w-5 h-5 text-fg-muted transform transition-transform duration-300"
-              :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div x-show="open" x-collapse>
+          <div class="faq-content hidden">
             <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
               Mivio Cloud is a premium managed hosting service. Instead of setting up your own server at home, we host your personal media environment in the cloud — so you can stream your content from anywhere with zero technical setup. Available in subscription tiers based on your storage needs. <a href="cloud.html" class="text-primary hover:underline font-semibold">See Mivio Cloud plans →</a>
             </div>
@@ -588,14 +564,86 @@ const description = 'Mivio — The ultimate multi-platform media player. Connect
     </div>
   </section>
 
-  <!-- FOOTER INJECTED VIA ALPINE -->
   <!-- Waitlist modal -->
   <WaitlistModal />
 
   <Footer />
 
+  <script is:inline>
+    // Device Carousel
+    (function () {
+      const track = document.getElementById('device-carousel-track');
+      if (!track) return;
+      const dots = document.querySelectorAll('.device-dot');
+      const prevBtn = document.getElementById('device-carousel-prev');
+      const nextBtn = document.getElementById('device-carousel-next');
+      let cur = 0;
+      const total = 6;
+      let timer;
 
+      function update() {
+        const card = track.firstElementChild;
+        if (!card) return;
+        const width = card.offsetWidth + 24;
+        track.style.transform = `translateX(-${cur * width}px)`;
+        dots.forEach((dot, idx) => {
+          if (idx === cur) {
+            dot.className = 'device-dot h-2 rounded-full transition-all duration-300 bg-primary w-5';
+          } else {
+            dot.className = 'device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2';
+          }
+        });
+      }
 
+      function next() {
+        cur = (cur + 1) % total;
+        update();
+      }
 
+      function prev() {
+        cur = (cur - 1 + total) % total;
+        update();
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 3500);
+      }
+
+      prevBtn?.addEventListener('click', () => { prev(); startTimer(); });
+      nextBtn?.addEventListener('click', () => { next(); startTimer(); });
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          cur = Number(dot.dataset.index);
+          update();
+          startTimer();
+        });
+      });
+
+      window.addEventListener('resize', update, { passive: true });
+      startTimer();
+    })();
+
+    // FAQ Accordion
+    (function () {
+      document.querySelectorAll('.faq-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          const item = btn.closest('.faq-item');
+          const content = item?.querySelector('.faq-content');
+          const icon = item?.querySelector('.faq-icon');
+
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+          if (content) {
+            content.classList.toggle('hidden', isExpanded);
+          }
+          if (icon) {
+            icon.classList.toggle('rotate-180', !isExpanded);
+          }
+        });
+      });
+    })();
+  </script>
 
 </Layout>
+

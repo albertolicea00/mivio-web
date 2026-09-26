@@ -105,7 +105,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
       </section>
 
       <!-- Pricing -->
-      <section id="pricing" x-data="{ billing: 'monthly' }" class="mb-16">
+      <section id="pricing" class="mb-16">
         <!-- Coming Soon notice — remove when live -->
         <div class="flex justify-center mb-4">
           <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold px-4 py-2 rounded-full">
@@ -126,19 +126,17 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
           >
             <button
               type="button"
-              @click="billing = 'monthly'"
-              :aria-pressed="billing === 'monthly'"
-              :class="billing === 'monthly' ? 'bg-fg text-page font-bold shadow' : 'text-fg-subtle hover:text-fg'"
-              class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap"
+              id="billing-monthly-btn"
+              aria-pressed="true"
+              class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap bg-fg text-page font-bold shadow"
             >
               Monthly
             </button>
             <button
               type="button"
-              @click="billing = 'annual'"
-              :aria-pressed="billing === 'annual'"
-              :class="billing === 'annual' ? 'bg-fg text-page font-bold shadow' : 'text-fg-subtle hover:text-fg'"
-              class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap"
+              id="billing-annual-btn"
+              aria-pressed="false"
+              class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap text-fg-subtle hover:text-fg"
             >
               Annual
               <span
@@ -162,7 +160,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               >
               <div class="mt-3">
                 <!-- First month big price (monthly only) -->
-                <div x-show="billing === 'monthly'">
+                <div class="billing-monthly">
                   <div class="text-4xl font-extrabold text-fg">$0.99</div>
                   <div class="text-xs text-fg-faint mt-1">
                     1st month, then
@@ -170,7 +168,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                   </div>
                 </div>
                 <!-- Annual price -->
-                <div x-show="billing === 'annual'" x-cloak>
+                <div class="billing-annual hidden">
                   <div class="text-4xl font-extrabold text-fg">
                     $2.06<span class="text-lg font-normal text-fg-subtle"
                       >/mo</span
@@ -314,7 +312,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               >Get started</a
             >-->
             <button type="button"
-              @click="$store.waitlist.show('Mivio Cloud')"
+              data-waitlist="Mivio Cloud"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
             </button>
@@ -335,14 +333,14 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                 >Standard</span
               >
               <div class="mt-3">
-                <div x-show="billing === 'monthly'">
+                <div class="billing-monthly">
                   <div class="text-4xl font-extrabold text-fg">$3.36</div>
                   <div class="text-xs text-fg-faint mt-1">
                     1st month, then
                     <span class="text-fg-subtle font-semibold">$7.73/mo</span>
                   </div>
                 </div>
-                <div x-show="billing === 'annual'" x-cloak>
+                <div class="billing-annual hidden">
                   <div class="text-4xl font-extrabold text-fg">
                     $6.13<span class="text-lg font-normal text-fg-subtle"
                       >/mo</span
@@ -474,7 +472,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               >Get started</a
             >-->
             <button type="button"
-              @click="$store.waitlist.show('Mivio Cloud')"
+              data-waitlist="Mivio Cloud"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
             </button>
@@ -490,14 +488,14 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                 >Premium</span
               >
               <div class="mt-3">
-                <div x-show="billing === 'monthly'">
+                <div class="billing-monthly">
                   <div class="text-4xl font-extrabold text-fg">$5.47</div>
                   <div class="text-xs text-fg-faint mt-1">
                     1st month, then
                     <span class="text-fg-subtle font-semibold">$12.89/mo</span>
                   </div>
                 </div>
-                <div x-show="billing === 'annual'" x-cloak>
+                <div class="billing-annual hidden">
                   <div class="text-4xl font-extrabold text-fg">
                     $10.74<span class="text-lg font-normal text-fg-subtle"
                       >/mo</span
@@ -629,7 +627,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               >Get started</a
             >-->
             <button type="button"
-              @click="$store.waitlist.show('Mivio Cloud')"
+              data-waitlist="Mivio Cloud"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
             </button>
@@ -645,14 +643,14 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                 >Ultra</span
               >
               <div class="mt-3">
-                <div x-show="billing === 'monthly'">
+                <div class="billing-monthly">
                   <div class="text-4xl font-extrabold text-fg">$8.99</div>
                   <div class="text-xs text-fg-faint mt-1">
                     1st month, then
                     <span class="text-fg-subtle font-semibold">$19.73/mo</span>
                   </div>
                 </div>
-                <div x-show="billing === 'annual'" x-cloak>
+                <div class="billing-annual hidden">
                   <div class="text-4xl font-extrabold text-fg">
                     $16.44<span class="text-lg font-normal text-fg-subtle"
                       >/mo</span
@@ -784,7 +782,7 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               >Get started</a
             >-->
             <button type="button"
-              @click="$store.waitlist.show('Mivio Cloud')"
+              data-waitlist="Mivio Cloud"
               class="btn-primary text-white text-center font-semibold py-2.5 rounded-xl text-sm mt-auto w-full">
               Get early access
             </button>
@@ -793,15 +791,6 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
 
         <!-- Let's Talk — full width -->
         <div
-          x-data="{
-            storageIdx: 2,
-            storageOptions: ['3 TB', '4 TB', '5 TB', '10 TB', '15 TB', '20 TB', '25 TB', 'Custom'],
-            message: '',
-            get storageLabel() { return this.storageOptions[this.storageIdx]; },
-            get mailto() {
-              return 'mailto:cloud@mivio.app?subject=Mivio Cloud Custom Plan&body=Storage: ' + encodeURIComponent(this.storageLabel) + '%0A%0A' + encodeURIComponent(this.message);
-            }
-          }"
           class="card rounded-3xl p-8 border-primary/20 hover:border-primary/35 transition-colors"
         >
           <div class="flex flex-col md:flex-row gap-10 items-start">
@@ -884,19 +873,19 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                     >Storage needed</label
                   >
                   <span
+                    id="storage-slider-label"
                     class="text-sm font-bold text-primary"
-                    x-text="storageLabel"
                     aria-live="polite"
-                  ></span>
+                  >5 TB</span>
                 </div>
                 <input
                   id="storage-slider"
                   type="range"
                   min="0"
-                  :max="storageOptions.length - 1"
+                  max="7"
+                  value="2"
                   step="1"
-                  x-model="storageIdx"
-                  :aria-valuetext="storageLabel"
+                  aria-valuetext="5 TB"
                   class="w-full h-2 rounded-full appearance-none cursor-pointer accent-primary bg-surface-alt border border-subtle"
                 />
                 <div class="flex justify-between text-xs text-fg-faint">
@@ -914,7 +903,6 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
                 >
                 <textarea
                   id="custom-plan-message"
-                  x-model="message"
                   rows="3"
                   placeholder="Describe what you need — media types, use case, anything relevant…"
                   class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors resize-none"
@@ -922,7 +910,8 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
               </div>
 
               <a
-                :href="mailto"
+                id="custom-plan-send-btn"
+                href="mailto:cloud@mivio.app?subject=Mivio%20Cloud%20Custom%20Plan&body=Storage%3A%205%20TB%0A%0A"
                 class="btn-primary text-white font-bold px-5 py-3 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2 self-start"
               >
                 <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -1064,5 +1053,70 @@ const description = 'Mivio Cloud — Your personal media library hosted in the c
 
     <WaitlistModal />
     <Footer />
+
+    <script is:inline>
+      // Billing toggle
+      (function () {
+        const monthlyBtn = document.getElementById('billing-monthly-btn');
+        const annualBtn = document.getElementById('billing-annual-btn');
+        const monthlyElements = document.querySelectorAll('.billing-monthly');
+        const annualElements = document.querySelectorAll('.billing-annual');
+
+        function setBilling(isAnnual) {
+          monthlyBtn?.setAttribute('aria-pressed', String(!isAnnual));
+          annualBtn?.setAttribute('aria-pressed', String(isAnnual));
+
+          if (isAnnual) {
+            monthlyBtn?.classList.remove('bg-fg', 'text-page', 'font-bold', 'shadow');
+            monthlyBtn?.classList.add('text-fg-subtle', 'hover:text-fg');
+            annualBtn?.classList.remove('text-fg-subtle', 'hover:text-fg');
+            annualBtn?.classList.add('bg-fg', 'text-page', 'font-bold', 'shadow');
+
+            monthlyElements.forEach((el) => el.classList.add('hidden'));
+            annualElements.forEach((el) => el.classList.remove('hidden'));
+          } else {
+            annualBtn?.classList.remove('bg-fg', 'text-page', 'font-bold', 'shadow');
+            annualBtn?.classList.add('text-fg-subtle', 'hover:text-fg');
+            monthlyBtn?.classList.remove('text-fg-subtle', 'hover:text-fg');
+            monthlyBtn?.classList.add('bg-fg', 'text-page', 'font-bold', 'shadow');
+
+            annualElements.forEach((el) => el.classList.add('hidden'));
+            monthlyElements.forEach((el) => el.classList.remove('hidden'));
+          }
+        }
+
+        monthlyBtn?.addEventListener('click', () => setBilling(false));
+        annualBtn?.addEventListener('click', () => setBilling(true));
+      })();
+
+      // Custom Plan calculator
+      (function () {
+        const slider = document.getElementById('storage-slider');
+        const label = document.getElementById('storage-slider-label');
+        const message = document.getElementById('custom-plan-message');
+        const sendBtn = document.getElementById('custom-plan-send-btn');
+        if (!slider || !label || !sendBtn) return;
+
+        const storageOptions = ['3 TB', '4 TB', '5 TB', '10 TB', '15 TB', '20 TB', '25 TB', 'Custom'];
+
+        function updateMailto() {
+          const idx = Number(slider.value) || 0;
+          const storageLabel = storageOptions[idx] || 'Custom';
+          label.textContent = storageLabel;
+          slider.setAttribute('aria-valuetext', storageLabel);
+
+          const text = message?.value || '';
+          const body = `Storage: ${storageLabel}\n\n${text}`;
+          sendBtn.setAttribute(
+            'href',
+            `mailto:cloud@mivio.app?subject=${encodeURIComponent('Mivio Cloud Custom Plan')}&body=${encodeURIComponent(body)}`
+          );
+        }
+
+        slider.addEventListener('input', updateMailto);
+        message?.addEventListener('input', updateMailto);
+        updateMailto();
+      })();
+    </script>
   
 </Layout>

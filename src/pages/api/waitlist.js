@@ -2,12 +2,9 @@
  * POST /api/waitlist
  * Body: { email, segment, _hp? }  (_hp is a honeypot field — must be empty)
  *
- * Env vars (set in Vercel dashboard):
+ * Env vars:
  *   BREVO_API_KEY          — your Brevo API key
- *   BREVO_LIST_APPS        — list ID for Mivio Apps
- *   BREVO_LIST_CLOUD       — list ID for Mivio Cloud
- *   BREVO_LIST_B2B         — list ID for Mivio B2B
- *   BREVO_LIST_MARKETPLACE — list ID for Marketplace
+ *   BREVO_LIST_NEWSLETTER  — list ID for all subscriptions & waitlists
  *
  * Validation layers:
  *   1. Honeypot field (_hp) — bots fill it, humans don't
@@ -18,25 +15,6 @@
  */
 
 export const prerender = false;
-
-/* ── Segment → Brevo list ID map ─────────────────────────────── */
-function getListId(segment) {
-  const key = (segment ?? '').toLowerCase().trim();
-  const map = {
-    'mivio apps':             process.env.BREVO_LIST_APPS,
-    'mivio apps — apple':     process.env.BREVO_LIST_APPS,
-    'mivio apps — android':   process.env.BREVO_LIST_APPS,
-    'mivio apps — smart tv':  process.env.BREVO_LIST_APPS,
-    'mivio apps — windows':   process.env.BREVO_LIST_APPS,
-    'mivio apps — linux':     process.env.BREVO_LIST_APPS,
-    'mivio apps — vr':        process.env.BREVO_LIST_APPS,
-    'mivio cloud':            process.env.BREVO_LIST_CLOUD,
-    'mivio b2b':              process.env.BREVO_LIST_B2B,
-    'mivio marketplace':      process.env.BREVO_LIST_MARKETPLACE,
-    'newsletter':             process.env.BREVO_LIST_NEWSLETTER,
-  };
-  return map[key] ?? null;
-}
 
 /* ── Disposable email domains blocklist ──────────────────────── */
 const DISPOSABLE = new Set([
@@ -113,14 +91,10 @@ export async function POST({ request, clientAddress }) {
     return json(400, { error: 'Disposable email addresses are not allowed.' });
   }
 
-  /* 5. Segment → list ID */
-  const listId = getListId(segment);
+  /* 5. Destination list */
+  const listId = process.env.BREVO_LIST_NEWSLETTER;
   if (!listId) {
-    const inMap = ['mivio apps','mivio cloud','mivio b2b','mivio marketplace','newsletter']
-      .includes((segment ?? '').toLowerCase().trim());
-    return json(inMap ? 500 : 400, {
-      error: inMap ? 'Server configuration error: list ID not set.' : `Unknown segment: ${segment}`,
-    });
+    return json(500, { error: 'Server configuration error: BREVO_LIST_NEWSLETTER not set.' });
   }
 
   if (!process.env.BREVO_API_KEY) {
@@ -141,7 +115,7 @@ export async function POST({ request, clientAddress }) {
         listIds: [Number(listId)],
         updateEnabled: true,
         attributes: {
-          WAITLIST_SEGMENT: segment,
+          WAITLIST_SEGMENT: segment || 'Newsletter',
           PLATFORM: (segment ?? '').split('—')[1]?.trim() ?? '',
           SIGNUP_SOURCE: 'mivio-web',
         },

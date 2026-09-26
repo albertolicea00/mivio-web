@@ -1,3 +1,7 @@
+---
+// Footer.astro — Vanilla JS Footer
+---
+
 <footer class="footer-bar py-12 px-6 mt-12 border-t border-subtle bg-page">
   <div class="max-w-6xl mx-auto px-4 text-sm text-fg-faint">
 
@@ -53,30 +57,34 @@
     </div>
 
     <!-- Newsletter -->
-    <div x-data="{ email: '', status: 'idle', errorMsg: '' }"
-      class="border-t border-subtle pt-6 pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div
+      class="border-t border-subtle pt-6 pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+    >
       <div class="shrink-0">
         <p class="text-fg font-semibold text-sm">Stay in the loop</p>
         <p class="text-xs text-fg-faint mt-0.5">Product updates and early access announcements.</p>
       </div>
-      <form @submit.prevent="
-          if (!email || !email.includes('@')) { errorMsg = 'Enter a valid email.'; return; }
-          status = 'loading'; errorMsg = '';
-          fetch('/api/waitlist', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ email, segment: 'Newsletter', newsletter: true, _hp: '' }) })
-            .then(r => r.ok ? (status = 'success') : Promise.reject())
-            .catch(() => { status = 'error'; errorMsg = 'Something went wrong. Try again.'; })
-        "
-        class="flex flex-col gap-1.5 sm:items-end">
-        <div x-show="status !== 'success'" class="flex gap-2">
-          <input type="email" x-model="email" placeholder="you@example.com" required autocomplete="email"
-            class="rounded-xl border border-subtle bg-surface px-4 py-2 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors w-52" />
-          <button type="submit" :disabled="status === 'loading'"
-            class="btn-primary text-white font-semibold px-5 py-2 rounded-xl text-sm disabled:opacity-60 whitespace-nowrap shrink-0">
-            <span x-text="status === 'loading' ? '…' : 'Subscribe'"></span>
+
+      <form id="footer-newsletter-form" class="flex flex-col gap-1.5 sm:items-end">
+        <div id="newsletter-input-wrap" class="flex gap-2">
+          <input
+            id="newsletter-email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+            class="rounded-xl border border-subtle bg-surface px-4 py-2 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors w-52"
+          />
+          <button
+            type="submit"
+            id="newsletter-submit-btn"
+            class="btn-primary text-white font-semibold px-5 py-2 rounded-xl text-sm disabled:opacity-60 whitespace-nowrap shrink-0"
+          >
+            <span id="newsletter-btn-text">Subscribe</span>
           </button>
         </div>
-        <p x-show="errorMsg" x-text="errorMsg" class="text-xs text-red-400"></p>
-        <p x-show="status === 'success'" class="text-xs text-primary font-semibold">You're subscribed!</p>
+        <p id="newsletter-error" class="hidden text-xs text-red-400"></p>
+        <p id="newsletter-success" class="hidden text-xs text-primary font-semibold">You're subscribed!</p>
       </form>
     </div>
 
@@ -92,3 +100,63 @@
 
   </div>
 </footer>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('footer-newsletter-form');
+    if (!form) return;
+
+    const emailInput = document.getElementById('newsletter-email');
+    const submitBtn = document.getElementById('newsletter-submit-btn');
+    const btnText = document.getElementById('newsletter-btn-text');
+    const inputWrap = document.getElementById('newsletter-input-wrap');
+    const errorP = document.getElementById('newsletter-error');
+    const successP = document.getElementById('newsletter-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput?.value.trim() || '';
+
+      if (!email || !email.includes('@')) {
+        if (errorP) {
+          errorP.textContent = 'Enter a valid email.';
+          errorP.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (errorP) {
+        errorP.textContent = '';
+        errorP.classList.add('hidden');
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = '…';
+
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            segment: 'Newsletter',
+            newsletter: true,
+            _hp: '',
+          }),
+        });
+
+        if (!res.ok) throw new Error();
+
+        if (inputWrap) inputWrap.classList.add('hidden');
+        if (successP) successP.classList.remove('hidden');
+      } catch (err) {
+        if (errorP) {
+          errorP.textContent = 'Something went wrong. Try again.';
+          errorP.classList.remove('hidden');
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Subscribe';
+      }
+    });
+  })();
+</script>
