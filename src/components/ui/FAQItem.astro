@@ -1,0 +1,23 @@
+---
+export interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<div class="faq-item border border-subtle rounded-2xl bg-surface-alt overflow-hidden transition-colors hover:border-primary/30">
+  <button type="button" aria-expanded="false"
+    class="faq-btn w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none">
+    <span class="font-semibold text-fg text-lg">{question}</span>
+    <svg aria-hidden="true" class="faq-icon w-5 h-5 text-fg-muted transform transition-transform duration-300"
+      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="faq-content hidden">
+    <div class="px-6 pb-5 text-fg-subtle leading-relaxed">
+      <slot />
+    </div>
+  </div>
+</div>

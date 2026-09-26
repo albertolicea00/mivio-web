@@ -1,0 +1,13 @@
+---
+export interface Props {
+  title: string;
+  updated: string;
+}
+
+const { title, updated } = Astro.props;
+---
+
+<header class="mb-16">
+  <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-fg">{title}</h1>
+  <p class="text-fg-subtle text-lg">Last updated: {updated}</p>
+</header>

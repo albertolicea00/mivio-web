@@ -1,0 +1,19 @@
+---
+export interface Props {
+  href: string;
+  title: string;
+  subtitle: string;
+}
+
+const { href, title, subtitle } = Astro.props;
+---
+
+<a href={href} class="shrink-0 w-52 sm:w-60 group card rounded-[2rem] p-6 flex flex-col items-center text-center gap-4 hover:border-primary/30 transition-all duration-300">
+  <div class="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors text-primary">
+    <slot />
+  </div>
+  <div>
+    <div class="font-bold text-lg text-fg">{title}</div>
+    <div class="text-sm text-fg-faint mt-1 leading-snug">{subtitle}</div>
+  </div>
+</a>

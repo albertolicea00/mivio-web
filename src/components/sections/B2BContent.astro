@@ -1,0 +1,83 @@
+---
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import WaitlistModal from '../WaitlistModal.astro';
+import PageHero from '../ui/PageHero.astro';
+import LicenseModelCard from '../ui/LicenseModelCard.astro';
+---
+
+<Navbar />
+
+<main id="main-content" class="pt-32 pb-24 px-6 max-w-5xl mx-auto">
+
+  <PageHero class="mb-20 text-center">
+    Mivio for<br /><span class="gradient-text">your business.</span>
+    <Fragment slot="description">
+      Deploy Mivio at scale across your organization, or ship it under your own brand. Custom licensing agreements for hotels, universities, academies, media companies, and any organization that needs a professional media experience.
+    </Fragment>
+  </PageHero>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+    <LicenseModelCard
+      title="Enterprise Deployment"
+      description="Roll out Mivio across your entire organization. Manage users, control access, and provide a unified media experience — all under your IT infrastructure."
+      features={[
+        'Centralized user management',
+        'On-premise or cloud-hosted',
+        'All platforms included',
+        'Dedicated support channel',
+      ]}
+      note="Ideal for: hotels, hospitals, universities, academies, corporate campuses."
+    >
+      <svg slot="icon" aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+    </LicenseModelCard>
+
+    <LicenseModelCard
+      title="White-Label Licensing"
+      description="Ship Mivio under your own brand, with your logo, your colors, and your app store presence. Full commercial rights with a custom licensing agreement."
+      features={[
+        'Custom branding & identity',
+        'Commercial redistribution rights',
+        'Source access (negotiated)',
+        'Co-development available',
+      ]}
+      note="Ideal for: media companies, telecom operators, set-top box manufacturers, streaming platforms."
+      borderClass="border-primary/30"
+    >
+      <svg slot="icon" aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+    </LicenseModelCard>
+  </section>
+
+  <section class="card rounded-3xl p-8 mb-20">
+    <h2 class="font-bold text-xl text-fg mb-4">Pricing Model</h2>
+    <p class="text-fg-subtle text-sm mb-6 leading-relaxed">B2B licensing is not a fixed price list — it's a conversation. Every organization has different scale, requirements, and goals. Pricing is negotiated based on the scope of the agreement.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+      <div class="flex flex-col gap-1">
+        <span class="font-semibold text-fg">Per-seat license</span>
+        <span class="text-fg-subtle">For enterprise deployments with a defined user base.</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <span class="font-semibold text-fg">Revenue share</span>
+        <span class="text-fg-subtle">For white-label products that generate commercial revenue.</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <span class="font-semibold text-fg">One-time license</span>
+        <span class="text-fg-subtle">For specific deployments or internal-use tools without recurring billing.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center">
+    <h2 class="font-bold text-2xl text-fg mb-3">Ready to talk?</h2>
+    <p class="text-fg-subtle mb-6 max-w-xl mx-auto">Tell us about your project and we'll get back to you with a proposal tailored to your needs.</p>
+    <button
+      type="button" data-waitlist="Mivio B2B"
+      class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base">
+      Get early access
+    </button>
+  </section>
+
+</main>
+
+<WaitlistModal />
+<Footer />

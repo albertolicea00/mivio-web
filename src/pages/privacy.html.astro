@@ -1,69 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import PrivacyContent from '../components/sections/PrivacyContent.astro';
 
 const title = 'Mivio — Privacy Policy';
 const description = 'Mivio Privacy Policy — Learn how we handle your data, telemetry, and cookies.';
 ---
 <Layout title={title} description={description} path="/privacy.html">
-
-
-  <!-- NAVBAR -->
-  <Navbar />
-
-  <!-- PRIVACY CONTENT -->
-  <main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
-    
-    <header class="mb-16">
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-fg">Privacy Policy</h1>
-      <p class="text-fg-subtle text-lg">Last updated: May 2026</p>
-    </header>
-
-    <!-- Content Sections (Easy to edit for non-devs) -->
-    <div class="space-y-12 text-fg-subtle leading-relaxed">
-      
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">1. Information We Collect</h2>
-        <p class="mb-4">Mivio is designed with your privacy in mind. We believe that your media library is your business, not ours. Therefore, <strong>we do not collect, store, or transmit your personal media files, server IP addresses, or watch history to our servers.</strong></p>
-        <p>All media parsing, metadata fetching, and playback tracking happen entirely locally on your device or via your personal, self-hosted server (e.g., Plex, Jellyfin, Emby).</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">2. Telemetry and Crash Reports</h2>
-        <p class="mb-4">To improve the stability and performance of the Mivio applications across all platforms, we may collect anonymous crash logs and basic telemetry (such as device model and OS version). This data contains no personally identifiable information and is solely used for debugging.</p>
-        <p>You can opt-out of crash reporting at any time within the application settings.</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">3. Third-Party Services (APIs)</h2>
-        <p class="mb-4">Mivio interfaces with third-party APIs to enhance your media experience:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>TMDB (The Movie Database):</strong> Used to automatically download movie posters, synopses, and cast information.</li>
-          <li><strong>OpenSubtitles:</strong> Used to search and download subtitles based on video file hashes.</li>
-        </ul>
-        <p class="mt-4">When the app contacts these services, your device's IP address and search queries are subject to their respective Privacy Policies.</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">4. Cookies and Web Tracking</h2>
-        <p class="mb-4">The Mivio website (this landing page and help center) uses strictly necessary local storage to remember your preferences (like the Dark/Light theme toggle). <strong>We do not use tracking cookies, tracking pixels, or intrusive third-party analytics.</strong></p>
-        <p>You can browse our website without worrying about being tracked across the internet.</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">5. Changes to this Policy</h2>
-        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-fg mb-4">6. Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us via our official community channels or GitHub repository.</p>
-      </section>
-
-    </div>
-  </main>
-
-  <Footer />
-
+  <PrivacyContent />
 </Layout>

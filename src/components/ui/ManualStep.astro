@@ -1,0 +1,22 @@
+---
+export interface Props {
+  title: string;
+  color?: 'primary' | 'accent';
+}
+
+const { title, color = 'primary' } = Astro.props;
+const borderClass = color === 'accent' ? 'hover:border-accent/25' : 'hover:border-primary/25';
+const iconWrapClass = color === 'accent' ? 'bg-accent/10 text-accent' : 'bg-primary/10 text-primary';
+---
+
+<section class={`card rounded-3xl p-8 ${borderClass} transition-all duration-300`}>
+  <h2 class="text-2xl font-bold text-fg mb-4 flex items-center gap-3">
+    <div class={`w-10 h-10 rounded-xl flex items-center justify-center ${iconWrapClass}`}>
+      <slot name="icon" />
+    </div>
+    <span>{title}</span>
+  </h2>
+  <p class="text-fg-subtle leading-relaxed">
+    <slot />
+  </p>
+</section>

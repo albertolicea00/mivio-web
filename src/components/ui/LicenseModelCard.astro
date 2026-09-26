@@ -1,0 +1,27 @@
+---
+import CheckListItem from './CheckListItem.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  features: string[];
+  note: string;
+  borderClass?: string;
+}
+
+const { title, description, features, note, borderClass = '' } = Astro.props;
+---
+
+<div class={`card rounded-3xl p-8 flex flex-col gap-5 ${borderClass}`}>
+  <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+    <slot name="icon" />
+  </div>
+  <div>
+    <h2 class="font-bold text-xl text-fg mb-2">{title}</h2>
+    <p class="text-fg-subtle text-sm leading-relaxed">{description}</p>
+  </div>
+  <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
+    {features.map((feature) => <CheckListItem align="start">{feature}</CheckListItem>)}
+  </ul>
+  <p class="text-fg-faint text-xs">{note}</p>
+</div>

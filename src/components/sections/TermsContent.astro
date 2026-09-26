@@ -1,0 +1,50 @@
+---
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import LegalHeader from '../ui/LegalHeader.astro';
+import LegalSection from '../ui/LegalSection.astro';
+---
+
+<Navbar />
+
+<main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+
+  <LegalHeader title="Terms & Conditions" updated="May 2026" />
+
+  <div class="space-y-12 text-fg-subtle leading-relaxed">
+
+    <LegalSection title="1. Acceptance of Terms">
+      <p>By accessing the Mivio website, downloading, or using the Mivio applications across any platform, you agree to be bound by these Terms and Conditions and our <strong>Mivio Source-Available End User License Agreement (EULA)</strong>. If you do not agree with any part of these terms, you may not use the software.</p>
+    </LegalSection>
+
+    <LegalSection title="2. Bring Your Own Media (BYOM)">
+      <p class="mb-4">Mivio is strictly a media player and library management tool. <strong>We do not provide, host, sell, or distribute any media content.</strong></p>
+      <p>You are solely responsible for the media files you choose to index and play using Mivio. You agree not to use Mivio for the distribution of pirated or copyright-infringing material. We hold no liability for the content you stream from your personal servers (SMB, WebDAV, Plex, Jellyfin, Emby).</p>
+    </LegalSection>
+
+    <LegalSection title="3. License and Restrictions">
+      <p class="mb-4">The Mivio client applications are licensed under a custom Source-Available Non-Commercial license. This means:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>You may use the apps for <strong>personal, non-commercial purposes</strong> only.</li>
+        <li>You may <strong>not</strong> rebrand, sell, or monetize the apps.</li>
+        <li>You may <strong>not</strong> use Mivio in a Software-as-a-Service (SaaS) or commercial deployment environment without written consent.</li>
+      </ul>
+    </LegalSection>
+
+    <LegalSection title="4. Third-Party API Usage">
+      <p>Mivio connects to services like TMDB and OpenSubtitles. By using Mivio, you also agree to comply with the Terms of Service of these respective platforms. If you compile the software from source, you are required to provide your own API keys, and we are not responsible if your keys are banned or restricted by third parties.</p>
+    </LegalSection>
+
+    <LegalSection title="5. VR & Immersive Marketplace">
+      <p class="mb-4">For users of the Mivio VR or visionOS applications, any community-uploaded 3D environments or assets must not contain malicious code, illegal content, or infringe upon the intellectual property rights of others.</p>
+      <p>We reserve the right to remove any uploaded asset from our community hubs without prior notice.</p>
+    </LegalSection>
+
+    <LegalSection title="6. Disclaimer of Warranties">
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+    </LegalSection>
+
+  </div>
+</main>
+
+<Footer />

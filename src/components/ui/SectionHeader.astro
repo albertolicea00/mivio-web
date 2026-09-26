@@ -1,0 +1,16 @@
+---
+export interface Props {
+  eyebrow?: string;
+  class?: string;
+}
+
+const { eyebrow, class: className = 'text-center mb-16' } = Astro.props;
+---
+
+<div class={className}>
+  {eyebrow && <span class="text-primary text-sm font-semibold uppercase tracking-widest">{eyebrow}</span>}
+  <h2 class="text-4xl sm:text-5xl font-extrabold mt-3 leading-tight text-fg">
+    <slot />
+  </h2>
+  <slot name="description" />
+</div>

@@ -1,0 +1,46 @@
+---
+export interface Props {
+  eyebrow: string;
+  title: string;
+  ctaHref: string;
+  ctaLabel: string;
+  priceNote?: string;
+  borderClass?: string;
+}
+
+const { eyebrow, title, ctaHref, ctaLabel, priceNote, borderClass = 'hover:border-primary/30 transition-colors' } = Astro.props;
+---
+
+<div class={`card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 ${borderClass}`}>
+  <div class="flex-1 text-center md:text-left">
+    <div class="flex items-center gap-2 justify-center md:justify-start mb-1">
+      <div class="w-6 h-6 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+        <slot name="icon" />
+      </div>
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary">{eyebrow}</span>
+    </div>
+    <h3 class="font-extrabold text-xl sm:text-2xl text-fg mt-1 mb-2">{title}</h3>
+    <p class="text-fg-subtle text-sm leading-relaxed">
+      <slot />
+    </p>
+    {priceNote ? (
+      <div class="flex flex-col items-center md:items-start gap-2 mt-5">
+        <a href={ctaHref} class="btn-primary text-white font-bold px-6 py-2.5 rounded-xl text-sm flex items-center gap-2">
+          <slot name="cta-icon" />
+          {ctaLabel}
+        </a>
+        <span class="text-fg-faint text-xs">{priceNote}</span>
+      </div>
+    ) : (
+      <div class="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
+        <a href={ctaHref} class="btn-primary text-white font-bold px-6 py-2.5 rounded-xl text-sm flex items-center gap-2">
+          <slot name="cta-icon" />
+          {ctaLabel}
+        </a>
+      </div>
+    )}
+  </div>
+  <div class="flex flex-col gap-2 text-sm text-fg-subtle shrink-0">
+    <slot name="features" />
+  </div>
+</div>

@@ -1,0 +1,13 @@
+---
+export interface Props {
+  value: string;
+  label: string;
+}
+
+const { value, label } = Astro.props;
+---
+
+<div>
+  <div class="text-3xl font-extrabold gradient-text">{value}</div>
+  <div class="text-fg-faint text-xs mt-1 uppercase tracking-widest">{label}</div>
+</div>
