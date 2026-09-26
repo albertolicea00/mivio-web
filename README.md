@@ -60,6 +60,6 @@ Because Mivio adapts natively to the constraints and paradigms of each ecosystem
 | **Local Multi-Account** | ✅ Yes | ✅ Yes | ✅ Optional | ✅ Yes | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No |
 | **Home Server Client** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | **Metadata Parsing** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ❌ Server | ❌ Server | ❌ Server | ❌ Server | ❌ Server |
-| **Native Player** | AVPlayer | ExoPlayer | ExoPlayer / VLC | mpv / VLC | AVPlayer | Native Tizen | BrightScript | AVPlayer | ExoPlayer |
-| **Immersive Spaces**| ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ RealityKit | ✅ AssetBundle |
-| **Marketplace** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ Yes | ✅ Yes |
+<!-- | **Native Player** | AVPlayer | ExoPlayer | ExoPlayer / VLC | mpv / VLC | AVPlayer | Native Tizen | BrightScript | AVPlayer | ExoPlayer | -->
+<!-- | **Immersive Spaces**| ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ RealityKit | ✅ AssetBundle | -->
+<!-- | **Marketplace** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ✅ Yes | ✅ Yes | -->
