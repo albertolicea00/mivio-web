@@ -17,6 +17,8 @@
  *   5. Brevo double opt-in (set via Brevo dashboard on the list — no code needed here)
  */
 
+export const prerender = false;
+
 /* ── Segment → Brevo list ID map ─────────────────────────────── */
 function getListId(segment) {
   const key = (segment ?? '').toLowerCase().trim();
@@ -64,31 +66,43 @@ function isRateLimited(ip) {
   return entry.count > RATE_LIMIT;
 }
 
-/* ── Main handler ────────────────────────────────────────────── */
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
 
+function json(status, body) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+  });
+}
+
+/* ── Main handler ────────────────────────────────────────────── */
+export async function OPTIONS() {
+  return new Response(null, { status: 204, headers: CORS_HEADERS });
+}
+
+export async function POST({ request, clientAddress }) {
   /* 1. Rate limiting */
-  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() ?? req.socket?.remoteAddress ?? 'unknown';
+  const forwardedFor = request.headers.get('x-forwarded-for');
+  const ip = forwardedFor?.split(',')[0]?.trim() ?? clientAddress ?? 'unknown';
   if (isRateLimited(ip)) {
-    return res.status(429).json({ error: 'Too many requests. Try again later.' });
+    return json(429, { error: 'Too many requests. Try again later.' });
   }
 
-  const { email, segment, _hp } = req.body ?? {};
+  const { email, segment, _hp } = await request.json().catch(() => ({}));
 
   /* 2. Honeypot — bots fill hidden fields, humans leave them empty */
   if (_hp) {
-    return res.status(200).json({ ok: true }); // silent success to fool bots
+    return json(200, { ok: true }); // silent success to fool bots
   }
 
   /* 3. Email format validation */
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
   if (!email || !emailRegex.test(email.trim())) {
-    return res.status(400).json({ error: 'Please enter a valid email address.' });
+    return json(400, { error: 'Please enter a valid email address.' });
   }
 
   const cleanEmail = email.trim().toLowerCase();
@@ -96,7 +110,7 @@ export default async function handler(req, res) {
   /* 4. Disposable email check */
   const domain = cleanEmail.split('@')[1];
   if (DISPOSABLE.has(domain)) {
-    return res.status(400).json({ error: 'Disposable email addresses are not allowed.' });
+    return json(400, { error: 'Disposable email addresses are not allowed.' });
   }
 
   /* 5. Segment → list ID */
@@ -104,13 +118,13 @@ export default async function handler(req, res) {
   if (!listId) {
     const inMap = ['mivio apps','mivio cloud','mivio b2b','mivio marketplace','newsletter']
       .includes((segment ?? '').toLowerCase().trim());
-    return res.status(inMap ? 500 : 400).json({
+    return json(inMap ? 500 : 400, {
       error: inMap ? 'Server configuration error: list ID not set.' : `Unknown segment: ${segment}`,
     });
   }
 
   if (!process.env.BREVO_API_KEY) {
-    return res.status(500).json({ error: 'Server configuration error: API key not set.' });
+    return json(500, { error: 'Server configuration error: API key not set.' });
   }
 
   /* 6. Subscribe via Brevo */
@@ -138,14 +152,14 @@ export default async function handler(req, res) {
       const err = await response.json().catch(() => ({}));
       /* Brevo returns 400 "duplicate_parameter" when contact already exists — that's fine */
       if (response.status === 400 && err?.code === 'duplicate_parameter') {
-        return res.status(200).json({ ok: true });
+        return json(200, { ok: true });
       }
       throw new Error(err?.message ?? response.statusText);
     }
 
-    return res.status(200).json({ ok: true });
+    return json(200, { ok: true });
   } catch (err) {
     console.error('[waitlist]', err.message);
-    return res.status(500).json({ error: 'Could not subscribe. Please try again later.' });
+    return json(500, { error: 'Could not subscribe. Please try again later.' });
   }
 }

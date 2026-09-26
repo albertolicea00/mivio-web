@@ -1,12 +1,25 @@
 # 🍿 Mivio Landing Page & Ecosystem Hub
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat-square&logo=astro&logoColor=white)](https://astro.build/)
 [![TailwindCSS](https://img.shields.io/badge/CSS-Tailwind-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Alpine.js](https://img.shields.io/badge/JS-Alpine.js-8BC0D0?style=flat-square&logo=alpine.js&logoColor=black)](https://alpinejs.dev/)
 
 **Mivio Landing Page** is the official presentation website for **Mivio** — the ultimate multi-platform media player ecosystem. 
 
-Rather than being a complex application itself, this repository contains a lightweight, zero-build static website (HTML/CSS/Alpine.js) designed to showcase the Mivio ecosystem to users.
+Rather than being a complex application itself, this repository contains a lightweight static site (Astro/Tailwind/Alpine.js) designed to showcase the Mivio ecosystem to users.
+
+---
+
+## 🛠️ Development
+
+```bash
+npm install       # install dependencies
+npm run dev       # start local dev server (http://localhost:4321)
+npm run build     # production build -> dist/
+npm run preview   # preview the production build locally
+```
+
+Copy `.env.example` to `.env` and fill in your Brevo API key + list IDs for the `/api/waitlist` endpoint to work locally; in production these are set in the Vercel dashboard.
 
 ---
 
