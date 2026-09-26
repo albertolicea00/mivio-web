@@ -1,12 +1,8 @@
 # 🍿 Mivio Landing Page & Ecosystem Hub
 
-[![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat-square&logo=astro&logoColor=white)](https://astro.build/)
-[![TailwindCSS](https://img.shields.io/badge/CSS-Tailwind-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Alpine.js](https://img.shields.io/badge/JS-Alpine.js-8BC0D0?style=flat-square&logo=alpine.js&logoColor=black)](https://alpinejs.dev/)
+**Mivio Landing Page** is the official presentation website for **Mivio** — the ultimate multi-platform media player ecosystem.
 
-**Mivio Landing Page** is the official presentation website for **Mivio** — the ultimate multi-platform media player ecosystem. 
-
-Rather than being a complex application itself, this repository contains a lightweight static site (Astro/Tailwind/Alpine.js) designed to showcase the Mivio ecosystem to users.
+Rather than being a complex application itself, this repository contains a lightweight static site (Astro/Tailwind) designed to showcase the Mivio ecosystem to users.
 
 ---
 
