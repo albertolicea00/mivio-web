@@ -1,0 +1,357 @@
+---
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import WaitlistModal from '../WaitlistModal.astro';
+import PricingCard from '../ui/PricingCard.astro';
+import FAQItem from '../ui/FAQItem.astro';
+---
+
+<Navbar />
+
+<main id="main-content" class="pt-32 pb-24 px-6 max-w-6xl mx-auto">
+  <!-- Hero -->
+  <header class="text-center mb-16">
+
+    <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl mb-6 text-fg leading-tight">
+      Simple, transparent<br /><span class="gradient-text">pricing for everyone.</span>
+    </h1>
+
+    <p class="text-fg-subtle text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+      Choose the tier that fits your personal library or business. Start almost free, cancel anytime. No hidden fees or lock-ins.
+    </p>
+
+    <!-- Billing toggle -->
+    <div class="inline-flex items-center gap-1 bg-surface-alt border border-subtle rounded-full px-1.5 py-1.5">
+      <button
+        type="button"
+        id="billing-monthly-btn"
+        aria-pressed="true"
+        class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap bg-fg text-page font-bold shadow"
+      >
+        Monthly
+      </button>
+      <button
+        type="button"
+        id="billing-annual-btn"
+        aria-pressed="false"
+        class="px-4 py-1.5 rounded-full text-sm transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap text-fg-subtle hover:text-fg"
+      >
+        Annual
+        <span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">-17%</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 4 plan cards -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+    <PricingCard
+      plan="Lite"
+      monthlyFirst="$0.99"
+      monthlyThen="$2.36/mo"
+      annualPrice="$2.06"
+      annualBilled="$24.70/year"
+      features={[
+        '100 GB storage',
+        '300 GB/mo bandwidth',
+        'All Mivio apps included',
+        'Mobile & desktop access',
+        'yourname.mivio.cloud subdomain',
+        'Basic file streaming',
+        'Automatic backups',
+      ]}
+      waitlistSegment="Mivio Cloud"
+    />
+    <PricingCard
+      plan="Standard"
+      popular={true}
+      monthlyFirst="$3.36"
+      monthlyThen="$7.73/mo"
+      annualPrice="$6.13"
+      annualBilled="$73.60/year"
+      featuresIntro="Everything in Lite ... &"
+      features={[
+        '500 GB storage',
+        '1.5 TB/mo bandwidth',
+        'Smart TV & VR access',
+        'Video streaming',
+        'Web file manager',
+        'Custom domain mapping',
+      ]}
+      waitlistSegment="Mivio Cloud"
+    />
+    <PricingCard
+      plan="Premium"
+      monthlyFirst="$5.47"
+      monthlyThen="$12.89/mo"
+      annualPrice="$10.74"
+      annualBilled="$128.90/year"
+      featuresIntro="Everything in Standard ... &"
+      features={[
+        '1 TB storage',
+        '3 TB/mo bandwidth',
+        'HD streaming',
+        'Music support',
+        'Subtitle & metadata auto-fetch',
+        'Email support',
+      ]}
+      waitlistSegment="Mivio Cloud"
+    />
+    <PricingCard
+      plan="Ultra"
+      monthlyFirst="$8.99"
+      monthlyThen="$19.73/mo"
+      annualPrice="$16.44"
+      annualBilled="$197.30/year"
+      featuresIntro="Everything in Premium ... &"
+      features={[
+        '2 TB storage',
+        'Unlimited bandwidth',
+        '4K streaming',
+        'Multi-user (family)',
+        'Priority support',
+        'Own domain support',
+      ]}
+      waitlistSegment="Mivio Cloud"
+    />
+  </section>
+
+  <!-- Custom Plan: Let's talk -->
+  <section class="card rounded-3xl p-8 border-primary/20 hover:border-primary/35 transition-colors mb-20">
+    <div class="flex flex-col md:flex-row gap-10 items-start">
+      <div class="md:w-64 shrink-0">
+        <span class="text-xs font-semibold uppercase tracking-widest text-fg-faint">Custom</span>
+        <h2 class="font-extrabold text-2xl text-fg mt-1 mb-3">Let's talk</h2>
+        <p class="text-fg-subtle text-sm leading-relaxed mb-4">
+          Need more than 2 TB, a dedicated server, or tailored team deployment? Tell us what you need.
+        </p>
+        <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
+          <li class="flex items-center gap-2">
+            <svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Flexible storage
+          </li>
+          <li class="flex items-center gap-2">
+            <svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Dedicated server
+          </li>
+          <li class="flex items-center gap-2">
+            <svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Direct personal support
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex-1 flex flex-col gap-5 w-full">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <label for="pricing-storage-slider" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Storage needed</label>
+            <span id="pricing-storage-slider-label" class="text-sm font-bold text-primary" aria-live="polite">5 TB</span>
+          </div>
+          <input
+            id="pricing-storage-slider"
+            type="range"
+            min="0"
+            max="7"
+            value="2"
+            step="1"
+            aria-valuetext="5 TB"
+            class="w-full h-2 rounded-full appearance-none cursor-pointer accent-primary bg-surface-alt border border-subtle"
+          />
+          <div class="flex justify-between text-xs text-fg-faint">
+            <span>3000 GB</span>
+            <span>30 TB+</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="pricing-custom-plan-message" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Tell us more (optional)</label>
+          <textarea
+            id="pricing-custom-plan-message"
+            rows="3"
+            placeholder="Describe what you need — media types, use case, team size, anything relevant…"
+            class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <a
+          id="pricing-custom-plan-send-btn"
+          href="mailto:cloud@mivio.app?subject=Mivio%20Cloud%20Custom%20Plan&body=Storage%3A%205%20TB%0A%0A"
+          class="btn-primary text-white font-bold px-5 py-3 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2 self-start"
+        >
+          <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Send request
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- More ways to save -->
+  <!-- <section class="mb-20">
+    <div class="text-center mb-10">
+      <h2 class="font-extrabold text-2xl sm:text-3xl text-fg mb-2">More ways to save</h2>
+      <p class="text-fg-subtle">Stack discounts, invite friends, or lock in the best rate long-term.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="card rounded-3xl p-7 flex flex-col gap-4 text-center hover:border-primary/30 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mx-auto">
+          <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-fg">Save 17%</p>
+          <p class="text-fg-subtle text-sm mt-1 font-semibold">Annual plan</p>
+        </div>
+        <p class="text-fg-faint text-xs">Pay annually and save 17% vs monthly billing. Cancel anytime.</p>
+      </div>
+
+      <div class="card rounded-3xl p-7 flex flex-col gap-4 text-center hover:border-primary/30 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mx-auto">
+          <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-fg">$4.99/mo</p>
+          <p class="text-fg-subtle text-sm mt-1 font-semibold">Standard with 2 active referrals</p>
+        </div>
+        <p class="text-fg-faint text-xs">Invite 2 friends. While they stay subscribed, your plan drops from $7.73 → $4.99/mo. Their bill goes down too.</p>
+      </div>
+
+      <div class="card rounded-3xl p-7 flex flex-col gap-4 text-center hover:border-primary/30 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mx-auto">
+          <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-fg">Free</p>
+          <p class="text-fg-subtle text-sm mt-1 font-semibold">Migration from any service</p>
+        </div>
+        <p class="text-fg-faint text-xs">Coming from Dropbox, Google Drive, or a home server? We help you move your data over at no extra cost.</p>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Pricing FAQs -->
+  <section class="mb-20">
+    <div class="text-center mb-10">
+      <h2 class="font-extrabold text-2xl sm:text-3xl text-fg mb-2">Frequently asked questions</h2>
+      <p class="text-fg-subtle">Everything you need to know about Mivio plans and billing.</p>
+    </div>
+    <div class="max-w-3xl mx-auto flex flex-col gap-4">
+      <FAQItem question="Can I upgrade, downgrade, or cancel at any time?">
+        Yes, you can upgrade, downgrade, or cancel your subscription whenever you want from your account dashboard. If you cancel, you will maintain access until the end of your current billing period.
+      </FAQItem>
+      <FAQItem question="How does the introductory price work?">
+        Your first month is discounted so you can test Mivio Cloud risk-free. After the first 30 days, your subscription renews at the regular monthly or annual rate unless changed.
+      </FAQItem>
+      <FAQItem question="What devices can I use Mivio on?">
+        Mivio is fully multi-platform. With a single account you can stream your media on iOS, iPadOS, Android, Apple TV, Android TV, macOS, Windows, Linux, and Meta Quest (VR).
+      </FAQItem>
+      <FAQItem question="Is my personal media private and secure?">
+        Absolutely. Your media files are completely private. We never scan, analyze, or train models on your personal content, and all transfers are encrypted end-to-end.
+      </FAQItem>
+      <FAQItem question="Do you support custom business or enterprise setups?">
+        Yes! We offer dedicated enterprise deployment, white-label solutions, and custom volume pricing. Check our <a href="b2b.html" class="text-primary hover:underline font-semibold">B2B page</a> or contact us directly.
+      </FAQItem>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="card rounded-3xl p-10 text-center">
+    <h2 class="font-bold text-2xl text-fg mb-2">Not sure which plan fits?</h2>
+    <p class="text-fg-subtle mb-6 max-w-xl mx-auto">
+      Ask us anything — which tier is right for you, how referrals work, or how to migrate your existing library at zero cost.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="mailto:cloud@mivio.app?subject=Mivio%20Pricing%20Question" class="btn-primary text-white font-bold px-8 py-3.5 rounded-2xl text-sm">
+        Get in touch
+      </a>
+      <a href="b2b.html" class="btn-outline font-semibold px-8 py-3.5 rounded-2xl text-sm hover:border-primary/50 transition-colors">
+        Explore B2B Solutions
+      </a>
+    </div>
+  </section>
+</main>
+
+<WaitlistModal />
+<Footer />
+
+<script is:inline>
+  // Billing toggle
+  (function () {
+    const monthlyBtn = document.getElementById('billing-monthly-btn');
+    const annualBtn = document.getElementById('billing-annual-btn');
+    const monthlyElements = document.querySelectorAll('.billing-monthly');
+    const annualElements = document.querySelectorAll('.billing-annual');
+
+    function setBilling(isAnnual) {
+      monthlyBtn?.setAttribute('aria-pressed', String(!isAnnual));
+      annualBtn?.setAttribute('aria-pressed', String(isAnnual));
+
+      if (isAnnual) {
+        monthlyBtn?.classList.remove('bg-fg', 'text-page', 'font-bold', 'shadow');
+        monthlyBtn?.classList.add('text-fg-subtle', 'hover:text-fg');
+        annualBtn?.classList.remove('text-fg-subtle', 'hover:text-fg');
+        annualBtn?.classList.add('bg-fg', 'text-page', 'font-bold', 'shadow');
+
+        monthlyElements.forEach((el) => el.classList.add('hidden'));
+        annualElements.forEach((el) => el.classList.remove('hidden'));
+      } else {
+        annualBtn?.classList.remove('bg-fg', 'text-page', 'font-bold', 'shadow');
+        annualBtn?.classList.add('text-fg-subtle', 'hover:text-fg');
+        monthlyBtn?.classList.remove('text-fg-subtle', 'hover:text-fg');
+        monthlyBtn?.classList.add('bg-fg', 'text-page', 'font-bold', 'shadow');
+
+        annualElements.forEach((el) => el.classList.add('hidden'));
+        monthlyElements.forEach((el) => el.classList.remove('hidden'));
+      }
+    }
+
+    monthlyBtn?.addEventListener('click', () => setBilling(false));
+    annualBtn?.addEventListener('click', () => setBilling(true));
+  })();
+
+  // Custom Plan calculator
+  (function () {
+    const slider = document.getElementById('pricing-storage-slider');
+    const label = document.getElementById('pricing-storage-slider-label');
+    const message = document.getElementById('pricing-custom-plan-message');
+    const sendBtn = document.getElementById('pricing-custom-plan-send-btn');
+    if (!slider || !label || !sendBtn) return;
+
+    const storageOptions = ['3 TB', '4 TB', '5 TB', '10 TB', '15 TB', '20 TB', '25 TB', 'Custom'];
+
+    function updateMailto() {
+      const idx = Number(slider.value) || 0;
+      const storageLabel = storageOptions[idx] || 'Custom';
+      label.textContent = storageLabel;
+      slider.setAttribute('aria-valuetext', storageLabel);
+
+      const text = message?.value || '';
+      const body = `Storage: ${storageLabel}\n\n${text}`;
+      sendBtn.setAttribute(
+        'href',
+        `mailto:cloud@mivio.app?subject=${encodeURIComponent('Mivio Cloud Custom Plan')}&body=${encodeURIComponent(body)}`
+      );
+    }
+
+    slider.addEventListener('input', updateMailto);
+    message?.addEventListener('input', updateMailto);
+    updateMailto();
+  })();
+
+  // FAQ Accordion
+  (function () {
+    document.querySelectorAll('.faq-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const item = btn.closest('.faq-item');
+        const content = item?.querySelector('.faq-content');
+        const icon = item?.querySelector('.faq-icon');
+
+        btn.setAttribute('aria-expanded', String(!isExpanded));
+        if (content) {
+          content.classList.toggle('hidden', isExpanded);
+        }
+        if (icon) {
+          icon.classList.toggle('rotate-180', !isExpanded);
+        }
+      });
+    });
+  })();
+</script>

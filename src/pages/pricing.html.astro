@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=cloud.html" />
-  <title>Mivio Pricing</title>
-</head>
-<body></body>
-</html>
+---
+import Layout from '../layouts/Layout.astro';
+import PricingContent from '../components/sections/PricingContent.astro';
+
+const title = 'Mivio Pricing — Flexible Plans for Personal Media & Cloud';
+const description = 'Simple, transparent pricing for Mivio Cloud. Lite, Standard, Premium, and Ultra tiers with zero technical setup and cancel anytime.';
+---
+<Layout title={title} description={description} path="/pricing.html">
+  <PricingContent />
+</Layout>
