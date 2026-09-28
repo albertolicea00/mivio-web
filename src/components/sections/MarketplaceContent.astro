@@ -2,36 +2,79 @@
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import WaitlistModal from '../WaitlistModal.astro';
+import Marquee from '../ui/Marquee.astro';
+
+const platforms = [
+  'META QUEST',
+  'APPLE VISION PRO',
+  'PICO 4',
+  'HTC VIVE',
+  'VALVE INDEX',
+  'SAMSUNG XR',
+];
 ---
 
 <Navbar />
 
 <main id="main-content" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-24">
 
+  <!-- Coming Soon Badge -->
+  <div class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 mb-6">
+    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+    Coming Soon
+  </div>
+
   <h1 class="font-extrabold text-4xl sm:text-5xl mb-4 text-fg leading-tight">
     Mivio <span class="gradient-text">Marketplace</span>
   </h1>
 
-  <p class="text-fg-subtle text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-    A curated library of 3D virtual environments for your spatial media room. Browse and install immersive spaces created by independent designers — cinemas, home theaters, space stations, cozy cabins, and more. Available on Meta Quest, Apple Vision Pro, Pico, HTC Vive, and more.
-  </p>
+  <div class="max-w-2xl mx-auto mb-10 text-center">
+    <p class="text-fg-subtle text-sm sm:text-base leading-relaxed mb-4">
+      The Mivio Marketplace is coming soon as an open home for the spatial computing niche. We believe the most compelling virtual environments aren't built by big corporations they are crafted by passionate 3D artists, indie creators, and VR enthusiasts who know exactly what makes a space feel immersive.
+    </p>
+  </div>
 
-  <div class="flex flex-col gap-8 max-w-lg mx-auto mb-12 text-center">
-    <div class="flex flex-col gap-1.5">
-      <h2 class="text-fg font-bold text-lg">For creators</h2>
-      <p class="text-fg-subtle text-sm leading-relaxed">Submit your 3D environments and earn from every install.</p>
+  <div class="flex flex-col gap-6 max-w-lg mx-auto mb-12 text-left w-full">
+    <div class="flex items-start gap-3.5">
+      <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-fg font-bold text-lg">For creators</h3>
+        <p class="text-fg-subtle text-sm leading-relaxed">Submit your 3D environments, monetize your work, and reach VR enthusiasts worldwide.</p>
+      </div>
     </div>
-    <div class="flex flex-col gap-1.5">
-      <h2 class="text-fg font-bold text-lg">For users</h2>
-      <p class="text-fg-subtle text-sm leading-relaxed">Personalize your VR media experience with unique spaces.</p>
+
+    <div class="flex items-start gap-3.5">
+      <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-fg font-bold text-lg">For users</h3>
+        <p class="text-fg-subtle text-sm leading-relaxed">Discover niche, community-crafted environments to personalize your spatial media experience.</p>
+      </div>
     </div>
   </div>
 
-  <p class="text-fg-faint text-sm mb-6">Want to be notified when we launch?</p>
-  <button type="button" data-waitlist="Mivio Marketplace"
-    class="btn-primary text-white font-bold px-8 py-3 rounded-2xl text-sm">
-    Join the waitlist
-  </button>
+    <div class="max-w-2xl mx-auto mb-10 text-center">
+    <p class="text-fg-subtle text-sm leading-relaxed">
+      From niche retro screening rooms to futuristic orbital decks, this platform is designed to give creators direct ownership and revenue, while letting users explore bespoke worlds tailored to their exact tastes.
+    </p>
+  </div>
+
+  <Marquee items={platforms} class="mb-14" />
+
+  <div class="max-w-md mx-auto text-center">
+    <h2 class="font-bold text-2xl text-fg mb-2">Be the first to know</h2>
+    <p class="text-fg-subtle text-sm leading-relaxed mb-6">
+      We're rolling out early access to select 3D creators and VR community members ahead of the public launch.
+    </p>
+
+    <button type="button" data-waitlist="Mivio Marketplace"
+      class="btn-primary text-white font-bold px-8 py-3 rounded-2xl text-sm">
+      Join the waitlist
+    </button>
+  </div>
 
 </main>
 
