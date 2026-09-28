@@ -30,7 +30,7 @@ import PromoCard from '../ui/PromoCard.astro';
     <span>in one place.</span>
   </h1>
 
-  <p class="text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">Discover Mivio, the ultimate
+  <p class="text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">Mivio, the ultimate
     multi-platform media player. Connect your local servers, <strong>SMB</strong> or <strong>WebDAV</strong>, and
     enjoy your movies and series with automatic artwork and built-in subtitles.</p>
 
@@ -209,27 +209,6 @@ import PromoCard from '../ui/PromoCard.astro';
         </button>
       </div>
     </div>
-
-    <div class="text-center mt-16 mb-6">
-      <p class="text-fg-faint text-sm mb-2">While you wait, explore the rest of Mivio</p>
-      <h2 class="text-2xl font-bold text-fg">More coming soon</h2>
-    </div>
-    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-      <button type="button" data-waitlist="Mivio Apps"
-        class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
-        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-        </svg>
-        <span>Join the waitlist</span>
-      </button>
-      <a href="cloud.html" class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
-        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-        </svg>
-        <span>Explore Cloud</span>
-      </a>
-    </div>
-
   </div>
 </section>
 
@@ -255,15 +234,6 @@ import PromoCard from '../ui/PromoCard.astro';
         device (like ExoPlayer or AVPlayer) to decode files locally, saving server resources.
       </FAQItem>
 
-      <FAQItem question="Is Mivio really free?">
-        Yes! Mivio is a free, non-commercial project developed by the community. You can download it for any of
-        the supported platforms at no cost — your device already cost enough.
-      </FAQItem>
-
-      <FAQItem question="Is Mivio open source?">
-        Yes! The Mivio client apps (Apple, Android, Smart TV, VR) are publicly available on GitHub. They are released under a <strong>non-commercial license</strong> — you can freely use, fork, and contribute to them for personal or educational purposes. Commercial redistribution or rebranding without a commercial agreement is not permitted.
-      </FAQItem>
-
       <FAQItem question="Can I use Mivio for my business or organization?">
         Absolutely. We offer <strong>B2B licensing</strong> for hotels, universities, academies, and organizations that want to deploy Mivio at scale. We also offer <strong>white-label</strong> agreements for businesses that want to ship Mivio under their own branding. <a href="b2b.html" class="text-primary hover:underline font-semibold">Find your plan or get support →</a>
       </FAQItem>
@@ -278,6 +248,7 @@ import PromoCard from '../ui/PromoCard.astro';
 <!-- ==============================================================
      PROMO — CLOUD + B2B
 ============================================================== -->
+<!-- 
 <section class="py-20 px-6 bg-page">
   <div class="max-w-4xl mx-auto">
 
@@ -293,10 +264,9 @@ import PromoCard from '../ui/PromoCard.astro';
         title="Don't have a server? We've got you covered."
         ctaHref="cloud.html"
         ctaLabel="See Cloud plans"
-        priceNote="From $2.36/month · First month $0.99"
         borderClass="border-primary/20 hover:border-primary/40 transition-colors"
       >
-        <svg slot="icon" aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        <svg slot="icon" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
         <svg slot="cta-icon" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
         Host your personal media library in the cloud and stream it from any device, anywhere. Zero technical setup. Your data stays private.
         <Fragment slot="features">
@@ -313,7 +283,7 @@ import PromoCard from '../ui/PromoCard.astro';
         ctaHref="b2b.html"
         ctaLabel="Learn about B2B"
       >
-        <svg slot="icon" aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <svg slot="icon" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
         <svg slot="cta-icon" aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
         Enterprise licensing for organizations deploying Mivio at scale, and white-label agreements for businesses shipping it as their own product.
         <Fragment slot="features">
@@ -327,6 +297,7 @@ import PromoCard from '../ui/PromoCard.astro';
     </div>
   </div>
 </section>
+-->
 
 <WaitlistModal />
 
