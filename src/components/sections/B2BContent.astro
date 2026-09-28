@@ -82,7 +82,7 @@ import LicenseModelCard from '../ui/LicenseModelCard.astro';
     </div>
   </section>
 
-  <section class="text-center">
+  <section class="relative text-center">
     <h2 class="font-bold text-2xl text-fg mb-3">Ready to talk?</h2>
     <p class="text-fg-subtle mb-6 max-w-xl mx-auto">Tell us about your project and we'll get back to you with a proposal tailored to your needs.</p>
     <button
@@ -90,6 +90,7 @@ import LicenseModelCard from '../ui/LicenseModelCard.astro';
       class="btn-primary text-white font-bold px-8 py-4 rounded-2xl text-base">
       Get early access
     </button>
+    <div class="absolute -bottom-40 left-1/2 -translate-x-1/2 w-3/4 h-32 rounded-full blur-[100px] bg-primary/30 -z-10 pointer-events-none" aria-hidden="true"></div>
   </section>
 
 </main>

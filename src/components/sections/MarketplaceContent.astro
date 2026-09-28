@@ -64,7 +64,7 @@ const platforms = [
 
   <Marquee items={platforms} class="mb-14" />
 
-  <div class="max-w-md mx-auto text-center">
+  <div class="relative max-w-md mx-auto text-center" style="margin-bottom: -10em;">
     <h2 class="font-bold text-2xl text-fg mb-2">Be the first to know</h2>
     <p class="text-fg-subtle text-sm leading-relaxed mb-6">
       We're rolling out early access to select 3D creators and VR community members ahead of the public launch.
@@ -74,6 +74,7 @@ const platforms = [
       class="btn-primary text-white font-bold px-8 py-3 rounded-2xl text-sm">
       Join the waitlist
     </button>
+    <div class="absolute -bottom-40 left-1/2 -translate-x-1/2 w-3/4 h-32 rounded-full blur-[100px] bg-primary/30 -z-10 pointer-events-none" aria-hidden="true"></div>
   </div>
 
 </main>
