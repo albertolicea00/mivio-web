@@ -11,87 +11,197 @@ import WaitlistModal from '../WaitlistModal.astro';
     <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl mb-6 text-fg leading-tight">
       Your data.<br /><span class="gradient-text">Always with you.</span>
     </h1>
-    <p class="text-fg-subtle text-lg max-w-2xl mx-auto leading-relaxed">
-      Mivio Cloud hosts your personal media library and data storage —
-      movies, series, music, documents. Access everything from any device,
-      anywhere, with zero technical setup.
-    </p>
   </header>
 
-  <section class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-20">
-    <div class="flex flex-col gap-2">
-      <div class="flex items-center gap-2.5">
-        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-        <h3 class="font-bold text-fg">Zero Setup</h3>
-      </div>
-      <p class="text-fg-subtle text-sm leading-relaxed">
-        We configure and maintain everything. You just stream and enjoy.
+  <!-- What is Mivio Cloud & How it compares to Drive / iCloud -->
+  <section class="mb-24 pt-8 border-t border-subtle">
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <h2 class="font-extrabold text-3xl sm:text-4xl text-fg mb-4">
+        Why Mivio Cloud instead of Drive or iCloud?
+      </h2>
+      <p class="text-fg-subtle text-base leading-relaxed">
+        Services like Google Drive, iCloud, or Dropbox were built for office documents and photos — not for streaming 50GB high-bitrate movies, 8K spatial video, and lossless audio directly to VR headsets and high-end screens.
       </p>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <div class="flex items-center gap-2.5">
-        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-        <h3 class="font-bold text-fg">Your Data, Private</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+      <div class="flex items-start gap-3.5">
+        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-bold text-fg text-base">High-Bitrate Media Streaming</h3>
+          <p class="text-fg-subtle text-sm leading-relaxed">
+            Traditional drives throttle video bandwidth and force you to wait for 40GB+ downloads. Mivio Cloud is built to stream massive spatial videos and 4K/8K remuxes with instant seeking and zero lag.
+          </p>
+        </div>
       </div>
-      <p class="text-fg-subtle text-sm leading-relaxed">
-        Your files are yours. No scanning, no indexing, no sharing with third parties.
-      </p>
-    </div>
 
-    <div class="flex flex-col gap-2">
-      <div class="flex items-center gap-2.5">
-        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        <h3 class="font-bold text-fg">Any Device</h3>
+      <div class="flex items-start gap-3.5">
+        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-bold text-fg text-base">Absolute Privacy & Zero Scanning</h3>
+          <p class="text-fg-subtle text-sm leading-relaxed">
+            Unlike Big Tech cloud storage that scans and indexes files for algorithms or AI models, your Mivio Cloud instance is 100% private, isolated, and encrypted.
+          </p>
+        </div>
       </div>
-      <p class="text-fg-subtle text-sm leading-relaxed">
-        Access from iOS, Android, Smart TV, VR, desktop — wherever Mivio runs.
-      </p>
+
+      <div class="flex items-start gap-3.5">
+        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-bold text-fg text-base">No NAS or Server Headaches</h3>
+          <p class="text-fg-subtle text-sm leading-relaxed">
+            Forget buying noisy home servers, forwarding router ports, or configuring complex Plex/Jellyfin setups. Mivio Cloud is fully managed and ready in seconds.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3.5">
+        <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-bold text-fg text-base">Seamless Mivio Ecosystem Sync</h3>
+          <p class="text-fg-subtle text-sm leading-relaxed">
+            Watch progress, bookmarks, virtual 3D cinema environments, and audio preferences sync natively across Meta Quest, Apple Vision Pro, mobile, and smart TVs.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="pricing" class="mb-16">
-
-    <div class="card rounded-3xl p-8 border-primary/20 hover:border-primary/35 transition-colors">
-      <div class="flex flex-col md:flex-row gap-10 items-start">
-        <div class="md:w-64 shrink-0">
-          <span class="text-xs font-semibold uppercase tracking-widest text-fg-faint">Custom</span>
-          <h3 class="font-extrabold text-2xl text-fg mt-1 mb-3">Let's talk</h3>
-          <p class="text-fg-subtle text-sm leading-relaxed mb-4">Need more than 2 TB, a dedicated server, or just direct support? Tell us what you need.</p>
-          <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
-            <li class="flex items-center gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Flexible storage</li>
-            <li class="flex items-center gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Dedicated server</li>
-            <li class="flex items-center gap-2"><svg aria-hidden="true" class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Direct personal support</li>
-          </ul>
+  <!-- What we offer & Custom Plan Contact Form -->
+  <section id="custom-plans" class="mb-20 pt-8 border-t border-subtle">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
+      
+      <!-- What we offer -->
+      <div class="flex flex-col gap-6 text-left">
+        <div>
+          <span class="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">Custom Solutions</span>
+          <h2 class="font-extrabold text-2xl sm:text-3xl text-fg mb-3">
+            What Mivio Cloud offers
+          </h2>
+          <p class="text-fg-subtle text-sm sm:text-base leading-relaxed">
+            Need tailored storage capacity, dedicated resources, or direct support for a large media collection? We configure custom cloud instances tailored to your exact library size.
+          </p>
         </div>
 
-        <div class="flex-1 flex flex-col gap-5 w-full">
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <label for="storage-slider" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Storage needed</label>
-              <span id="storage-slider-label" class="text-sm font-bold text-primary" aria-live="polite">5 TB</span>
-            </div>
-            <input id="storage-slider" type="range" min="0" max="7" value="2" step="1" aria-valuetext="5 TB"
-              class="w-full h-2 rounded-full appearance-none cursor-pointer accent-primary bg-surface-alt border border-subtle" />
-            <div class="flex justify-between text-xs text-fg-faint">
-              <span>3000 GB</span>
-              <span>30 TB+</span>
+        <div class="flex flex-col gap-5 mt-2">
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7M4 7c0-2 1.5-3 3.5-3h9c2 0 3.5 1 3.5 3M4 7h16m-16 5c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3m-16 0h16"/>
+            </svg>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-bold text-fg text-base">Flexible storage</h3>
+              <p class="text-fg-subtle text-sm leading-relaxed">
+                Scale your capacity from a few terabytes to 10 TB, 30 TB, or beyond. Pay only for what your media collection actually requires without artificial caps.
+              </p>
             </div>
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label for="custom-plan-message" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Tell us more (optional)</label>
-            <textarea id="custom-plan-message" rows="3" placeholder="Describe what you need — media types, use case, anything relevant…"
-              class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors resize-none"></textarea>
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+            </svg>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-bold text-fg text-base">Dedicated server</h3>
+              <p class="text-fg-subtle text-sm leading-relaxed">
+                Isolated cloud instance with dedicated high-speed bandwidth, ensuring zero bottlenecks when streaming high-bitrate 4K, 8K, and spatial video.
+              </p>
+            </div>
           </div>
 
-          <a id="custom-plan-send-btn" href="mailto:cloud@mivio.app?subject=Mivio%20Cloud%20Custom%20Plan&body=Storage%3A%205%20TB%0A%0A"
-            class="btn-primary text-white font-bold px-5 py-3 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2 self-start">
-            <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Send
-          </a>
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-bold text-fg text-base">Direct personal support</h3>
+              <p class="text-fg-subtle text-sm leading-relaxed">
+                Direct 1-on-1 assistance with onboarding, setup, and media migration directly from our engineering team.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Standard Form ("un formulario normal") -->
+      <div class="rounded-3xl border border-subtle bg-surface p-6 sm:p-8 text-left">
+        <span class="text-xs font-semibold uppercase tracking-widest text-fg-faint">Custom Plan</span>
+        <h3 class="font-extrabold text-2xl text-fg mt-1 mb-2">Let's talk</h3>
+        <p class="text-fg-subtle text-xs sm:text-sm mb-6 leading-relaxed">
+          Tell us about your library and storage needs. We'll get back to you with a tailored proposal.
+        </p>
+
+        <form id="cloud-contact-form" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label for="cloud-name" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Your Name</label>
+            <input
+              id="cloud-name"
+              name="name"
+              type="text"
+              required
+              placeholder="e.g. Alex Smith"
+              class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="cloud-email" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Email Address</label>
+            <input
+              id="cloud-email"
+              name="email"
+              type="email"
+              required
+              placeholder="alex@example.com"
+              class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="cloud-storage" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Storage Needed</label>
+            <select
+              id="cloud-storage"
+              name="storage"
+              class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg focus:outline-none focus:border-primary/50 transition-colors cursor-pointer"
+            >
+              <option value="2 TB – 5 TB">2 TB – 5 TB</option>
+              <option value="5 TB – 10 TB" selected>5 TB – 10 TB</option>
+              <option value="10 TB – 20 TB">10 TB – 20 TB</option>
+              <option value="20 TB – 50 TB+">20 TB – 50 TB+</option>
+              <option value="Custom / Unsure">Custom / Let's discuss</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="cloud-message" class="text-xs font-semibold text-fg-subtle uppercase tracking-wide">Message (optional)</label>
+            <textarea
+              id="cloud-message"
+              name="message"
+              rows="3"
+              placeholder="Describe your media types, use case, devices, or any special requirements…"
+              class="w-full rounded-xl border border-subtle bg-surface px-4 py-2.5 text-sm text-fg placeholder:text-fg-faint focus:outline-none focus:border-primary/50 transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="cloud-submit-btn"
+            class="btn-primary text-white font-bold px-6 py-3 rounded-2xl text-sm flex items-center justify-center gap-2 mt-2"
+          >
+            <span>Send message</span>
+            <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
     </div>
   </section>
 </main>
@@ -100,32 +210,21 @@ import WaitlistModal from '../WaitlistModal.astro';
 <Footer />
 
 <script is:inline>
-  // Custom Plan calculator
   (function () {
-    const slider = document.getElementById('storage-slider');
-    const label = document.getElementById('storage-slider-label');
-    const message = document.getElementById('custom-plan-message');
-    const sendBtn = document.getElementById('custom-plan-send-btn');
-    if (!slider || !label || !sendBtn) return;
+    const form = document.getElementById('cloud-contact-form');
+    if (!form) return;
 
-    const storageOptions = ['3 TB', '4 TB', '5 TB', '10 TB', '15 TB', '20 TB', '25 TB', 'Custom'];
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('cloud-name')?.value || '';
+      const email = document.getElementById('cloud-email')?.value || '';
+      const storage = document.getElementById('cloud-storage')?.value || '';
+      const message = document.getElementById('cloud-message')?.value || '';
 
-    function updateMailto() {
-      const idx = Number(slider.value) || 0;
-      const storageLabel = storageOptions[idx] || 'Custom';
-      label.textContent = storageLabel;
-      slider.setAttribute('aria-valuetext', storageLabel);
+      const subject = `Mivio Cloud Custom Plan Inquiry - ${name}`;
+      const body = `Name: ${name}\nEmail: ${email}\nStorage Needed: ${storage}\n\nMessage / Requirements:\n${message}`;
 
-      const text = message?.value || '';
-      const body = `Storage: ${storageLabel}\n\n${text}`;
-      sendBtn.setAttribute(
-        'href',
-        `mailto:cloud@mivio.app?subject=${encodeURIComponent('Mivio Cloud Custom Plan')}&body=${encodeURIComponent(body)}`
-      );
-    }
-
-    slider.addEventListener('input', updateMailto);
-    message?.addEventListener('input', updateMailto);
-    updateMailto();
+      window.location.href = `mailto:cloud@mivio.app?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
   })();
 </script>
