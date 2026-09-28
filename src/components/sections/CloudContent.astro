@@ -131,11 +131,13 @@ import WaitlistModal from '../WaitlistModal.astro';
       </div>
 
       <!-- Standard Form ("un formulario normal") -->
-      <div class="w-full max-w-xl mx-auto lg:max-w-none rounded-3xl border border-subtle bg-surface p-6 sm:p-8 text-left">
-        <h3 class="font-extrabold text-2xl text-fg mt-1 mb-2">Build your plan</h3>
-        <p class="text-fg-subtle text-xs sm:text-sm mb-6 leading-relaxed">
-          Tell us about your collection and budget. We'll configure and recommend the setup that fits your needs.
-        </p>
+      <div class="flex flex-col w-full max-w-xl mx-auto lg:max-w-none relative" style="background:rgba(224,112,79,.15);border:1px solid rgba(242,236,223,.14);border-radius:16px;padding:14px 14px 12px;box-shadow:0 24px 60px rgba(0,0,0,.42),inset 0 1px 0 rgba(242,236,223,.10)">
+        <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:2px 4px 12px"></div>
+        <div class="flex flex-col flex-1 p-6 sm:p-8 text-left relative" style="background:rgba(255,255,255,.58);backdrop-filter:blur(22px) brightness(3.1) saturate(.72);-webkit-backdrop-filter:blur(22px) brightness(3.1) saturate(.72);border:1px solid rgba(255,255,255,.42);border-radius:12px;color:#241d15;">
+          <h3 class="font-extrabold text-2xl mt-1 mb-2">Build your plan</h3>
+          <p class="text-xs sm:text-sm mb-6 leading-relaxed" style="color:rgba(36, 29, 21, 0.8);">
+            Tell us about your collection and budget. We'll configure and recommend the setup that fits your needs.
+          </p>
 
         <form id="cloud-contact-form" class="flex flex-col gap-3.5">
           <!-- Contact -->
@@ -265,6 +267,8 @@ import WaitlistModal from '../WaitlistModal.astro';
             </svg>
           </button>
         </form>
+        </div>
+        <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:12px 4px 2px"></div>
       </div>
 
     </div>

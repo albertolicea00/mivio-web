@@ -12,16 +12,20 @@ export interface Props {
 const { title, description, features, note, borderClass = '' } = Astro.props;
 ---
 
-<div class={`card rounded-3xl p-8 flex flex-col gap-5 ${borderClass}`}>
-  <div class="flex items-center gap-2">
-    <span class="text-primary shrink-0 flex items-center">
-      <slot name="icon" />
-    </span>
-    <h2 class="font-bold text-xl text-fg">{title}</h2>
+<div class={`flex flex-col ${borderClass}`} style="flex:none;width:430px;background:rgba(224,112,79,.15);border:1px solid rgba(242,236,223,.14);border-radius:16px;padding:14px 14px 12px;box-shadow:0 24px 60px rgba(0,0,0,.42),inset 0 1px 0 rgba(242,236,223,.10)">
+  <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:2px 4px 12px"></div>
+  <div class="flex flex-col gap-5 flex-1" style="background:rgba(255,255,255,.58);backdrop-filter:blur(22px) brightness(3.1) saturate(.72);-webkit-backdrop-filter:blur(22px) brightness(3.1) saturate(.72);border:1px solid rgba(255,255,255,.42);border-radius:12px;padding:24px;color:#241d15;">
+    <div class="flex items-center gap-2">
+      <span class="text-primary shrink-0 flex items-center">
+        <slot name="icon" />
+      </span>
+      <h2 class="font-bold text-xl">{title}</h2>
+    </div>
+    <p class="text-sm leading-relaxed" style="color:rgba(36, 29, 21, 0.8);">{description}</p>
+    <ul class="flex flex-col gap-2 text-sm" style="color:rgba(36, 29, 21, 0.8);">
+      {features.map((feature) => <CheckListItem align="start">{feature}</CheckListItem>)}
+    </ul>
+    <p class="text-xs mt-auto" style="color:rgba(36, 29, 21, 0.6);">{note}</p>
   </div>
-  <p class="text-fg-subtle text-sm leading-relaxed">{description}</p>
-  <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
-    {features.map((feature) => <CheckListItem align="start">{feature}</CheckListItem>)}
-  </ul>
-  <p class="text-fg-faint text-xs">{note}</p>
+  <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:12px 4px 2px"></div>
 </div>
