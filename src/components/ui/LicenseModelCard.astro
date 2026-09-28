@@ -13,13 +13,13 @@ const { title, description, features, note, borderClass = '' } = Astro.props;
 ---
 
 <div class={`card rounded-3xl p-8 flex flex-col gap-5 ${borderClass}`}>
-  <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-    <slot name="icon" />
+  <div class="flex items-center gap-2">
+    <span class="text-primary shrink-0 flex items-center">
+      <slot name="icon" />
+    </span>
+    <h2 class="font-bold text-xl text-fg">{title}</h2>
   </div>
-  <div>
-    <h2 class="font-bold text-xl text-fg mb-2">{title}</h2>
-    <p class="text-fg-subtle text-sm leading-relaxed">{description}</p>
-  </div>
+  <p class="text-fg-subtle text-sm leading-relaxed">{description}</p>
   <ul class="flex flex-col gap-2 text-sm text-fg-subtle">
     {features.map((feature) => <CheckListItem align="start">{feature}</CheckListItem>)}
   </ul>
