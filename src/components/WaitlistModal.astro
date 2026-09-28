@@ -29,13 +29,9 @@
 
     <!-- Header -->
     <div class="flex flex-col gap-2">
-      <div class="inline-flex items-center gap-2 hero-badge rounded-full px-3 py-1 text-xs w-fit">
-        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-        <span>Coming Soon</span>
-      </div>
       <h2 id="waitlist-modal-title" class="text-xl font-extrabold text-fg">Join the waitlist</h2>
       <p class="text-fg-subtle text-sm">
-        Be the first to know when <span id="waitlist-segment" class="text-fg font-semibold capitalize"></span> launches. No spam, ever.
+        Be the first to know when <span id="waitlist-segment" class="text-fg font-semibold capitalize"></span> launches. 
       </p>
     </div>
 
@@ -71,18 +67,6 @@
         <p id="waitlist-error" class="hidden text-xs text-red-400 mt-0.5"></p>
       </div>
 
-      <!-- Newsletter opt-in -->
-      <label class="flex items-start gap-3 cursor-pointer select-none">
-        <input
-          type="checkbox"
-          id="waitlist-newsletter"
-          class="mt-0.5 w-4 h-4 rounded border-subtle accent-primary shrink-0 cursor-pointer"
-        />
-        <span class="text-xs text-fg-subtle leading-relaxed">
-          Also subscribe me to the Mivio newsletter — product updates, tips, and early access announcements.
-        </span>
-      </label>
-
       <button
         type="submit"
         id="waitlist-submit"
@@ -114,7 +98,6 @@
     const successDiv = document.getElementById('waitlist-success');
     const emailInput = document.getElementById('waitlist-email');
     const hpInput = document.getElementById('waitlist-hp');
-    const newsletterInput = document.getElementById('waitlist-newsletter');
     const errorP = document.getElementById('waitlist-error');
     const submitBtn = document.getElementById('waitlist-submit');
     const spinner = document.getElementById('waitlist-spinner');
@@ -214,7 +197,6 @@
           body: JSON.stringify({
             email,
             segment: currentSegment,
-            newsletter: Boolean(newsletterInput?.checked),
             _hp: hpInput?.value || '',
           }),
         });
