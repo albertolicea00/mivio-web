@@ -8,11 +8,14 @@ import FeatureCard from '../ui/FeatureCard.astro';
 import DeviceCard from '../ui/DeviceCard.astro';
 import FAQItem from '../ui/FAQItem.astro';
 import PromoCard from '../ui/PromoCard.astro';
+import Marquee from '../ui/Marquee.astro';
 
 const technicalSpecs = [
   {
     category: 'Video Formats',
     icon: 'video',
+    reverse: false,
+    speed: '42s',
     items: [
       '3GP', 'ASF', 'AV1', 'AVI', 'BDMV', 'DivX', 'DVDMEDIA', 'DVR-MS', 'FLV',
       'H.264 (AVC)', 'H.265 (HEVC)', 'H.266 (VVC)', 'ISO/IMG', 'M4V', 'MKV', 'MOV',
@@ -23,6 +26,8 @@ const technicalSpecs = [
   {
     category: 'Audio Formats',
     icon: 'audio',
+    reverse: true,
+    speed: '28s',
     items: [
       'AAC', 'AIFF', 'Dolby Digital (AC3)', 'Dolby Digital Plus (E-AC3)',
       'Dolby TrueHD', 'DTS', 'DTS-HD MA', 'FLAC', 'MP3', 'Ogg', 'PCM',
@@ -32,6 +37,8 @@ const technicalSpecs = [
   {
     category: 'Subtitles',
     icon: 'subtitles',
+    reverse: false,
+    speed: '34s',
     items: [
       'DVB', 'DVDSub', 'MicroDVD', 'MPL2', 'PGS', 'SMI', 'SRT', 'SSA/ASS',
       'SUB', 'SUP', 'Timed Text', 'TMP', 'TXT', 'VobSub', 'VTT', 'XSUB',
@@ -40,6 +47,8 @@ const technicalSpecs = [
   {
     category: 'Network Protocols',
     icon: 'network',
+    reverse: true,
+    speed: '24s',
     items: [
       'SMB', 'NFS', 'FTP', 'FTPES', 'FTPS', 'SFTP', 'HTTP/HTTPS', 'UPnP/DLNA', 'WebDAV',
     ],
@@ -47,6 +56,8 @@ const technicalSpecs = [
   {
     category: 'Media Servers',
     icon: 'servers',
+    reverse: false,
+    speed: '20s',
     items: [
       'Emby', 'Jellyfin', 'Plex',
     ],
@@ -54,6 +65,8 @@ const technicalSpecs = [
   {
     category: 'Cloud Services',
     icon: 'cloud',
+    reverse: true,
+    speed: '32s',
     items: [
       'Dropbox', 'Google Drive', 'OneDrive', 'Box', 'pCloud', 'Yandex.Disk',
       'MEGA', 'Aliyun Drive', '123 Drive', '115 Drive', 'Baidu NetDisk', 'GuangYaPan',
@@ -269,66 +282,25 @@ const technicalSpecs = [
 ============================================================== -->
 <section id="technical-specifications" class="py-24 px-6 border-t border-subtle">
   <div class="max-w-6xl mx-auto">
-    <SectionHeader eyebrow="Technical Specifications" class="text-center mb-16">
-      <span>Plays virtually</span><br />
+    <SectionHeader class="text-center mb-16">
+      <span>Plays almost</span><br />
       <span class="gradient-text">everything.</span>
       <Fragment slot="description">
-        <p class="text-fg-subtle mt-5 max-w-2xl mx-auto text-base leading-relaxed">
-          Unrivaled format and codec compatibility. From high-bitrate spatial video to lossless audio, subtitles, network protocols, and personal cloud drives — Mivio handles it all without file conversions.
+        <p class="text-fg-subtle mt-4 max-w-xl mx-auto text-base leading-relaxed">
+          And if it doesn't play it yet, it will very soon. View all supported formats in the <a href="manual.html" class="text-primary hover:underline font-semibold inline-flex items-center gap-1">User Manual <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>.
         </p>
       </Fragment>
     </SectionHeader>
 
-    <div class="card rounded-3xl p-6 sm:p-10 divide-y divide-subtle max-w-5xl mx-auto">
+    <div class="flex flex-col border-y border-subtle divide-y divide-subtle max-w-5xl mx-auto">
       {technicalSpecs.map((spec) => (
-        <div class="py-6 first:pt-0 last:pb-0 flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-          <div class="md:w-56 shrink-0 flex items-center gap-2.5">
-            {spec.icon === 'video' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-            )}
-            {spec.icon === 'audio' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-              </svg>
-            )}
-            {spec.icon === 'subtitles' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-              </svg>
-            )}
-            {spec.icon === 'network' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-            )}
-            {spec.icon === 'servers' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-              </svg>
-            )}
-            {spec.icon === 'cloud' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-              </svg>
-            )}
-            {spec.icon === 'requirements' && (
-              <svg aria-hidden="true" class="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            )}
-            <h3 class="text-sm font-bold text-fg uppercase tracking-wider">{spec.category}</h3>
-          </div>
-
-          <div class="flex-1 flex flex-wrap gap-1.5 sm:gap-2">
-            {spec.items.map((item) => (
-              <span class="px-2.5 py-1 rounded-lg border border-subtle bg-surface-alt/70 text-xs font-mono text-fg-subtle hover:text-fg hover:border-primary/40 transition-colors">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
+        <Marquee
+          items={spec.items}
+          reverse={spec.reverse}
+          speed={spec.speed}
+          bordered={false}
+          separator="✦"
+        />
       ))}
     </div>
   </div>
