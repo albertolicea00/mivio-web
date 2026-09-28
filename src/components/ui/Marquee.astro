@@ -3,6 +3,7 @@ export interface Props {
   items?: string[];
   separator?: string;
   speed?: string;
+  reverse?: boolean;
   class?: string;
 }
 
@@ -10,17 +11,28 @@ const {
   items = [],
   separator = '✦',
   speed = '25s',
+  reverse = false,
   class: className = '',
 } = Astro.props;
+
+const minItems = 16;
+const repeatCount = items.length > 0 && items.length < minItems
+  ? Math.ceil(minItems / items.length)
+  : 1;
+const displayItems = items.length > 0
+  ? Array.from({ length: repeatCount }, () => items).flat()
+  : [];
 ---
 
 <div class={`w-full max-w-5xl mx-auto overflow-hidden py-3.5 border-y border-subtle select-none marquee-mask ${className}`}>
   <div
-    class="flex whitespace-nowrap w-max animate-marquee hover:[animation-play-state:paused] font-mono text-xs tracking-[0.24em] text-fg-subtle"
+    class={`flex whitespace-nowrap w-max animate-marquee hover:[animation-play-state:paused] font-mono text-xs tracking-[0.24em] text-fg-subtle ${
+      reverse ? 'marquee-reverse' : ''
+    }`}
     style={`--marquee-speed: ${speed};`}
   >
     <div class="flex items-center gap-8 pr-8">
-      {items.map((item) => (
+      {displayItems.map((item) => (
         <span class="inline-flex items-center gap-8">
           <span class="font-medium text-fg">{item}</span>
           <span class="text-primary text-sm leading-none select-none">{separator}</span>
@@ -29,7 +41,7 @@ const {
       <slot />
     </div>
     <div class="flex items-center gap-8 pr-8" aria-hidden="true">
-      {items.map((item) => (
+      {displayItems.map((item) => (
         <span class="inline-flex items-center gap-8">
           <span class="font-medium text-fg">{item}</span>
           <span class="text-primary text-sm leading-none select-none">{separator}</span>
@@ -57,5 +69,9 @@ const {
 
   .animate-marquee {
     animation: marquee-scroll var(--marquee-speed, 25s) linear infinite;
+  }
+
+  .marquee-reverse {
+    animation-direction: reverse;
   }
 </style>
