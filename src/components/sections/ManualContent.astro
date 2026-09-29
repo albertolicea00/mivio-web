@@ -1,38 +1,34 @@
 ---
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
-import ManualStep from '../ui/ManualStep.astro';
+import LegalHeader from '../ui/LegalHeader.astro';
+import LegalSection from '../ui/LegalSection.astro';
 ---
 
 <Navbar />
 
-<main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+<main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
 
-  <header class="mb-16 text-center">
-    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-fg">User Manual</h1>
-    <p class="text-fg-subtle text-lg max-w-2xl mx-auto">Everything you need to know to get the most out of Mivio.</p>
-  </header>
+  <LegalHeader title="User Manual" updated="May 2026" />
 
-  <div class="space-y-12">
-    <ManualStep title="1. Connect your Server (SMB/WebDAV)" color="primary">
-      <svg slot="icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
-      Go to the "Servers" tab and tap the "+" button. Choose your protocol (SMB for Windows/Mac/NAS, WebDAV for remote servers). Enter your IP address, port, username, and password. Mivio will automatically scan the folders you select.
-    </ManualStep>
+  <div class="space-y-12 text-fg-subtle leading-relaxed">
 
-    <ManualStep title="2. Automatic Metadata" color="accent">
-      <svg slot="icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>
-      When you add a server, Mivio will try to match your video files with TMDB. For best results, name your files clearly (e.g., "Movie Name (2023).mp4" or "Show S01E01.mkv"). If a match is wrong, you can long-press the item and select "Fix Match".
-    </ManualStep>
+    <LegalSection title="1. Connect your Server (SMB/WebDAV)">
+      <p>Go to the "Servers" tab and tap the "+" button. Choose your protocol (<strong>SMB</strong> for Windows/Mac/NAS, <strong>WebDAV</strong> for remote servers). Enter your IP address, port, username, and password. Mivio will automatically scan the folders you select.</p>
+    </LegalSection>
 
-    <ManualStep title="3. Subtitles" color="primary">
-      <svg slot="icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-      During playback, tap the subtitle icon. You can select an embedded subtitle track, a local file, or tap "Search Online" to download subtitles from OpenSubtitles automatically based on the video hash.
-    </ManualStep>
+    <LegalSection title="2. Automatic Metadata">
+      <p>When you add a server, Mivio will try to match your video files with <strong>TMDB</strong>. For best results, name your files clearly (e.g., "Movie Name (2023).mp4" or "Show S01E01.mkv"). If a match is wrong, you can long-press the item and select "Fix Match".</p>
+    </LegalSection>
 
-    <ManualStep title="4. Player Controls" color="accent">
-      <svg slot="icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      Swipe left/right to seek. Swipe up/down on the left side to adjust brightness, and on the right side for volume. Double tap the edges to skip 10 seconds.
-    </ManualStep>
+    <LegalSection title="3. Subtitles">
+      <p>During playback, tap the subtitle icon. You can select an embedded subtitle track, a local file, or tap "Search Online" to download subtitles from <strong>OpenSubtitles</strong> automatically based on the video hash.</p>
+    </LegalSection>
+
+    <LegalSection title="4. Player Controls">
+      <p>Swipe left/right to seek. Swipe up/down on the left side to adjust brightness, and on the right side for volume. Double tap the edges to skip 10 seconds.</p>
+    </LegalSection>
+
   </div>
 </main>
 
