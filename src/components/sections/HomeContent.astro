@@ -81,25 +81,42 @@ const technicalSpecs = [
      HERO
 ============================================================== -->
 <section id="main-content"
-  class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10 sm:pb-16 overflow-hidden hero-glow">
+  class="relative isolate min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10 sm:pb-16 overflow-hidden hero-glow">
 
-  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+  <!-- Background Video -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      class="w-full h-full object-cover opacity-45"
+    >
+      <source src="/static/videos/collage-movies-right.webm" type="video/webm" />
+      <source src="/static/videos/collage-movies-right.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#121212]/60 via-[#121212]/30 to-[#121212]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#121212_90%)]"></div>
+  </div>
+
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-10" aria-hidden="true">
     <div class="absolute top-10 left-10 w-2 h-2 rounded-full ping-orange animate-ping"></div>
     <div class="absolute top-32 right-20 w-1.5 h-1.5 rounded-full ping-cyan animate-ping" style="animation-delay:.9s"></div>
     <div class="absolute bottom-40 left-16 w-1 h-1 rounded-full ping-orange animate-ping" style="animation-delay:1.8s"></div>
   </div>
 
-  <h1 class="font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight tracking-tight max-w-4xl mb-6 text-fg">
+  <h1 class="relative z-10 font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight tracking-tight max-w-4xl mb-6 text-fg">
     <span>All your multimedia</span><br />
     <span class="gradient-text">content,</span><br />
     <span>in one place.</span>
   </h1>
 
-  <p class="text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">Mivio, the ultimate
+  <p class="relative z-10 text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">Mivio, the ultimate
     multi-platform media player. Connect your local servers, <strong>SMB</strong> or <strong>WebDAV</strong>, and
     enjoy your movies and series with automatic artwork and built-in subtitles.</p>
 
-  <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
+  <div class="relative z-10 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
     <button type="button"
       data-waitlist="Mivio Apps"
       class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
@@ -138,8 +155,6 @@ const technicalSpecs = [
       </div>
     </div>
   </div>
-
-  <div class="absolute -bottom-20 left-1/2 -translate-x-1/2 w-3/4 h-32 rounded-full blur-[100px] bg-primary/30 -z-10 pointer-events-none" aria-hidden="true"></div>
 </section>
 
 <!-- ==============================================================
