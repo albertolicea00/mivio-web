@@ -52,19 +52,7 @@ const clarityId = import.meta.env.PROD ? import.meta.env.PUBLIC_CLARITY_ID : und
   <!-- App styles -->
   <link rel="stylesheet" href="/static/css/style.css" />
 
-  <!-- Theme init script to avoid FOUC -->
-  <script is:inline>
-    (function () {
-      const saved = localStorage.getItem('mivio-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = saved ? saved === 'dark' : prefersDark;
-      if (!isDark) {
-        document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.remove('light');
-      }
-    })();
-  </script>
+
   <script is:inline defer src="/static/js/os-detector.js"></script>
 </head>
 
