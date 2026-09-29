@@ -155,55 +155,95 @@ const technicalSpecs = [
 </div>
 
 <!-- ==============================================================
-     FEATURES
+     FEATURES (Horizontal Scroll Track — openmontage style)
 ============================================================== -->
-<section id="features" class="py-28 px-6 bg-page">
-  <div class="max-w-6xl mx-auto">
+<section id="features" class="features-runway relative bg-page">
+  <div data-ref="pinWrap" class="features-pin-wrap relative flex items-center overflow-hidden">
+    <!-- Subtle top and bottom ambient gradient masks -->
+    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-page via-transparent to-page opacity-70" aria-hidden="true"></div>
 
-    <SectionHeader eyebrow="Features" class="text-center mb-20">
-      <span>Everything you need,</span><br />
-      <span class="gradient-text">nothing you don't.</span>
-    </SectionHeader>
+    <div
+      data-ref="track"
+      class="features-track relative z-20 flex gap-6 sm:gap-8 items-center will-change-transform"
+    >
+      <!-- Intro Column / Scroll Cue -->
+      <div class="shrink-0 w-[290px] sm:w-[340px] md:w-[380px] flex flex-col justify-center pr-2 sm:pr-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">Features</span>
+        <h2 class="font-extrabold text-3xl sm:text-4xl md:text-5xl text-fg leading-tight">
+          <span>Everything you need,</span><br />
+          <span class="gradient-text">nothing you don't.</span>
+        </h2>
+        <p class="text-fg-subtle text-sm sm:text-base mt-4 leading-relaxed">
+          Mivio is built without bloat. High-performance playback, automated metadata, and zero server headaches.
+        </p>
+        <div class="flex items-center gap-2.5 font-mono text-[11px] font-bold tracking-widest text-primary uppercase mt-8">
+          <span>Scroll to explore</span>
+          <svg class="w-4 h-4 text-primary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
-      <FeatureCard eyebrow="Network support" title="Your files, your rules">
-        <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12H3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2h-2
-               M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M5 12h14" />
-          <circle cx="18" cy="17" r="1" fill="currentColor" />
-        </svg>
-        No matter where you store your videos. Mivio supports local
-        storage and network connections via <strong>SMB</strong> and <strong>WebDAV</strong>. Connect your NAS or
-        server in seconds.
-      </FeatureCard>
+      <!-- Card 1: Network support -->
+      <div class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[390px] sm:h-[420px] flex flex-col">
+        <FeatureCard tag="01 · PROTOCOLS" eyebrow="Network support" title="Your files, your rules">
+          <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12H3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2h-2
+                 M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M5 12h14" />
+            <circle cx="18" cy="17" r="1" fill="currentColor" />
+          </svg>
+          No matter where you store your videos. Mivio supports local
+          storage and network connections via <strong>SMB</strong> and <strong>WebDAV</strong>. Connect your NAS or
+          server in seconds.
+        </FeatureCard>
+      </div>
 
-      <FeatureCard eyebrow="Magic metadata" title="Automatic organization">
-        <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v4m0 0H3m4 0h4M7 8v4M17 4l-1 1m0 0-1 1m1-1 1 1m-1-1-1-1M3 20l9-9
-               M12.5 7.5l4 4-7 7H6v-3.5l6.5-6.5z" />
-        </svg>
-        Forget searching for names. Mivio scans your files and
-        automatically downloads artwork, synopses, cast, and ratings from <strong>TMDB</strong> so your library
-        looks spectacular.
-      </FeatureCard>
+      <!-- Card 2: Magic metadata -->
+      <div class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[390px] sm:h-[420px] flex flex-col">
+        <FeatureCard tag="02 · METADATA" eyebrow="Magic metadata" title="Automatic organization">
+          <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v4m0 0H3m4 0h4M7 8v4M17 4l-1 1m0 0-1 1m1-1 1 1m-1-1-1-1M3 20l9-9
+                 M12.5 7.5l4 4-7 7H6v-3.5l6.5-6.5z" />
+          </svg>
+          Forget searching for names. Mivio scans your files and
+          automatically downloads artwork, synopses, cast, and ratings from <strong>TMDB</strong> so your library
+          looks spectacular.
+        </FeatureCard>
+      </div>
 
-      <FeatureCard eyebrow="OpenSubtitles" title="Subtitles instantly">
-        <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M7 8h10M7 12h6m-6 4h10M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" />
-        </svg>
-        Missing subtitles? Search and download them directly from
-        the app thanks to our <strong>OpenSubtitles</strong> integration.
-      </FeatureCard>
+      <!-- Card 3: OpenSubtitles -->
+      <div class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[390px] sm:h-[420px] flex flex-col">
+        <FeatureCard tag="03 · SUBTITLES" eyebrow="OpenSubtitles" title="Subtitles instantly">
+          <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M7 8h10M7 12h6m-6 4h10M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" />
+          </svg>
+          Missing subtitles? Search and download them directly from
+          the app thanks to our <strong>OpenSubtitles</strong> integration.
+        </FeatureCard>
+      </div>
 
-      <FeatureCard eyebrow="ExoPlayer" title="High-performance playback">
-        <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke-width="1.5" />
-          <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
-        </svg>
-        Enjoy maximum performance and support for almost all video
-        formats thanks to the <strong>ExoPlayer</strong>-based engine. Your progress is saved automatically.
-      </FeatureCard>
+      <!-- Card 4: ExoPlayer -->
+      <div class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[390px] sm:h-[420px] flex flex-col">
+        <FeatureCard tag="04 · PLAYBACK" eyebrow="ExoPlayer" title="High-performance playback">
+          <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke-width="1.5" />
+            <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+          </svg>
+          Enjoy maximum performance and support for almost all video
+          formats thanks to the <strong>ExoPlayer</strong>-based engine. Your progress is saved automatically.
+        </FeatureCard>
+      </div>
+
+      <!-- Card 5: Cloud streaming -->
+      <div class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[390px] sm:h-[420px] flex flex-col">
+        <FeatureCard tag="05 · CLOUD" eyebrow="Cloud streaming" title="Direct cloud access">
+          <svg slot="icon" class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          </svg>
+          Stream directly from <strong>Google Drive</strong>, <strong>Dropbox</strong>, <strong>OneDrive</strong>, and <strong>WebDAV</strong> without downloading files first.
+        </FeatureCard>
+      </div>
     </div>
   </div>
 </section>
@@ -285,78 +325,124 @@ const technicalSpecs = [
 
 <Footer />
 
+<style>
+  .features-runway {
+    position: relative;
+    width: 100%;
+  }
+
+  .features-pin-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .features-pin-wrap {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .features-track {
+      display: flex;
+      align-items: center;
+      padding-left: max(6vw, 32px);
+      padding-right: max(12vw, 64px);
+      will-change: transform;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .features-runway {
+      height: auto !important;
+      padding: 4rem 0 3rem;
+    }
+
+    .features-pin-wrap {
+      position: relative !important;
+      height: auto !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding: 0 1.25rem 1.5rem;
+    }
+
+    .features-track {
+      display: flex;
+      align-items: stretch;
+      gap: 1.25rem;
+      width: max-content;
+      transform: none !important;
+    }
+
+    .features-track > div {
+      scroll-snap-align: start;
+    }
+  }
+</style>
+
 <script is:inline>
-  // Device Carousel
+  // Horizontal Scroll for Features Section (inspired by openmontage.video track)
   (function () {
-    const track = document.getElementById('device-carousel-track');
-    if (!track) return;
-    const dots = document.querySelectorAll('.device-dot');
-    const prevBtn = document.getElementById('device-carousel-prev');
-    const nextBtn = document.getElementById('device-carousel-next');
-    let cur = 0;
-    const total = 6;
-    let timer;
+    const runway = document.getElementById('features');
+    const pinWrap = document.querySelector('[data-ref="pinWrap"]');
+    const track = document.querySelector('[data-ref="track"]');
+    if (!runway || !pinWrap || !track) return;
 
-    function update() {
-      const card = track.firstElementChild;
-      if (!card) return;
-      const width = card.offsetWidth + 24;
-      track.style.transform = `translateX(-${cur * width}px)`;
-      dots.forEach((dot, idx) => {
-        if (idx === cur) {
-          dot.className = 'device-dot h-2 rounded-full transition-all duration-300 bg-primary w-5';
-        } else {
-          dot.className = 'device-dot h-2 rounded-full transition-all duration-300 bg-fg/20 w-2';
-        }
-      });
+    let totalDistance = 0;
+    let isDesktop = false;
+
+    function calcDimensions() {
+      isDesktop = window.innerWidth >= 768;
+      if (!isDesktop) {
+        runway.style.height = 'auto';
+        track.style.transform = 'none';
+        return;
+      }
+
+      // Reset transform temporarily to measure natural scrollWidth
+      track.style.transform = 'none';
+      const trackWidth = track.scrollWidth;
+      const viewportWidth = window.innerWidth;
+
+      // Distance the track needs to slide to reveal all cards with comfortable ending margin
+      totalDistance = Math.max(0, trackWidth - viewportWidth + 60);
+
+      // Runway height is the viewport height PLUS the horizontal distance needed
+      runway.style.height = `${window.innerHeight + totalDistance}px`;
+      updateScroll();
     }
 
-    function next() {
-      cur = (cur + 1) % total;
-      update();
+    function updateScroll() {
+      if (!isDesktop || totalDistance <= 0) return;
+      const rect = runway.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const clamped = Math.max(0, Math.min(totalDistance, scrolled));
+      track.style.transform = `translate3d(${-clamped}px, 0, 0)`;
     }
 
-    function prev() {
-      cur = (cur - 1 + total) % total;
-      update();
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
-    function startTimer() {
-      clearInterval(timer);
-      timer = setInterval(next, 3500);
-    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', calcDimensions, { passive: true });
 
-    prevBtn?.addEventListener('click', () => { prev(); startTimer(); });
-    nextBtn?.addEventListener('click', () => { next(); startTimer(); });
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        cur = Number(dot.dataset.index);
-        update();
-        startTimer();
-      });
-    });
-
-    window.addEventListener('resize', update, { passive: true });
-    startTimer();
-  })();
-
-  // FAQ Accordion
-  (function () {
-    document.querySelectorAll('.faq-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        const item = btn.closest('.faq-item');
-        const content = item?.querySelector('.faq-content');
-        const icon = item?.querySelector('.faq-icon');
-
-        btn.setAttribute('aria-expanded', String(!isExpanded));
-        if (content) {
-          content.classList.toggle('hidden', isExpanded);
-        }
-        if (icon) {
-          icon.classList.toggle('rotate-180', !isExpanded);
-        }
-      });
-    });
+    // Initial setup on DOM ready, window load, and font settlement
+    calcDimensions();
+    window.addEventListener('load', calcDimensions);
+    setTimeout(calcDimensions, 300);
+    setTimeout(calcDimensions, 1000);
   })();
 </script>
