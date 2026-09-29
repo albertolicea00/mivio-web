@@ -142,8 +142,8 @@ import WaitlistModal from '../WaitlistModal.astro';
         <form id="cloud-contact-form" class="flex flex-col gap-3.5">
           <!-- Contact -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="group rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-              <label for="cloud-name" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+            <div class="cloud-field group rounded-xl px-3.5 pt-2 pb-2 transition-all">
+              <label for="cloud-name" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
                 Your Name
               </label>
               <input
@@ -152,12 +152,12 @@ import WaitlistModal from '../WaitlistModal.astro';
                 type="text"
                 required
                 placeholder="e.g. Alex Rivera"
-                class="w-full bg-transparent pt-0.5 text-sm text-fg placeholder:text-fg-faint/50 focus:outline-none"
+                class="cloud-input w-full bg-transparent pt-0.5 text-sm focus:outline-none"
               />
             </div>
 
-            <div class="group rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-              <label for="cloud-email" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+            <div class="cloud-field group rounded-xl px-3.5 pt-2 pb-2 transition-all">
+              <label for="cloud-email" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
                 Email Address
               </label>
               <input
@@ -166,22 +166,22 @@ import WaitlistModal from '../WaitlistModal.astro';
                 type="email"
                 required
                 placeholder="alex@example.com"
-                class="w-full bg-transparent pt-0.5 text-sm text-fg placeholder:text-fg-faint/50 focus:outline-none"
+                class="cloud-input w-full bg-transparent pt-0.5 text-sm focus:outline-none"
               />
             </div>
           </div>
 
           <!-- Media & Quality -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="group relative rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-              <label for="cloud-library-size" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+            <div class="cloud-field group relative rounded-xl px-3.5 pt-2 pb-2 transition-all">
+              <label for="cloud-library-size" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
                 Movies / Series Count
               </label>
               <div class="relative flex items-center mt-0.5">
                 <select
                   id="cloud-library-size"
                   name="library_size"
-                  class="w-full bg-transparent pr-6 text-sm text-fg focus:outline-none cursor-pointer appearance-none"
+                  class="cloud-input w-full bg-transparent pr-6 text-sm focus:outline-none cursor-pointer appearance-none"
                 >
                   <option value="Under 100 titles" class="bg-surface text-fg">Under 100 movies / series</option>
                   <option value="100 – 500 titles" selected class="bg-surface text-fg">100 – 500 movies / series</option>
@@ -189,21 +189,21 @@ import WaitlistModal from '../WaitlistModal.astro';
                   <option value="2,000+ titles" class="bg-surface text-fg">2,000+ movies / series</option>
                   <option value="Personal files & music" class="bg-surface text-fg">Personal videos & music</option>
                 </select>
-                <svg aria-hidden="true" class="w-4 h-4 text-fg-subtle group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" class="cloud-chevron w-4 h-4 group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               </div>
             </div>
 
-            <div class="group relative rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-              <label for="cloud-resolution" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+            <div class="cloud-field group relative rounded-xl px-3.5 pt-2 pb-2 transition-all">
+              <label for="cloud-resolution" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
                 Video Quality
               </label>
               <div class="relative flex items-center mt-0.5">
                 <select
                   id="cloud-resolution"
                   name="resolution"
-                  class="w-full bg-transparent pr-6 text-sm text-fg focus:outline-none cursor-pointer appearance-none"
+                  class="cloud-input w-full bg-transparent pr-6 text-sm focus:outline-none cursor-pointer appearance-none"
                 >
                   <option value="720p HD" class="bg-surface text-fg">720p HD</option>
                   <option value="1080p Full HD" selected class="bg-surface text-fg">1080p Full HD</option>
@@ -212,7 +212,7 @@ import WaitlistModal from '../WaitlistModal.astro';
                   <option value="Remux / Lossless" class="bg-surface text-fg">Remux / Lossless</option>
                   <option value="Mixed qualities" class="bg-surface text-fg">Mixed qualities</option>
                 </select>
-                <svg aria-hidden="true" class="w-4 h-4 text-fg-subtle group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" class="cloud-chevron w-4 h-4 group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               </div>
@@ -220,15 +220,15 @@ import WaitlistModal from '../WaitlistModal.astro';
           </div>
 
           <!-- Budget -->
-          <div class="group relative rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-            <label for="cloud-budget" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+          <div class="cloud-field group relative rounded-xl px-3.5 pt-2 pb-2 transition-all">
+            <label for="cloud-budget" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
               Monthly Budget
             </label>
             <div class="relative flex items-center mt-0.5">
               <select
                 id="cloud-budget"
                 name="budget"
-                class="w-full bg-transparent pr-6 text-sm text-fg focus:outline-none cursor-pointer appearance-none"
+                class="cloud-input w-full bg-transparent pr-6 text-sm focus:outline-none cursor-pointer appearance-none"
               >
                 <option value="Flexible / Best value" selected class="bg-surface text-fg">Flexible / Recommend the best value</option>
                 <option value="Under $10/mo" class="bg-surface text-fg">Under $10 / month</option>
@@ -236,15 +236,15 @@ import WaitlistModal from '../WaitlistModal.astro';
                 <option value="$25 – $50/mo" class="bg-surface text-fg">$25 – $50 / month</option>
                 <option value="$50+/mo (Dedicated)" class="bg-surface text-fg">$50+ / month (Dedicated server)</option>
               </select>
-              <svg aria-hidden="true" class="w-4 h-4 text-fg-subtle group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg aria-hidden="true" class="cloud-chevron w-4 h-4 group-focus-within:text-primary pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </div>
           </div>
 
           <!-- Message -->
-          <div class="group rounded-xl border border-subtle bg-surface-alt/40 px-3.5 pt-2 pb-2 transition-all focus-within:border-primary/50 focus-within:bg-surface-alt/70 focus-within:ring-1 focus-within:ring-primary/20">
-            <label for="cloud-message" class="block text-[11px] font-semibold text-fg-subtle uppercase tracking-wider group-focus-within:text-primary transition-colors">
+          <div class="cloud-field group rounded-xl px-3.5 pt-2 pb-2 transition-all">
+            <label for="cloud-message" class="cloud-label block text-[11px] font-semibold uppercase tracking-wider group-focus-within:text-primary transition-colors">
               Additional Notes
             </label>
             <textarea
@@ -252,7 +252,7 @@ import WaitlistModal from '../WaitlistModal.astro';
               name="message"
               rows="2.5"
               placeholder="Any specific requests, existing equipment, or notes..."
-              class="w-full bg-transparent pt-0.5 text-sm text-fg placeholder:text-fg-faint/50 focus:outline-none resize-none"
+              class="cloud-input w-full bg-transparent pt-0.5 text-sm focus:outline-none resize-none"
             ></textarea>
           </div>
 
@@ -277,6 +277,30 @@ import WaitlistModal from '../WaitlistModal.astro';
 
 <WaitlistModal />
 <Footer />
+
+<style>
+  .cloud-field {
+    border: 1px solid rgba(36, 29, 21, 0.16);
+    background: rgba(36, 29, 21, 0.04);
+  }
+  .cloud-field:focus-within {
+    border-color: rgba(224, 112, 79, 0.6);
+    background: rgba(36, 29, 21, 0.06);
+    box-shadow: 0 0 0 1px rgba(224, 112, 79, 0.2);
+  }
+  .cloud-label {
+    color: rgba(36, 29, 21, 0.6);
+  }
+  .cloud-input {
+    color: #241d15;
+  }
+  .cloud-input::placeholder {
+    color: rgba(36, 29, 21, 0.38);
+  }
+  .cloud-chevron {
+    color: rgba(36, 29, 21, 0.5);
+  }
+</style>
 
 <script is:inline>
   (function () {
