@@ -1,0 +1,78 @@
+---
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import LegalHeader from '../ui/LegalHeader.astro';
+import LegalSection from '../ui/LegalSection.astro';
+---
+
+<Navbar />
+
+<main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+
+  <LegalHeader title="End User License Agreement" updated="May 2026" />
+
+  <div class="space-y-12 text-fg-subtle leading-relaxed">
+
+    <LegalSection title="1. Agreement">
+      <p>This End User License Agreement ("EULA") is a legal agreement between you and the Mivio project ("we", "us") governing your use of the Mivio client applications across all supported platforms (iOS, macOS, tvOS, visionOS, Android, Android TV, Windows, Linux, Roku, and Smart TV builds). By installing, copying, compiling from source, or otherwise using Mivio, you agree to be bound by this EULA.</p>
+    </LegalSection>
+
+    <LegalSection title="2. License Grant">
+      <p class="mb-4">Subject to your compliance with this EULA, we grant you a limited, non-exclusive, non-transferable, revocable license to:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Install and use Mivio on devices you own or control, for <strong>personal, non-commercial purposes</strong>.</li>
+        <li>View, modify, and compile the publicly available source code for your own personal use.</li>
+      </ul>
+    </LegalSection>
+
+    <LegalSection title="3. Source-Available, Not Open Source">
+      <p>Mivio's source code is published for transparency and personal customization. This is a <strong>Source-Available Non-Commercial license</strong>, not an OSI-approved open-source license. Availability of the source code does not grant you rights beyond those explicitly listed in this EULA.</p>
+    </LegalSection>
+
+    <LegalSection title="4. Restrictions">
+      <p class="mb-4">You may not, and may not permit others to:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Sell, rent, lease, sublicense, or otherwise monetize Mivio or any derivative of it.</li>
+        <li>Rebrand, whitelabel, or redistribute Mivio (or a modified build) as your own product.</li>
+        <li>Deploy Mivio or a fork of it in a Software-as-a-Service (SaaS), managed hosting, or other commercial/enterprise environment without a separate written B2B license agreement with us.</li>
+        <li>Remove or alter any copyright, trademark, or attribution notices contained in the software.</li>
+        <li>Use Mivio to facilitate the distribution, indexing, or streaming of content you do not have the legal right to access.</li>
+      </ul>
+    </LegalSection>
+
+    <LegalSection title="5. Bring Your Own Media">
+      <p>Mivio is a media player and library organizer only. It does not host, provide, or distribute any media content. You are solely responsible for the legality of the files, servers, and streams (SMB, WebDAV, NFS, Plex, Jellyfin, Emby, or cloud storage) you connect to the app.</p>
+    </LegalSection>
+
+    <LegalSection title="6. Third-Party Services">
+      <p>Mivio integrates with third-party services including TMDB (metadata and artwork) and OpenSubtitles (subtitle downloads). Your use of these integrations is also governed by the respective third party's terms of service. If you build Mivio from source, you must supply your own API credentials for these services, and we are not responsible for any restriction or ban applied to your keys.</p>
+    </LegalSection>
+
+    <LegalSection title="7. Ownership">
+      <p>Mivio and all associated trademarks, logos, and branding remain the exclusive property of their respective owners. This EULA does not transfer any ownership rights to you. All rights not expressly granted are reserved.</p>
+    </LegalSection>
+
+    <LegalSection title="8. Updates">
+      <p>Mivio may periodically check for and install updates to improve functionality, security, and compatibility. Some platform builds (Smart TV, Roku) may require manual reinstall for major version updates due to platform store constraints.</p>
+    </LegalSection>
+
+    <LegalSection title="9. Termination">
+      <p>This license is effective until terminated. It will terminate automatically without notice if you fail to comply with any provision of this EULA. Upon termination, you must cease all use of Mivio and destroy any compiled builds in your possession.</p>
+    </LegalSection>
+
+    <LegalSection title="10. Disclaimer of Warranties">
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. WE DO NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR UNINTERRUPTED.</p>
+    </LegalSection>
+
+    <LegalSection title="11. Limitation of Liability">
+      <p>IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE, INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR MEDIA LIBRARY CORRUPTION.</p>
+    </LegalSection>
+
+    <LegalSection title="12. Changes to This EULA">
+      <p>We may revise this EULA from time to time. Continued use of Mivio after a revised EULA has been published constitutes acceptance of the changes. Material changes will be reflected in the "Last updated" date above.</p>
+    </LegalSection>
+
+  </div>
+</main>
+
+<Footer />

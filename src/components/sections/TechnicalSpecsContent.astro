@@ -1,0 +1,90 @@
+---
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import LegalHeader from '../ui/LegalHeader.astro';
+import LegalSection from '../ui/LegalSection.astro';
+
+const specs = [
+  {
+    category: 'Video Formats',
+    items: [
+      '3GP', 'ASF', 'AV1', 'AVI', 'BDMV', 'DivX', 'DVDMEDIA', 'DVR-MS', 'FLV',
+      'H.264 (AVC)', 'H.265 (HEVC)', 'H.266 (VVC)', 'ISO/IMG', 'M4V', 'MKV', 'MOV',
+      'MP4', 'MPEG-1/MPEG-2', 'MTS/M2TS', 'MXF', 'OGM', 'OGV', 'RMVB', 'STRM',
+      'STRMLNK', 'TS', 'VC-1', 'VIDEO_TS', 'VOB', 'VP8', 'VP9', 'WebM', 'WMV', 'WTV',
+    ],
+  },
+  {
+    category: 'Audio Formats',
+    items: [
+      'AAC', 'AIFF', 'Dolby Digital (AC3)', 'Dolby Digital Plus (E-AC3)',
+      'Dolby TrueHD', 'DTS', 'DTS-HD MA', 'FLAC', 'MP3', 'Ogg', 'PCM',
+      'TTA', 'WAV', 'WMA',
+    ],
+  },
+  {
+    category: 'Subtitle Formats',
+    items: [
+      'DVB', 'DVDSub', 'MicroDVD', 'MPL2', 'PGS', 'SMI', 'SRT', 'SSA/ASS',
+      'SUB', 'SUP', 'Timed Text', 'TMP', 'TXT', 'VobSub', 'VTT', 'XSUB',
+    ],
+  },
+  {
+    category: 'Network Protocols',
+    items: [
+      'SMB', 'NFS', 'FTP', 'FTPES', 'FTPS', 'SFTP', 'HTTP/HTTPS', 'UPnP/DLNA', 'WebDAV',
+    ],
+  },
+  {
+    category: 'Media Servers',
+    items: [
+      'Emby', 'Jellyfin', 'Plex',
+    ],
+  },
+  {
+    category: 'Cloud Services',
+    items: [
+      'Dropbox', 'Google Drive', 'OneDrive', 'Box', 'pCloud', 'Yandex.Disk',
+      'MEGA', 'Aliyun Drive', '123 Drive', '115 Drive', 'Baidu NetDisk', 'GuangYaPan',
+    ],
+  },
+  {
+    category: 'Metadata & Subtitles Providers',
+    items: [
+      'TMDB', 'OpenSubtitles',
+    ],
+  },
+  {
+    category: 'Supported Platforms',
+    items: [
+      'iOS', 'iPadOS', 'macOS', 'tvOS', 'visionOS', 'Android', 'Android TV',
+      'Windows', 'Linux', 'Roku', 'Samsung Tizen', 'LG webOS', 'Meta Quest',
+    ],
+  },
+];
+---
+
+<Navbar />
+
+<main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+
+  <LegalHeader title="Technical Specifications" updated="May 2026" />
+
+  <div class="space-y-12">
+
+    {specs.map((group) => (
+      <LegalSection title={group.category}>
+        <div class="flex flex-wrap gap-2">
+          {group.items.map((item) => (
+            <span class="px-3 py-1.5 rounded-full bg-surface-alt border border-subtle text-xs sm:text-sm text-fg-subtle whitespace-nowrap">
+              {item}
+            </span>
+          ))}
+        </div>
+      </LegalSection>
+    ))}
+
+  </div>
+</main>
+
+<Footer />
