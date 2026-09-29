@@ -13,19 +13,32 @@ const { eyebrow, title, tag, class: className = '' } = Astro.props;
   <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:2px 4px 12px"></div>
   <div class="flex flex-col justify-between relative flex-1" style="background:rgba(255,255,255,.58);backdrop-filter:blur(22px) brightness(3.1) saturate(.72);-webkit-backdrop-filter:blur(22px) brightness(3.1) saturate(.72);border:1px solid rgba(255,255,255,.42);border-radius:12px;padding:24px;color:#241d15;">
     <div>
-      <div class="flex items-center justify-between gap-2 mb-4">
-        <div class="text-primary">
-          <slot name="icon" />
-        </div>
-        {tag && (
-          <span class="text-[10px] font-mono font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full" style="background:rgba(36,29,21,.08);color:#241d15;">
+      {tag && (
+        <div class="flex items-center justify-between gap-2 mb-4 pb-2 border-b border-[rgba(36,29,21,0.08)]">
+          <span class="text-[10.5px] font-mono font-bold tracking-widest uppercase text-[#78716c]">
             {tag}
           </span>
-        )}
+        </div>
+      )}
+
+      <!-- Icon + Title side-by-side -->
+      <div class="flex items-center gap-3.5 mb-3.5">
+        <div class="shrink-0 text-[#6b635b] flex items-center">
+          <slot name="icon" />
+        </div>
+        <div class="flex flex-col min-w-0">
+          {eyebrow && (
+            <span class="text-xs font-bold uppercase tracking-wider text-[#78716c] leading-tight">
+              {eyebrow}
+            </span>
+          )}
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight text-[#241d15] leading-snug mt-0.5">
+            {title}
+          </h3>
+        </div>
       </div>
-      <span class="text-xs font-bold uppercase tracking-widest text-primary">{eyebrow}</span>
-      <h3 class="text-xl sm:text-2xl font-bold mt-2 mb-3" style="color:#241d15;">{title}</h3>
-      <p class="text-sm leading-relaxed" style="color:rgba(36, 29, 21, 0.8);">
+
+      <p class="text-sm leading-relaxed" style="color:rgba(36, 29, 21, 0.78);">
         <slot />
       </p>
     </div>
