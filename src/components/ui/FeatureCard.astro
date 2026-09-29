@@ -12,7 +12,7 @@ const { eyebrow, title, class: className = '' } = Astro.props;
   <div style="height:10px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(242,236,223,.13) 0 14px,transparent 14px 28px);margin:2px 4px 12px"></div>
   <div class="flex flex-col justify-between relative flex-1" style="background:rgba(255,255,255,.58);backdrop-filter:blur(22px) brightness(3.1) saturate(.72);-webkit-backdrop-filter:blur(22px) brightness(3.1) saturate(.72);border:1px solid rgba(255,255,255,.42);border-radius:12px;padding:24px;color:#241d15;">
     <div>
-      <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
+      <div class="mb-4 text-primary">
         <slot name="icon" />
       </div>
       <span class="text-xs font-bold uppercase tracking-widest text-primary">{eyebrow}</span>
