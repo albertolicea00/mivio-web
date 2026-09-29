@@ -1,5 +1,17 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/b2b", "destination": "/b2b.html" },
+    { "source": "/cloud", "destination": "/cloud.html" },
+    { "source": "/download", "destination": "/download.html" },
+    { "source": "/eula", "destination": "/eula.html" },
+    { "source": "/manual", "destination": "/manual.html" },
+    { "source": "/marketplace", "destination": "/marketplace.html" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/technical-specifications", "destination": "/technical-specifications.html" },
+    { "source": "/terms", "destination": "/terms.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
