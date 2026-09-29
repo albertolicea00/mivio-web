@@ -346,29 +346,17 @@ const technicalSpecs = [
 <!-- ==============================================================
      TECHNICAL SPECIFICATIONS
 ============================================================== -->
-<section id="technical-specifications" class="py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <SectionHeader class="text-center mb-16">
-      <span>Plays almost</span><br />
-      <span class="gradient-text">everything.</span>
-      <Fragment slot="description">
-        <p class="text-fg-subtle mt-4 max-w-xl mx-auto text-base leading-relaxed">
-          And if it doesn't play it yet, it will very soon. View all supported formats in the <a href="manual.html" class="text-primary hover:underline font-semibold inline-flex items-center gap-1">User Manual <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>.
-        </p>
-      </Fragment>
-    </SectionHeader>
-
-    <div class="flex flex-col border-y border-subtle divide-y divide-subtle max-w-5xl mx-auto">
-      {technicalSpecs.map((spec) => (
-        <Marquee
-          items={spec.items}
-          reverse={spec.reverse}
-          speed={spec.speed}
-          bordered={false}
-          separator="✦"
-        />
-      ))}
-    </div>
+<section id="technical-specifications" class="-mb-12">
+  <div class="flex flex-col border-y border-subtle divide-y divide-subtle max-w-5xl mx-auto">
+    {technicalSpecs.map((spec) => (
+      <Marquee
+        items={spec.items}
+        reverse={spec.reverse}
+        speed={spec.speed}
+        bordered={false}
+        separator="✦"
+      />
+    ))}
   </div>
 </section>
 
