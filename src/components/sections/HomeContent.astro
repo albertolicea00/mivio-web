@@ -378,10 +378,13 @@ const technicalSpecs = [
   }
 
   .features-pin-wrap {
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
 
   .features-bg {
@@ -391,60 +394,12 @@ const technicalSpecs = [
     height: 100%;
   }
 
-  @media (min-width: 768px) {
-    .features-pin-wrap {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .features-track {
-      display: flex;
-      align-items: center;
-      padding-left: max(6vw, 32px);
-      padding-right: max(12vw, 64px);
-      will-change: transform;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .features-runway {
-      height: auto !important;
-      padding: 4rem 0 3rem;
-    }
-
-    .features-pin-wrap {
-      position: relative !important;
-      height: auto !important;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      padding: 0 1.25rem 1.5rem;
-    }
-
-    .features-track {
-      display: flex;
-      align-items: stretch;
-      gap: 1.25rem;
-      width: max-content;
-      transform: none !important;
-    }
-
-    .features-track > div {
-      scroll-snap-align: start;
-    }
-
-    .features-bg {
-      position: sticky;
-      left: 0;
-      width: 100vw;
-      min-width: 100vw;
-      margin-left: -1.25rem;
-      margin-right: -1.25rem;
-      height: 100%;
-    }
+  .features-track {
+    display: flex;
+    align-items: center;
+    padding-left: max(6vw, 24px);
+    padding-right: max(12vw, 48px);
+    will-change: transform;
   }
 
   @keyframes scrollLine {
@@ -478,16 +433,8 @@ const technicalSpecs = [
     if (!runway || !pinWrap || !track) return;
 
     let totalDistance = 0;
-    let isDesktop = false;
 
     function calcDimensions() {
-      isDesktop = window.innerWidth >= 768;
-      if (!isDesktop) {
-        runway.style.height = 'auto';
-        track.style.transform = 'none';
-        return;
-      }
-
       // Reset transform temporarily to measure natural scrollWidth
       track.style.transform = 'none';
       const trackWidth = track.scrollWidth;
@@ -502,7 +449,7 @@ const technicalSpecs = [
     }
 
     function updateScroll() {
-      if (!isDesktop || totalDistance <= 0) return;
+      if (totalDistance <= 0) return;
       const rect = runway.getBoundingClientRect();
       const scrolled = -rect.top;
       const clamped = Math.max(0, Math.min(totalDistance, scrolled));
