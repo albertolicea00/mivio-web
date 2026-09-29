@@ -112,9 +112,9 @@ const technicalSpecs = [
     <span>in one place.</span>
   </h1>
 
-  <p class="relative z-10 text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">Mivio, the ultimate
-    multi-platform media player. Connect your local servers, <strong>SMB</strong> or <strong>WebDAV</strong>, and
-    enjoy your movies and series with automatic artwork and built-in subtitles.</p>
+  <p class="relative z-10 text-fg-subtle text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">The ultimate
+    multi-platform media player. Connect via <strong>SMB</strong> or <strong>WebDAV</strong> and enjoy your
+    library with automatic artwork and built-in subtitles.</p>
 
   <div class="relative z-10 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16 w-full sm:w-auto">
     <button type="button"
@@ -298,10 +298,29 @@ const technicalSpecs = [
       <span class="gradient-text">screen you own.</span>
       <Fragment slot="description">
         <p class="text-fg-subtle mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-          One app, the entire ecosystem. Whether you're on the couch, at the desk, or on the road — Mivio adapts to your screen.
+          One app, the entire ecosystem. Mivio adapts to your screen.
         </p>
       </Fragment>
     </SectionHeader>
+
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10 sm:mb-12 w-full sm:w-auto mx-auto">
+      <button type="button"
+        data-waitlist="Mivio Apps"
+        class="btn-primary animate-pulse-glow text-white font-bold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-3 shadow-lg">
+        <svg aria-hidden="true" class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+        Join the waitlist
+      </button>
+
+      <a href="cloud.html"
+        class="btn-outline text-fg-muted font-semibold px-8 py-4 rounded-2xl text-base flex items-center justify-center gap-2">
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+        </svg>
+        <span>Explore Cloud</span>
+      </a>
+    </div>
 
     <!-- Device Mockup Frame -->
     <div class="relative w-full">
@@ -334,13 +353,14 @@ const technicalSpecs = [
      TECHNICAL SPECIFICATIONS
 ============================================================== -->
 <section id="technical-specifications" class="-mb-12">
-  <div class="flex flex-col border-y border-subtle divide-y divide-subtle max-w-5xl mx-auto">
+  <div class="flex flex-col border-y border-subtle divide-y divide-subtle w-full">
     {technicalSpecs.map((spec) => (
       <Marquee
         items={spec.items}
         reverse={spec.reverse}
         speed={spec.speed}
         bordered={false}
+        fullWidth={true}
         separator="✦"
       />
     ))}

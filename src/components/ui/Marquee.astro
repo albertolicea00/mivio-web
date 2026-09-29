@@ -5,6 +5,7 @@ export interface Props {
   speed?: string;
   reverse?: boolean;
   bordered?: boolean;
+  fullWidth?: boolean;
   class?: string;
 }
 
@@ -14,10 +15,11 @@ const {
   speed = '25s',
   reverse = false,
   bordered = true,
+  fullWidth = false,
   class: className = '',
 } = Astro.props;
 
-const minItems = 16;
+const minItems = 24;
 const repeatCount = items.length > 0 && items.length < minItems
   ? Math.ceil(minItems / items.length)
   : 1;
@@ -26,7 +28,7 @@ const displayItems = items.length > 0
   : [];
 ---
 
-<div class={`w-full max-w-5xl mx-auto overflow-hidden py-2.5 sm:py-3 select-none marquee-mask ${bordered ? 'border-y border-subtle' : ''} ${className}`}>
+<div class={`w-full ${fullWidth ? '' : 'max-w-5xl mx-auto'} overflow-hidden py-2.5 sm:py-3 select-none marquee-mask ${bordered ? 'border-y border-subtle' : ''} ${className}`}>
   <div
     class={`flex whitespace-nowrap w-max animate-marquee hover:[animation-play-state:paused] font-mono text-xs tracking-[0.24em] text-fg-subtle ${
       reverse ? 'marquee-reverse' : ''
