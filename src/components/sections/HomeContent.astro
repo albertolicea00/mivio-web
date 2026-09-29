@@ -155,6 +155,20 @@ const technicalSpecs = [
       </div>
     </div>
   </div>
+
+  <!-- Scroll Down Indicator (Minimal Line) -->
+  <a
+    href="#features"
+    class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-fg-subtle/60 hover:text-fg-subtle transition-colors duration-300 group select-none"
+    aria-label="Scroll to explore"
+  >
+    <span class="font-mono text-[10px] tracking-[0.22em] uppercase text-fg-subtle/60 group-hover:text-fg transition-colors">
+      Scroll
+    </span>
+    <div class="w-px h-8 bg-white/10 relative overflow-hidden rounded-full">
+      <div class="w-full h-1/2 bg-gradient-to-b from-transparent via-primary/80 to-transparent scroll-line-runner"></div>
+    </div>
+  </a>
 </section>
 
 <!-- ==============================================================
@@ -424,6 +438,27 @@ const technicalSpecs = [
       margin-right: -1.25rem;
       height: 100%;
     }
+  }
+
+  @keyframes scrollLine {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  .scroll-line-runner {
+    animation: scrollLine 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 </style>
 
